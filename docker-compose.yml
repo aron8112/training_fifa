@@ -1,0 +1,29 @@
+
+services:
+  
+  # frontend:
+  #   build:
+  #     context: ./front
+  #     dockerfile: Dockerfile
+  #   ports:
+  #     - "3000:3000"
+  #   depends_on:
+  #     - backend
+  # backend:
+  #   build:
+  #     context: ./back
+  #     dockerfile: Dockerfile
+  #   ports:
+  #     - "5000:5000"
+  #   depends_on:
+  #     - mysql
+  mysql:
+    image: mysql:latest
+    environment:
+     MYSQL_ROOT_PASSWORD: root 
+     MYSQL_ROOT_USER: root 
+     MYSQL_DATABASE: fifa
+    volumes:
+      - ./db:/data
+    ports:
+      - "3306:3306"
