@@ -1,3 +1,5 @@
-const player = require('./queries');
+const playerServices = require('./player');
+const userServices = require('./user');
+const csvOpts = require('./csvOpts');
 
-module.exports = { player };
+module.exports = { playerServices, userServices, csvOpts };

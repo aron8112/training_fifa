@@ -24,8 +24,8 @@ const sequelize = new Sequelize(
   process.env.DB_NAME,
   process.env.DB_USER,
   process.env.DB_PASSW,
-  sequelizeOptions
-  // { host: process.env.DB_HOST, dialect: 'mysql' }
+  // sequelizeOptions
+  { host: process.env.DB_HOST, dialect: 'mysql' }
 );
 
 const connect = async () => {
