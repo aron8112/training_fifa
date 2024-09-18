@@ -18,17 +18,15 @@ app.use(
   })
 );
 app.use(
-  helmet(
-    {
-      referrerPolicy: {
-        policy: ['origin', 'unsafe-url'],
-      },
+  helmet({
+    referrerPolicy: {
+      policy: ['origin', 'unsafe-url'],
     },
-    { xContentTypeOptions: true },
-    { xFrameOptions: { action: 'deny' } },
-    { xPoweredBy: true }
-  )
+  })
 );
+app.use(helmet.noSniff());
+app.use(helmet.xPoweredBy());
+app.use(helmet.xFrameOptions({ action: 'deny' }));
 app.use(
   express.urlencoded({
     extended: false,
