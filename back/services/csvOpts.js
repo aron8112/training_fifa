@@ -3,10 +3,8 @@ const { playerProvider } = require('../providers');
 const { writeFile } = require('fs').promises;
 let dirSave = require('../public');
 let converter = require('json-2-csv');
-const csv = require('csv-parser'); // Librería para leer CSV
 const { sequelize } = require('../config/db');
 const { DataTypes } = require('sequelize');
-const fs = require('fs');
 
 const downloadWithFS = async () => {
   //OPCION CON FS Y JSON-2-CSV
@@ -50,10 +48,17 @@ const downloadWithXsls = async () => {
 const uploadCSV = async (file, tableName) => {
   const sampleData = file[0];
 
-  // Crear el modelo dinámico de la tabla
+  // Create a model to create a new table
   const fields = {};
   Object.keys(sampleData).forEach((key) => {
-    fields[key] = { type: DataTypes.STRING }; // Asumimos que todos los campos son strings, puedes ajustar según sea necesario
+    /**
+     * For now, all fields will be strings
+     * @todo:
+     * modify the function to a new version where it will check the type
+     * and pass it as different DataTypes
+     *
+     */
+    fields[key] = { type: DataTypes.STRING };
   });
 
   const DynamicModel = await sequelize.define(tableName, fields, {
@@ -63,14 +68,14 @@ const uploadCSV = async (file, tableName) => {
   try {
     // console.log(fields);
     // return true;
-    // // Crear la tabla si no existe
+    // // Create table if not exists
     await DynamicModel.sync({ force: true }).then(
       async () => await DynamicModel.bulkCreate(fields)
     );
     return true;
   } catch (error) {
-    // throw new Error('Error al crear la tabla o insertar los datos', error);
-    console.error(error);
+    throw new Error('Error al crear la tabla o insertar los datos', error);
+    // console.error(error);
   }
 };
 
