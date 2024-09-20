@@ -1,0 +1,2323 @@
+{
+	"info": {
+		"_postman_id": "f22dd35f-17ef-4bdc-a6dd-f2051d82e65a",
+		"name": "Fifa_challenge_doc",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26950735"
+	},
+	"item": [
+		{
+			"name": "Players",
+			"item": [
+				{
+					"name": "Update Player",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"user\": \"pepe\",\n    \"newPlayer\": {\n        \"long_name\": \"Updated v3 player\",\n        \"age\": 88\n    },\n    \"isNew\": false\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/players/161594",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"players",
+								"161594"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Update Player ERROR 400",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"user\": \"pepe\",\n    \"newPlayer\": {\n        \"id\": 1345,\n        \"long_name\": \"some new player\",\n        \"age\": null\n    },\n    \"isNew\": false\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:5000/players/1",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"players",
+										"1"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "JSON",
+							"header": [
+								{
+									"key": "Content-Security-Policy",
+									"value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests",
+									"type": "text"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin",
+									"type": "text"
+								},
+								{
+									"key": "Cross-Origin-Resource-Policy",
+									"value": "same-origin",
+									"type": "text"
+								},
+								{
+									"key": "Origin-Agent-Cluster",
+									"value": "?1",
+									"type": "text"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "origin,unsafe-url",
+									"type": "text"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains",
+									"type": "text"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff",
+									"type": "text"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off",
+									"type": "text"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen",
+									"type": "text"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN",
+									"type": "text"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none",
+									"type": "text"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0",
+									"type": "text"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*",
+									"type": "text"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express",
+									"type": "text"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8",
+									"type": "text"
+								},
+								{
+									"key": "Content-Length",
+									"value": "90",
+									"type": "text"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"5a-fBLV4aGbAKjGywdvBRV2DiOgnCQ\"",
+									"type": "text"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 18 Sep 2024 20:40:36 GMT",
+									"type": "text"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive",
+									"type": "text"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": [\n        \"id is not allowed\",\n        \"Field age cannot be null\",\n        \"The field age must be numbers\"\n    ]\n}"
+						},
+						{
+							"name": "Update Player Error 401",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"user\": \"pepe\",\n    \"newPlayer\": {\n        \"id\": 161593,\n        \"long_name\": \"Updated player\",\n        \"age\": 85\n    },\n    \"isNew\": false\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:5000/players/1",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"players",
+										"1"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "JSON",
+							"header": [
+								{
+									"key": "Content-Security-Policy",
+									"value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests",
+									"type": "text"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin",
+									"type": "text"
+								},
+								{
+									"key": "Cross-Origin-Resource-Policy",
+									"value": "same-origin",
+									"type": "text"
+								},
+								{
+									"key": "Origin-Agent-Cluster",
+									"value": "?1",
+									"type": "text"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "origin,unsafe-url",
+									"type": "text"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains",
+									"type": "text"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff",
+									"type": "text"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off",
+									"type": "text"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen",
+									"type": "text"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN",
+									"type": "text"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none",
+									"type": "text"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0",
+									"type": "text"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*",
+									"type": "text"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express",
+									"type": "text"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8",
+									"type": "text"
+								},
+								{
+									"key": "Content-Length",
+									"value": "41",
+									"type": "text"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"29-lxtSQOYUc2mp7cggol1kv+Ldyr0\"",
+									"type": "text"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 18 Sep 2024 21:34:16 GMT",
+									"type": "text"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive",
+									"type": "text"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": \"You are not allowed to access\"\n}"
+						},
+						{
+							"name": "Update Player Ok",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"user\": \"pepe\",\n    \"newPlayer\": {\n        \"long_name\": \"Updated v3 player\",\n        \"age\": 88\n    },\n    \"isNew\": false\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:5000/players/161594",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"players",
+										"161594"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "JSON",
+							"header": [
+								{
+									"key": "Content-Security-Policy",
+									"value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests",
+									"type": "text"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin",
+									"type": "text"
+								},
+								{
+									"key": "Cross-Origin-Resource-Policy",
+									"value": "same-origin",
+									"type": "text"
+								},
+								{
+									"key": "Origin-Agent-Cluster",
+									"value": "?1",
+									"type": "text"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "origin,unsafe-url",
+									"type": "text"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains",
+									"type": "text"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff",
+									"type": "text"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off",
+									"type": "text"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen",
+									"type": "text"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN",
+									"type": "text"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none",
+									"type": "text"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0",
+									"type": "text"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*",
+									"type": "text"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express",
+									"type": "text"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8",
+									"type": "text"
+								},
+								{
+									"key": "Content-Length",
+									"value": "42",
+									"type": "text"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2a-fLZl2jIoEcEkDPYcMJLmkb3k/6o\"",
+									"type": "text"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 18 Sep 2024 22:49:15 GMT",
+									"type": "text"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive",
+									"type": "text"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"Ok\",\n    \"message\": \"Player updated\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Create Player",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    // \"user\": \"pepe\",\n    // \"newPlayer\": {\n    //     \"long_name\": \"some new player\",\n    //     \"age\": 38,\n    //     \"fifa_version\": \"18\",\n    //     \"fifa_update\": \"2\",\n    //     \"player_face_url\": \"https://imgs.search.brave.com/p5CxRjUfmcn92zFoDMRDQYI2vAwCsqzsjEjXXXPAdMk/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pLnBp/bmltZy5jb20vb3Jp/Z2luYWxzL2MyL2Jh/LzQzL2MyYmE0M2Zk/YjI4NjRhNmZkZjY0/YWVhMjEyZWRhNWNj/LmpwZw\",\n    //     \"player_positions\": \"ST\",\n    //     \"overall\": 55,\n    //     \"potential\": 90\n    // },\n    // \"isNew\": true\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/players/create",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"players",
+								"create"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Create Player Ok",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"user\": \"pepe\",\n    \"newPlayer\": {\n        \"long_name\": \"some new player\",\n        \"age\": 35,\n        \"fifa_version\": \"18\",\n        \"fifa_update\": \"2\",\n        \"player_face_url\": \"https://imgs.search.brave.com/p5CxRjUfmcn92zFoDMRDQYI2vAwCsqzsjEjXXXPAdMk/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pLnBp/bmltZy5jb20vb3Jp/Z2luYWxzL2MyL2Jh/LzQzL2MyYmE0M2Zk/YjI4NjRhNmZkZjY0/YWVhMjEyZWRhNWNj/LmpwZw\",\n        \"player_positions\": \"ST\",\n        \"overall\": 55,\n        \"potential\": 90\n    },\n    \"isNew\": true\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:5000/players/create",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"players",
+										"create"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "JSON",
+							"header": [
+								{
+									"key": "Content-Security-Policy",
+									"value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests",
+									"type": "text"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin",
+									"type": "text"
+								},
+								{
+									"key": "Cross-Origin-Resource-Policy",
+									"value": "same-origin",
+									"type": "text"
+								},
+								{
+									"key": "Origin-Agent-Cluster",
+									"value": "?1",
+									"type": "text"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "origin,unsafe-url",
+									"type": "text"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains",
+									"type": "text"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff",
+									"type": "text"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off",
+									"type": "text"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen",
+									"type": "text"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN",
+									"type": "text"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none",
+									"type": "text"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0",
+									"type": "text"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*",
+									"type": "text"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express",
+									"type": "text"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8",
+									"type": "text"
+								},
+								{
+									"key": "Content-Length",
+									"value": "71",
+									"type": "text"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"47-qBNeDB+w8CGpNRgihpgnXLpB4YU\"",
+									"type": "text"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 18 Sep 2024 21:22:59 GMT",
+									"type": "text"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive",
+									"type": "text"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"Created\",\n    \"message\": \"New player some new player was created\"\n}"
+						},
+						{
+							"name": "Create Player Error 400 Wrong Data",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"user\": \"pepe\",\n    \"newPlayer\": {\n        \"long_name\": \"some new player\",\n        \"age\": \"38\",\n        \"fifa_version\": \"18\",\n        \"fifa_update\": \"2\",\n        \"player_face_url\": \"https://imgs.search.brave.com/p5CxRjUfmcn92zFoDMRDQYI2vAwCsqzsjEjXXXPAdMk/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pLnBp/bmltZy5jb20vb3Jp/Z2luYWxzL2MyL2Jh/LzQzL2MyYmE0M2Zk/YjI4NjRhNmZkZjY0/YWVhMjEyZWRhNWNj/LmpwZw\",\n        \"player_positions\": \"ST\",\n        \"overall\": 55,\n        \"potential\": 90\n    },\n    \"isNew\": true\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:5000/players/create",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"players",
+										"create"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "JSON",
+							"header": [
+								{
+									"key": "Content-Security-Policy",
+									"value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests",
+									"type": "text"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin",
+									"type": "text"
+								},
+								{
+									"key": "Cross-Origin-Resource-Policy",
+									"value": "same-origin",
+									"type": "text"
+								},
+								{
+									"key": "Origin-Agent-Cluster",
+									"value": "?1",
+									"type": "text"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "origin,unsafe-url",
+									"type": "text"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains",
+									"type": "text"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff",
+									"type": "text"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off",
+									"type": "text"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen",
+									"type": "text"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN",
+									"type": "text"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none",
+									"type": "text"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0",
+									"type": "text"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*",
+									"type": "text"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express",
+									"type": "text"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8",
+									"type": "text"
+								},
+								{
+									"key": "Content-Length",
+									"value": "43",
+									"type": "text"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2b-MveVeL/Hw9a36DyCoEXtKqLepQY\"",
+									"type": "text"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 18 Sep 2024 21:24:22 GMT",
+									"type": "text"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive",
+									"type": "text"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": [\n        \"The field age must be numbers\"\n    ]\n}"
+						},
+						{
+							"name": "Create Player Error 401",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"user\": \"pepe\",\n    \"newPlayer\": {\n        \"long_name\": \"some new player\",\n        \"age\": 38,\n        \"fifa_version\": \"18\",\n        \"fifa_update\": \"2\",\n        \"player_face_url\": \"https://imgs.search.brave.com/p5CxRjUfmcn92zFoDMRDQYI2vAwCsqzsjEjXXXPAdMk/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pLnBp/bmltZy5jb20vb3Jp/Z2luYWxzL2MyL2Jh/LzQzL2MyYmE0M2Zk/YjI4NjRhNmZkZjY0/YWVhMjEyZWRhNWNj/LmpwZw\",\n        \"player_positions\": \"ST\",\n        \"overall\": 55,\n        \"potential\": 90\n    },\n    \"isNew\": true\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:5000/players/create",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"players",
+										"create"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "JSON",
+							"header": [
+								{
+									"key": "Content-Security-Policy",
+									"value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests",
+									"type": "text"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin",
+									"type": "text"
+								},
+								{
+									"key": "Cross-Origin-Resource-Policy",
+									"value": "same-origin",
+									"type": "text"
+								},
+								{
+									"key": "Origin-Agent-Cluster",
+									"value": "?1",
+									"type": "text"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "origin,unsafe-url",
+									"type": "text"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains",
+									"type": "text"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff",
+									"type": "text"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off",
+									"type": "text"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen",
+									"type": "text"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN",
+									"type": "text"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none",
+									"type": "text"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0",
+									"type": "text"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*",
+									"type": "text"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express",
+									"type": "text"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8",
+									"type": "text"
+								},
+								{
+									"key": "Content-Length",
+									"value": "41",
+									"type": "text"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"29-lxtSQOYUc2mp7cggol1kv+Ldyr0\"",
+									"type": "text"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 18 Sep 2024 21:25:03 GMT",
+									"type": "text"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive",
+									"type": "text"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": \"You are not allowed to access\"\n}"
+						},
+						{
+							"name": "Create Player 400 Empty Body",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    // \"user\": \"pepe\",\n    // \"newPlayer\": {\n    //     \"long_name\": \"some new player\",\n    //     \"age\": 38,\n    //     \"fifa_version\": \"18\",\n    //     \"fifa_update\": \"2\",\n    //     \"player_face_url\": \"https://imgs.search.brave.com/p5CxRjUfmcn92zFoDMRDQYI2vAwCsqzsjEjXXXPAdMk/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pLnBp/bmltZy5jb20vb3Jp/Z2luYWxzL2MyL2Jh/LzQzL2MyYmE0M2Zk/YjI4NjRhNmZkZjY0/YWVhMjEyZWRhNWNj/LmpwZw\",\n    //     \"player_positions\": \"ST\",\n    //     \"overall\": 55,\n    //     \"potential\": 90\n    // },\n    // \"isNew\": true\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:5000/players/create",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"players",
+										"create"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "JSON",
+							"header": [
+								{
+									"key": "Content-Security-Policy",
+									"value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests",
+									"type": "text"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin",
+									"type": "text"
+								},
+								{
+									"key": "Cross-Origin-Resource-Policy",
+									"value": "same-origin",
+									"type": "text"
+								},
+								{
+									"key": "Origin-Agent-Cluster",
+									"value": "?1",
+									"type": "text"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "origin,unsafe-url",
+									"type": "text"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains",
+									"type": "text"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff",
+									"type": "text"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off",
+									"type": "text"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen",
+									"type": "text"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN",
+									"type": "text"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none",
+									"type": "text"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0",
+									"type": "text"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*",
+									"type": "text"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express",
+									"type": "text"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8",
+									"type": "text"
+								},
+								{
+									"key": "Content-Length",
+									"value": "41",
+									"type": "text"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"29-b6vMeSVXA69Q+jYVs3ovnmTdo48\"",
+									"type": "text"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 18 Sep 2024 21:25:58 GMT",
+									"type": "text"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive",
+									"type": "text"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": \"Unable to process the request\"\n}"
+						}
+					]
+				},
+				{
+					"name": "findAll",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/players/?page=2",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"players",
+								""
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "findAll",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:5000/players/?page=2",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"players",
+										""
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "2"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "JSON",
+							"header": [
+								{
+									"key": "Content-Security-Policy",
+									"value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests",
+									"type": "text"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin",
+									"type": "text"
+								},
+								{
+									"key": "Cross-Origin-Resource-Policy",
+									"value": "same-origin",
+									"type": "text"
+								},
+								{
+									"key": "Origin-Agent-Cluster",
+									"value": "?1",
+									"type": "text"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "origin,unsafe-url",
+									"type": "text"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains",
+									"type": "text"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff",
+									"type": "text"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off",
+									"type": "text"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen",
+									"type": "text"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN",
+									"type": "text"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none",
+									"type": "text"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0",
+									"type": "text"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*",
+									"type": "text"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express",
+									"type": "text"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8",
+									"type": "text"
+								},
+								{
+									"key": "Content-Length",
+									"value": "14940",
+									"type": "text"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"3a5c-HnUoIkY760y4v3lvYVV+JW+P/Wg\"",
+									"type": "text"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 18 Sep 2024 14:50:45 GMT",
+									"type": "text"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive",
+									"type": "text"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 20,\n        \"fifa_version\": \"15\",\n        \"fifa_update\": \"2\",\n        \"player_face_url\": \"https://cdn.sofifa.net/players/010/535/15_120.png\",\n        \"long_name\": \"Xavier Hernández Creus\",\n        \"player_positions\": \"CM\",\n        \"club_name\": \"FC Barcelona\",\n        \"nationality_name\": \"Spain\",\n        \"overall\": 86,\n        \"potential\": 86,\n        \"value_eur\": 15500000,\n        \"wage_eur\": 160000,\n        \"age\": 34,\n        \"height_cm\": 170,\n        \"weight_kg\": 68,\n        \"preferred_foot\": \"Right\",\n        \"weak_foot\": 3,\n        \"skill_moves\": 3,\n        \"international_reputation\": 4,\n        \"work_rate\": \"Medium/Medium\",\n        \"body_type\": \"Normal (170-)\",\n        \"pace\": 66,\n        \"shooting\": 72,\n        \"passing\": 91,\n        \"dribbling\": 85,\n        \"defending\": 60,\n        \"physic\": 58,\n        \"attacking_crossing\": 85,\n        \"attacking_finishing\": 74,\n        \"attacking_heading_accuracy\": 51,\n        \"attacking_short_passing\": 95,\n        \"attacking_volleys\": 66,\n        \"skill_dribbling\": 80,\n        \"skill_curve\": 85,\n        \"skill_fk_accuracy\": 87,\n        \"skill_long_passing\": 90,\n        \"skill_ball_control\": 93,\n        \"movement_acceleration\": 67,\n        \"movement_sprint_speed\": 65,\n        \"movement_agility\": 79,\n        \"movement_reactions\": 90,\n        \"movement_balance\": 90,\n        \"power_shot_power\": 67,\n        \"power_jumping\": 53,\n        \"power_stamina\": 60,\n        \"power_strength\": 60,\n        \"power_long_shots\": 72,\n        \"mentality_aggression\": 53,\n        \"mentality_interceptions\": 71,\n        \"mentality_positioning\": 83,\n        \"mentality_vision\": 94,\n        \"mentality_penalties\": 75,\n        \"mentality_composure\": 0,\n        \"defending_marking\": null,\n        \"defending_standing_tackle\": 61,\n        \"defending_sliding_tackle\": 59,\n        \"goalkeeping_diving\": 5,\n        \"goalkeeping_handling\": 15,\n        \"goalkeeping_kicking\": 12,\n        \"goalkeeping_positioning\": 5,\n        \"goalkeeping_reflexes\": 9,\n        \"goalkeeping_speed\": 0,\n        \"player_traits\": \"Playmaker (AI), One Club Player\"\n    },\n    {\n        \"id\": 21,\n        \"fifa_version\": \"15\",\n        \"fifa_update\": \"2\",\n        \"player_face_url\": \"https://cdn.sofifa.net/players/020/289/15_120.png\",\n        \"long_name\": \"Gnégnéri Yaya Touré\",\n        \"player_positions\": \"CM, CDM\",\n        \"club_name\": \"Manchester City\",\n        \"nationality_name\": \"Côte d'Ivoire\",\n        \"overall\": 86,\n        \"potential\": 86,\n        \"value_eur\": 28500000,\n        \"wage_eur\": 190000,\n        \"age\": 31,\n        \"height_cm\": 189,\n        \"weight_kg\": 90,\n        \"preferred_foot\": \"Right\",\n        \"weak_foot\": 4,\n        \"skill_moves\": 3,\n        \"international_reputation\": 4,\n        \"work_rate\": \"Medium/Medium\",\n        \"body_type\": \"Lean (185+)\",\n        \"pace\": 76,\n        \"shooting\": 82,\n        \"passing\": 81,\n        \"dribbling\": 79,\n        \"defending\": 80,\n        \"physic\": 90,\n        \"attacking_crossing\": 67,\n        \"attacking_finishing\": 82,\n        \"attacking_heading_accuracy\": 82,\n        \"attacking_short_passing\": 86,\n        \"attacking_volleys\": 68,\n        \"skill_dribbling\": 81,\n        \"skill_curve\": 80,\n        \"skill_fk_accuracy\": 85,\n        \"skill_long_passing\": 83,\n        \"skill_ball_control\": 83,\n        \"movement_acceleration\": 73,\n        \"movement_sprint_speed\": 78,\n        \"movement_agility\": 64,\n        \"movement_reactions\": 85,\n        \"movement_balance\": 59,\n        \"power_shot_power\": 86,\n        \"power_jumping\": 79,\n        \"power_stamina\": 93,\n        \"power_strength\": 92,\n        \"power_long_shots\": 84,\n        \"mentality_aggression\": 86,\n        \"mentality_interceptions\": 81,\n        \"mentality_positioning\": 81,\n        \"mentality_vision\": 85,\n        \"mentality_penalties\": 82,\n        \"mentality_composure\": 0,\n        \"defending_marking\": null,\n        \"defending_standing_tackle\": 83,\n        \"defending_sliding_tackle\": 81,\n        \"goalkeeping_diving\": 13,\n        \"goalkeeping_handling\": 14,\n        \"goalkeeping_kicking\": 6,\n        \"goalkeeping_positioning\": 12,\n        \"goalkeeping_reflexes\": 8,\n        \"goalkeeping_speed\": 0,\n        \"player_traits\": \"Injury Free, Leadership, Long Shot Taker (AI), Playmaker (AI)\"\n    },\n    {\n        \"id\": 22,\n        \"fifa_version\": \"15\",\n        \"fifa_update\": \"2\",\n        \"player_face_url\": \"https://cdn.sofifa.net/players/054/050/15_120.png\",\n        \"long_name\": \"Wayne Mark Rooney\",\n        \"player_positions\": \"ST, CF, CAM\",\n        \"club_name\": \"Manchester United\",\n        \"nationality_name\": \"England\",\n        \"overall\": 86,\n        \"potential\": 86,\n        \"value_eur\": 40000000,\n        \"wage_eur\": 230000,\n        \"age\": 28,\n        \"height_cm\": 176,\n        \"weight_kg\": 83,\n        \"preferred_foot\": \"Right\",\n        \"weak_foot\": 4,\n        \"skill_moves\": 3,\n        \"international_reputation\": 4,\n        \"work_rate\": \"High/High\",\n        \"body_type\": \"Stocky (170-185)\",\n        \"pace\": 76,\n        \"shooting\": 87,\n        \"passing\": 80,\n        \"dribbling\": 83,\n        \"defending\": 44,\n        \"physic\": 87,\n        \"attacking_crossing\": 78,\n        \"attacking_finishing\": 86,\n        \"attacking_heading_accuracy\": 80,\n        \"attacking_short_passing\": 77,\n        \"attacking_volleys\": 89,\n        \"skill_dribbling\": 83,\n        \"skill_curve\": 84,\n        \"skill_fk_accuracy\": 79,\n        \"skill_long_passing\": 85,\n        \"skill_ball_control\": 85,\n        \"movement_acceleration\": 74,\n        \"movement_sprint_speed\": 77,\n        \"movement_agility\": 77,\n        \"movement_reactions\": 84,\n        \"movement_balance\": 77,\n        \"power_shot_power\": 91,\n        \"power_jumping\": 80,\n        \"power_stamina\": 89,\n        \"power_strength\": 85,\n        \"power_long_shots\": 85,\n        \"mentality_aggression\": 89,\n        \"mentality_interceptions\": 39,\n        \"mentality_positioning\": 85,\n        \"mentality_vision\": 83,\n        \"mentality_penalties\": 81,\n        \"mentality_composure\": 0,\n        \"defending_marking\": null,\n        \"defending_standing_tackle\": 54,\n        \"defending_sliding_tackle\": 37,\n        \"goalkeeping_diving\": 10,\n        \"goalkeeping_handling\": 11,\n        \"goalkeeping_kicking\": 13,\n        \"goalkeeping_positioning\": 8,\n        \"goalkeeping_reflexes\": 7,\n        \"goalkeeping_speed\": 0,\n        \"player_traits\": \"Leadership, Long Shot Taker (AI)\"\n    },\n    {\n        \"id\": 23,\n        \"fifa_version\": \"15\",\n        \"fifa_update\": \"2\",\n        \"player_face_url\": \"https://cdn.sofifa.net/players/139/720/15_120.png\",\n        \"long_name\": \"Vincent Jean Mpoy Kompany\",\n        \"player_positions\": \"CB\",\n        \"club_name\": \"Manchester City\",\n        \"nationality_name\": \"Belgium\",\n        \"overall\": 86,\n        \"potential\": 86,\n        \"value_eur\": 31500000,\n        \"wage_eur\": 220000,\n        \"age\": 28,\n        \"height_cm\": 192,\n        \"weight_kg\": 85,\n        \"preferred_foot\": \"Right\",\n        \"weak_foot\": 3,\n        \"skill_moves\": 2,\n        \"international_reputation\": 4,\n        \"work_rate\": \"Medium/Medium\",\n        \"body_type\": \"Normal (185+)\",\n        \"pace\": 73,\n        \"shooting\": 56,\n        \"passing\": 69,\n        \"dribbling\": 67,\n        \"defending\": 87,\n        \"physic\": 81,\n        \"attacking_crossing\": 61,\n        \"attacking_finishing\": 45,\n        \"attacking_heading_accuracy\": 84,\n        \"attacking_short_passing\": 80,\n        \"attacking_volleys\": 46,\n        \"skill_dribbling\": 64,\n        \"skill_curve\": 61,\n        \"skill_fk_accuracy\": 52,\n        \"skill_long_passing\": 75,\n        \"skill_ball_control\": 74,\n        \"movement_acceleration\": 68,\n        \"movement_sprint_speed\": 77,\n        \"movement_agility\": 63,\n        \"movement_reactions\": 84,\n        \"movement_balance\": 42,\n        \"power_shot_power\": 76,\n        \"power_jumping\": 73,\n        \"power_stamina\": 70,\n        \"power_strength\": 88,\n        \"power_long_shots\": 67,\n        \"mentality_aggression\": 78,\n        \"mentality_interceptions\": 87,\n        \"mentality_positioning\": 41,\n        \"mentality_vision\": 59,\n        \"mentality_penalties\": 63,\n        \"mentality_composure\": 0,\n        \"defending_marking\": null,\n        \"defending_standing_tackle\": 90,\n        \"defending_sliding_tackle\": 85,\n        \"goalkeeping_diving\": 10,\n        \"goalkeeping_handling\": 9,\n        \"goalkeeping_kicking\": 5,\n        \"goalkeeping_positioning\": 8,\n        \"goalkeeping_reflexes\": 6,\n        \"goalkeeping_speed\": 0,\n        \"player_traits\": \"Injury Prone, Dives Into Tackles (AI), Leadership\"\n    },\n    {\n        \"id\": 24,\n        \"fifa_version\": \"15\",\n        \"fifa_update\": \"2\",\n        \"player_face_url\": \"https://cdn.sofifa.net/players/153/079/15_120.png\",\n        \"long_name\": \"Sergio Leonel Agüero del Castillo\",\n        \"player_positions\": \"ST\",\n        \"club_name\": \"Manchester City\",\n        \"nationality_name\": \"Argentina\",\n        \"overall\": 86,\n        \"potential\": 87,\n        \"value_eur\": 45500000,\n        \"wage_eur\": 230000,\n        \"age\": 26,\n        \"height_cm\": 172,\n        \"weight_kg\": 74,\n        \"preferred_foot\": \"Right\",\n        \"weak_foot\": 4,\n        \"skill_moves\": 4,\n        \"international_reputation\": 4,\n        \"work_rate\": \"High/Low\",\n        \"body_type\": \"Normal (170-185)\",\n        \"pace\": 88,\n        \"shooting\": 86,\n        \"passing\": 77,\n        \"dribbling\": 88,\n        \"defending\": 28,\n        \"physic\": 66,\n        \"attacking_crossing\": 70,\n        \"attacking_finishing\": 89,\n        \"attacking_heading_accuracy\": 68,\n        \"attacking_short_passing\": 84,\n        \"attacking_volleys\": 85,\n        \"skill_dribbling\": 89,\n        \"skill_curve\": 82,\n        \"skill_fk_accuracy\": 72,\n        \"skill_long_passing\": 63,\n        \"skill_ball_control\": 88,\n        \"movement_acceleration\": 92,\n        \"movement_sprint_speed\": 84,\n        \"movement_agility\": 86,\n        \"movement_reactions\": 86,\n        \"movement_balance\": 90,\n        \"power_shot_power\": 85,\n        \"power_jumping\": 76,\n        \"power_stamina\": 66,\n        \"power_strength\": 68,\n        \"power_long_shots\": 78,\n        \"mentality_aggression\": 57,\n        \"mentality_interceptions\": 24,\n        \"mentality_positioning\": 87,\n        \"mentality_vision\": 83,\n        \"mentality_penalties\": 86,\n        \"mentality_composure\": 0,\n        \"defending_marking\": null,\n        \"defending_standing_tackle\": 20,\n        \"defending_sliding_tackle\": 25,\n        \"goalkeeping_diving\": 13,\n        \"goalkeeping_handling\": 15,\n        \"goalkeeping_kicking\": 6,\n        \"goalkeeping_positioning\": 11,\n        \"goalkeeping_reflexes\": 14,\n        \"goalkeeping_speed\": 0,\n        \"player_traits\": \"Injury Prone, Beat Offside Trap, Flair, Technical Dribbler (AI)\"\n    },\n    {\n        \"id\": 25,\n        \"fifa_version\": \"15\",\n        \"fifa_update\": \"2\",\n        \"player_face_url\": \"https://cdn.sofifa.net/players/176/635/15_120.png\",\n        \"long_name\": \"Mesut Özil\",\n        \"player_positions\": \"CAM, LW\",\n        \"club_name\": \"Arsenal\",\n        \"nationality_name\": \"Germany\",\n        \"overall\": 86,\n        \"potential\": 87,\n        \"value_eur\": 44000000,\n        \"wage_eur\": 190000,\n        \"age\": 25,\n        \"height_cm\": 183,\n        \"weight_kg\": 76,\n        \"preferred_foot\": \"Left\",\n        \"weak_foot\": 2,\n        \"skill_moves\": 4,\n        \"international_reputation\": 3,\n        \"work_rate\": \"Medium/Low\",\n        \"body_type\": \"Lean (170-185)\",\n        \"pace\": 74,\n        \"shooting\": 74,\n        \"passing\": 86,\n        \"dribbling\": 87,\n        \"defending\": 27,\n        \"physic\": 58,\n        \"attacking_crossing\": 83,\n        \"attacking_finishing\": 74,\n        \"attacking_heading_accuracy\": 54,\n        \"attacking_short_passing\": 88,\n        \"attacking_volleys\": 77,\n        \"skill_dribbling\": 87,\n        \"skill_curve\": 84,\n        \"skill_fk_accuracy\": 79,\n        \"skill_long_passing\": 80,\n        \"skill_ball_control\": 91,\n        \"movement_acceleration\": 77,\n        \"movement_sprint_speed\": 71,\n        \"movement_agility\": 84,\n        \"movement_reactions\": 87,\n        \"movement_balance\": 78,\n        \"power_shot_power\": 70,\n        \"power_jumping\": 53,\n        \"power_stamina\": 64,\n        \"power_strength\": 57,\n        \"power_long_shots\": 75,\n        \"mentality_aggression\": 56,\n        \"mentality_interceptions\": 24,\n        \"mentality_positioning\": 83,\n        \"mentality_vision\": 92,\n        \"mentality_penalties\": 76,\n        \"mentality_composure\": 0,\n        \"defending_marking\": null,\n        \"defending_standing_tackle\": 25,\n        \"defending_sliding_tackle\": 25,\n        \"goalkeeping_diving\": 6,\n        \"goalkeeping_handling\": 14,\n        \"goalkeeping_kicking\": 10,\n        \"goalkeeping_positioning\": 6,\n        \"goalkeeping_reflexes\": 14,\n        \"goalkeeping_speed\": 0,\n        \"player_traits\": \"Finesse Shot, Flair, Playmaker (AI), Technical Dribbler (AI)\"\n    },\n    {\n        \"id\": 26,\n        \"fifa_version\": \"15\",\n        \"fifa_update\": \"2\",\n        \"player_face_url\": \"https://cdn.sofifa.net/players/178/603/15_120.png\",\n        \"long_name\": \"Mats Hummels\",\n        \"player_positions\": \"CB\",\n        \"club_name\": \"Borussia Dortmund\",\n        \"nationality_name\": \"Germany\",\n        \"overall\": 86,\n        \"potential\": 88,\n        \"value_eur\": 35500000,\n        \"wage_eur\": 200000,\n        \"age\": 25,\n        \"height_cm\": 192,\n        \"weight_kg\": 90,\n        \"preferred_foot\": \"Right\",\n        \"weak_foot\": 3,\n        \"skill_moves\": 2,\n        \"international_reputation\": 4,\n        \"work_rate\": \"High/Medium\",\n        \"body_type\": \"Normal (185+)\",\n        \"pace\": 66,\n        \"shooting\": 59,\n        \"passing\": 75,\n        \"dribbling\": 71,\n        \"defending\": 88,\n        \"physic\": 78,\n        \"attacking_crossing\": 64,\n        \"attacking_finishing\": 57,\n        \"attacking_heading_accuracy\": 91,\n        \"attacking_short_passing\": 80,\n        \"attacking_volleys\": 51,\n        \"skill_dribbling\": 68,\n        \"skill_curve\": 62,\n        \"skill_fk_accuracy\": 61,\n        \"skill_long_passing\": 80,\n        \"skill_ball_control\": 77,\n        \"movement_acceleration\": 63,\n        \"movement_sprint_speed\": 68,\n        \"movement_agility\": 64,\n        \"movement_reactions\": 85,\n        \"movement_balance\": 59,\n        \"power_shot_power\": 71,\n        \"power_jumping\": 70,\n        \"power_stamina\": 67,\n        \"power_strength\": 86,\n        \"power_long_shots\": 52,\n        \"mentality_aggression\": 73,\n        \"mentality_interceptions\": 90,\n        \"mentality_positioning\": 56,\n        \"mentality_vision\": 78,\n        \"mentality_penalties\": 72,\n        \"mentality_composure\": 0,\n        \"defending_marking\": null,\n        \"defending_standing_tackle\": 89,\n        \"defending_sliding_tackle\": 86,\n        \"goalkeeping_diving\": 15,\n        \"goalkeeping_handling\": 6,\n        \"goalkeeping_kicking\": 10,\n        \"goalkeeping_positioning\": 5,\n        \"goalkeeping_reflexes\": 6,\n        \"goalkeeping_speed\": 0,\n        \"player_traits\": \"Injury Prone, Avoids Using Weaker Foot, Leadership, Long Passer (AI), Playmaker (AI)\"\n    },\n    {\n        \"id\": 27,\n        \"fifa_version\": \"15\",\n        \"fifa_update\": \"2\",\n        \"player_face_url\": \"https://cdn.sofifa.net/players/183/898/15_120.png\",\n        \"long_name\": \"Ángel Fabián Di María Hernández\",\n        \"player_positions\": \"CAM, CM, RM\",\n        \"club_name\": \"Manchester United\",\n        \"nationality_name\": \"Argentina\",\n        \"overall\": 86,\n        \"potential\": 88,\n        \"value_eur\": 45500000,\n        \"wage_eur\": 230000,\n        \"age\": 26,\n        \"height_cm\": 180,\n        \"weight_kg\": 70,\n        \"preferred_foot\": \"Left\",\n        \"weak_foot\": 2,\n        \"skill_moves\": 4,\n        \"international_reputation\": 4,\n        \"work_rate\": \"High/High\",\n        \"body_type\": \"Lean (170-185)\",\n        \"pace\": 90,\n        \"shooting\": 79,\n        \"passing\": 83,\n        \"dribbling\": 87,\n        \"defending\": 57,\n        \"physic\": 71,\n        \"attacking_crossing\": 91,\n        \"attacking_finishing\": 75,\n        \"attacking_heading_accuracy\": 53,\n        \"attacking_short_passing\": 82,\n        \"attacking_volleys\": 77,\n        \"skill_dribbling\": 88,\n        \"skill_curve\": 83,\n        \"skill_fk_accuracy\": 72,\n        \"skill_long_passing\": 81,\n        \"skill_ball_control\": 86,\n        \"movement_acceleration\": 90,\n        \"movement_sprint_speed\": 90,\n        \"movement_agility\": 90,\n        \"movement_reactions\": 80,\n        \"movement_balance\": 79,\n        \"power_shot_power\": 88,\n        \"power_jumping\": 72,\n        \"power_stamina\": 79,\n        \"power_strength\": 64,\n        \"power_long_shots\": 79,\n        \"mentality_aggression\": 76,\n        \"mentality_interceptions\": 72,\n        \"mentality_positioning\": 84,\n        \"mentality_vision\": 83,\n        \"mentality_penalties\": 73,\n        \"mentality_composure\": 0,\n        \"defending_marking\": null,\n        \"defending_standing_tackle\": 63,\n        \"defending_sliding_tackle\": 61,\n        \"goalkeeping_diving\": 10,\n        \"goalkeeping_handling\": 7,\n        \"goalkeeping_kicking\": 11,\n        \"goalkeeping_positioning\": 12,\n        \"goalkeeping_reflexes\": 11,\n        \"goalkeeping_speed\": 0,\n        \"player_traits\": \"Diver, Avoids Using Weaker Foot, Dives Into Tackles (AI), Flair\"\n    },\n    {\n        \"id\": 28,\n        \"fifa_version\": \"15\",\n        \"fifa_update\": \"2\",\n        \"player_face_url\": \"https://cdn.sofifa.net/players/188/350/15_120.png\",\n        \"long_name\": \"Marco Reus\",\n        \"player_positions\": \"LM, RM, ST, CAM\",\n        \"club_name\": \"Borussia Dortmund\",\n        \"nationality_name\": \"Germany\",\n        \"overall\": 86,\n        \"potential\": 88,\n        \"value_eur\": 40000000,\n        \"wage_eur\": 180000,\n        \"age\": 25,\n        \"height_cm\": 181,\n        \"weight_kg\": 73,\n        \"preferred_foot\": \"Right\",\n        \"weak_foot\": 4,\n        \"skill_moves\": 4,\n        \"international_reputation\": 3,\n        \"work_rate\": \"High/Medium\",\n        \"body_type\": \"Lean (170-185)\",\n        \"pace\": 91,\n        \"shooting\": 86,\n        \"passing\": 84,\n        \"dribbling\": 86,\n        \"defending\": 33,\n        \"physic\": 65,\n        \"attacking_crossing\": 82,\n        \"attacking_finishing\": 85,\n        \"attacking_heading_accuracy\": 49,\n        \"attacking_short_passing\": 85,\n        \"attacking_volleys\": 87,\n        \"skill_dribbling\": 88,\n        \"skill_curve\": 90,\n        \"skill_fk_accuracy\": 87,\n        \"skill_long_passing\": 77,\n        \"skill_ball_control\": 83,\n        \"movement_acceleration\": 89,\n        \"movement_sprint_speed\": 92,\n        \"movement_agility\": 89,\n        \"movement_reactions\": 87,\n        \"movement_balance\": 82,\n        \"power_shot_power\": 85,\n        \"power_jumping\": 70,\n        \"power_stamina\": 77,\n        \"power_strength\": 66,\n        \"power_long_shots\": 89,\n        \"mentality_aggression\": 44,\n        \"mentality_interceptions\": 37,\n        \"mentality_positioning\": 87,\n        \"mentality_vision\": 85,\n        \"mentality_penalties\": 83,\n        \"mentality_composure\": 0,\n        \"defending_marking\": null,\n        \"defending_standing_tackle\": 32,\n        \"defending_sliding_tackle\": 38,\n        \"goalkeeping_diving\": 12,\n        \"goalkeeping_handling\": 12,\n        \"goalkeeping_kicking\": 13,\n        \"goalkeeping_positioning\": 13,\n        \"goalkeeping_reflexes\": 11,\n        \"goalkeeping_speed\": 0,\n        \"player_traits\": \"Beat Offside Trap, Long Shot Taker (AI), Speed Dribbler (AI)\"\n    },\n    {\n        \"id\": 29,\n        \"fifa_version\": \"15\",\n        \"fifa_update\": \"2\",\n        \"player_face_url\": \"https://cdn.sofifa.net/players/189/596/15_120.png\",\n        \"long_name\": \"Thomas Müller\",\n        \"player_positions\": \"RM, CAM, ST, LM\",\n        \"club_name\": \"FC Bayern München\",\n        \"nationality_name\": \"Germany\",\n        \"overall\": 86,\n        \"potential\": 88,\n        \"value_eur\": 39000000,\n        \"wage_eur\": 200000,\n        \"age\": 24,\n        \"height_cm\": 186,\n        \"weight_kg\": 75,\n        \"preferred_foot\": \"Right\",\n        \"weak_foot\": 4,\n        \"skill_moves\": 3,\n        \"international_reputation\": 4,\n        \"work_rate\": \"High/High\",\n        \"body_type\": \"Lean (185+)\",\n        \"pace\": 81,\n        \"shooting\": 84,\n        \"passing\": 82,\n        \"dribbling\": 80,\n        \"defending\": 46,\n        \"physic\": 72,\n        \"attacking_crossing\": 84,\n        \"attacking_finishing\": 88,\n        \"attacking_heading_accuracy\": 80,\n        \"attacking_short_passing\": 85,\n        \"attacking_volleys\": 83,\n        \"skill_dribbling\": 78,\n        \"skill_curve\": 81,\n        \"skill_fk_accuracy\": 60,\n        \"skill_long_passing\": 77,\n        \"skill_ball_control\": 82,\n        \"movement_acceleration\": 79,\n        \"movement_sprint_speed\": 83,\n        \"movement_agility\": 78,\n        \"movement_reactions\": 91,\n        \"movement_balance\": 73,\n        \"power_shot_power\": 77,\n        \"power_jumping\": 81,\n        \"power_stamina\": 90,\n        \"power_strength\": 68,\n        \"power_long_shots\": 80,\n        \"mentality_aggression\": 57,\n        \"mentality_interceptions\": 58,\n        \"mentality_positioning\": 94,\n        \"mentality_vision\": 85,\n        \"mentality_penalties\": 86,\n        \"mentality_composure\": 0,\n        \"defending_marking\": null,\n        \"defending_standing_tackle\": 41,\n        \"defending_sliding_tackle\": 44,\n        \"goalkeeping_diving\": 6,\n        \"goalkeeping_handling\": 7,\n        \"goalkeeping_kicking\": 11,\n        \"goalkeeping_positioning\": 14,\n        \"goalkeeping_reflexes\": 14,\n        \"goalkeeping_speed\": 0,\n        \"player_traits\": \"Finesse Shot, Outside Foot Shot\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Search by filter",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/players/?filter=club_name&search=celona&page=3",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"players",
+								""
+							],
+							"query": [
+								{
+									"key": "filter",
+									"value": "club_name"
+								},
+								{
+									"key": "search",
+									"value": "celona"
+								},
+								{
+									"key": "page",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Search by filter",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:5000/players/?filter=club_name&search=celona&page=3",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"players",
+										""
+									],
+									"query": [
+										{
+											"key": "filter",
+											"value": "club_name"
+										},
+										{
+											"key": "search",
+											"value": "celona"
+										},
+										{
+											"key": "page",
+											"value": "3"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "JSON",
+							"header": [
+								{
+									"key": "Content-Security-Policy",
+									"value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests",
+									"type": "text"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin",
+									"type": "text"
+								},
+								{
+									"key": "Cross-Origin-Resource-Policy",
+									"value": "same-origin",
+									"type": "text"
+								},
+								{
+									"key": "Origin-Agent-Cluster",
+									"value": "?1",
+									"type": "text"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "origin,unsafe-url",
+									"type": "text"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains",
+									"type": "text"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff",
+									"type": "text"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off",
+									"type": "text"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen",
+									"type": "text"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN",
+									"type": "text"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none",
+									"type": "text"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0",
+									"type": "text"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*",
+									"type": "text"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express",
+									"type": "text"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8",
+									"type": "text"
+								},
+								{
+									"key": "Content-Length",
+									"value": "14742",
+									"type": "text"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"3996-0tqtv9h8303F6FpBZYjQrtdborc\"",
+									"type": "text"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 18 Sep 2024 16:21:15 GMT",
+									"type": "text"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive",
+									"type": "text"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 30,\n        \"fifa_version\": \"15\",\n        \"fifa_update\": \"2\",\n        \"player_face_url\": \"https://cdn.sofifa.net/players/190/871/15_120.png\",\n        \"long_name\": \"Neymar da Silva Santos Júnior\",\n        \"player_positions\": \"LW\",\n        \"club_name\": \"FC Barcelona\",\n        \"nationality_name\": \"Brazil\",\n        \"overall\": 86,\n        \"potential\": 91,\n        \"value_eur\": 31000000,\n        \"wage_eur\": 210000,\n        \"age\": 22,\n        \"height_cm\": 175,\n        \"weight_kg\": 64,\n        \"preferred_foot\": \"Right\",\n        \"weak_foot\": 5,\n        \"skill_moves\": 5,\n        \"international_reputation\": 5,\n        \"work_rate\": \"High/Medium\",\n        \"body_type\": \"Lean (170-185)\",\n        \"pace\": 90,\n        \"shooting\": 80,\n        \"passing\": 72,\n        \"dribbling\": 92,\n        \"defending\": 30,\n        \"physic\": 58,\n        \"attacking_crossing\": 71,\n        \"attacking_finishing\": 85,\n        \"attacking_heading_accuracy\": 62,\n        \"attacking_short_passing\": 72,\n        \"attacking_volleys\": 83,\n        \"skill_dribbling\": 94,\n        \"skill_curve\": 78,\n        \"skill_fk_accuracy\": 78,\n        \"skill_long_passing\": 72,\n        \"skill_ball_control\": 90,\n        \"movement_acceleration\": 91,\n        \"movement_sprint_speed\": 89,\n        \"movement_agility\": 92,\n        \"movement_reactions\": 86,\n        \"movement_balance\": 84,\n        \"power_shot_power\": 77,\n        \"power_jumping\": 61,\n        \"power_stamina\": 86,\n        \"power_strength\": 45,\n        \"power_long_shots\": 70,\n        \"mentality_aggression\": 56,\n        \"mentality_interceptions\": 36,\n        \"mentality_positioning\": 87,\n        \"mentality_vision\": 72,\n        \"mentality_penalties\": 81,\n        \"mentality_composure\": 0,\n        \"defending_marking\": null,\n        \"defending_standing_tackle\": 24,\n        \"defending_sliding_tackle\": 33,\n        \"goalkeeping_diving\": 9,\n        \"goalkeeping_handling\": 9,\n        \"goalkeeping_kicking\": 15,\n        \"goalkeeping_positioning\": 15,\n        \"goalkeeping_reflexes\": 11,\n        \"goalkeeping_speed\": 0,\n        \"player_traits\": \"Diver, Flair, Technical Dribbler (AI)\"\n    },\n    {\n        \"id\": 31,\n        \"fifa_version\": \"15\",\n        \"fifa_update\": \"2\",\n        \"player_face_url\": \"https://cdn.sofifa.net/players/192/119/15_120.png\",\n        \"long_name\": \"Thibaut Nicolas Marc Courtois\",\n        \"player_positions\": \"GK\",\n        \"club_name\": \"Chelsea\",\n        \"nationality_name\": \"Belgium\",\n        \"overall\": 86,\n        \"potential\": 90,\n        \"value_eur\": 27000000,\n        \"wage_eur\": 170000,\n        \"age\": 22,\n        \"height_cm\": 199,\n        \"weight_kg\": 88,\n        \"preferred_foot\": \"Left\",\n        \"weak_foot\": 3,\n        \"skill_moves\": 1,\n        \"international_reputation\": 3,\n        \"work_rate\": \"Medium/Medium\",\n        \"body_type\": \"Lean (185+)\",\n        \"pace\": 0,\n        \"shooting\": 0,\n        \"passing\": 0,\n        \"dribbling\": 0,\n        \"defending\": 0,\n        \"physic\": 0,\n        \"attacking_crossing\": 25,\n        \"attacking_finishing\": 25,\n        \"attacking_heading_accuracy\": 25,\n        \"attacking_short_passing\": 32,\n        \"attacking_volleys\": 25,\n        \"skill_dribbling\": 25,\n        \"skill_curve\": 25,\n        \"skill_fk_accuracy\": 25,\n        \"skill_long_passing\": 31,\n        \"skill_ball_control\": 23,\n        \"movement_acceleration\": 46,\n        \"movement_sprint_speed\": 52,\n        \"movement_agility\": 61,\n        \"movement_reactions\": 76,\n        \"movement_balance\": 45,\n        \"power_shot_power\": 36,\n        \"power_jumping\": 68,\n        \"power_stamina\": 38,\n        \"power_strength\": 70,\n        \"power_long_shots\": 25,\n        \"mentality_aggression\": 23,\n        \"mentality_interceptions\": 25,\n        \"mentality_positioning\": 25,\n        \"mentality_vision\": 25,\n        \"mentality_penalties\": 27,\n        \"mentality_composure\": 0,\n        \"defending_marking\": null,\n        \"defending_standing_tackle\": 25,\n        \"defending_sliding_tackle\": 25,\n        \"goalkeeping_diving\": 84,\n        \"goalkeeping_handling\": 87,\n        \"goalkeeping_kicking\": 69,\n        \"goalkeeping_positioning\": 86,\n        \"goalkeeping_reflexes\": 88,\n        \"goalkeeping_speed\": 49,\n        \"player_traits\": \"GK Long Throw\"\n    },\n    {\n        \"id\": 32,\n        \"fifa_version\": \"15\",\n        \"fifa_update\": \"2\",\n        \"player_face_url\": \"https://cdn.sofifa.net/players/198/710/15_120.png\",\n        \"long_name\": \"James David Rodríguez Rubio\",\n        \"player_positions\": \"CAM, RW\",\n        \"club_name\": \"Real Madrid CF\",\n        \"nationality_name\": \"Colombia\",\n        \"overall\": 86,\n        \"potential\": 92,\n        \"value_eur\": 35000000,\n        \"wage_eur\": 190000,\n        \"age\": 22,\n        \"height_cm\": 180,\n        \"weight_kg\": 75,\n        \"preferred_foot\": \"Left\",\n        \"weak_foot\": 3,\n        \"skill_moves\": 4,\n        \"international_reputation\": 4,\n        \"work_rate\": \"Medium/Medium\",\n        \"body_type\": \"Normal (170-185)\",\n        \"pace\": 79,\n        \"shooting\": 80,\n        \"passing\": 84,\n        \"dribbling\": 85,\n        \"defending\": 40,\n        \"physic\": 72,\n        \"attacking_crossing\": 81,\n        \"attacking_finishing\": 80,\n        \"attacking_heading_accuracy\": 68,\n        \"attacking_short_passing\": 83,\n        \"attacking_volleys\": 81,\n        \"skill_dribbling\": 86,\n        \"skill_curve\": 85,\n        \"skill_fk_accuracy\": 83,\n        \"skill_long_passing\": 84,\n        \"skill_ball_control\": 85,\n        \"movement_acceleration\": 79,\n        \"movement_sprint_speed\": 79,\n        \"movement_agility\": 84,\n        \"movement_reactions\": 85,\n        \"movement_balance\": 74,\n        \"power_shot_power\": 79,\n        \"power_jumping\": 55,\n        \"power_stamina\": 73,\n        \"power_strength\": 73,\n        \"power_long_shots\": 82,\n        \"mentality_aggression\": 74,\n        \"mentality_interceptions\": 58,\n        \"mentality_positioning\": 80,\n        \"mentality_vision\": 87,\n        \"mentality_penalties\": 81,\n        \"mentality_composure\": 0,\n        \"defending_marking\": null,\n        \"defending_standing_tackle\": 36,\n        \"defending_sliding_tackle\": 30,\n        \"goalkeeping_diving\": 15,\n        \"goalkeeping_handling\": 15,\n        \"goalkeeping_kicking\": 15,\n        \"goalkeeping_positioning\": 5,\n        \"goalkeeping_reflexes\": 14,\n        \"goalkeeping_speed\": 0,\n        \"player_traits\": \"Diver, Flair, Playmaker (AI), Technical Dribbler (AI)\"\n    },\n    {\n        \"id\": 33,\n        \"fifa_version\": \"15\",\n        \"fifa_update\": \"2\",\n        \"player_face_url\": \"https://cdn.sofifa.net/players/048/940/15_120.png\",\n        \"long_name\": \"Petr Čech\",\n        \"player_positions\": \"GK\",\n        \"club_name\": \"Chelsea\",\n        \"nationality_name\": \"Czech Republic\",\n        \"overall\": 85,\n        \"potential\": 85,\n        \"value_eur\": 18000000,\n        \"wage_eur\": 170000,\n        \"age\": 32,\n        \"height_cm\": 196,\n        \"weight_kg\": 90,\n        \"preferred_foot\": \"Left\",\n        \"weak_foot\": 3,\n        \"skill_moves\": 1,\n        \"international_reputation\": 4,\n        \"work_rate\": \"Medium/Medium\",\n        \"body_type\": \"Normal (185+)\",\n        \"pace\": 0,\n        \"shooting\": 0,\n        \"passing\": 0,\n        \"dribbling\": 0,\n        \"defending\": 0,\n        \"physic\": 0,\n        \"attacking_crossing\": 25,\n        \"attacking_finishing\": 25,\n        \"attacking_heading_accuracy\": 25,\n        \"attacking_short_passing\": 35,\n        \"attacking_volleys\": 25,\n        \"skill_dribbling\": 25,\n        \"skill_curve\": 25,\n        \"skill_fk_accuracy\": 25,\n        \"skill_long_passing\": 33,\n        \"skill_ball_control\": 32,\n        \"movement_acceleration\": 45,\n        \"movement_sprint_speed\": 52,\n        \"movement_agility\": 49,\n        \"movement_reactions\": 86,\n        \"movement_balance\": 50,\n        \"power_shot_power\": 21,\n        \"power_jumping\": 38,\n        \"power_stamina\": 32,\n        \"power_strength\": 65,\n        \"power_long_shots\": 25,\n        \"mentality_aggression\": 25,\n        \"mentality_interceptions\": 23,\n        \"mentality_positioning\": 25,\n        \"mentality_vision\": 25,\n        \"mentality_penalties\": 43,\n        \"mentality_composure\": 0,\n        \"defending_marking\": null,\n        \"defending_standing_tackle\": 25,\n        \"defending_sliding_tackle\": 25,\n        \"goalkeeping_diving\": 83,\n        \"goalkeeping_handling\": 84,\n        \"goalkeeping_kicking\": 73,\n        \"goalkeeping_positioning\": 83,\n        \"goalkeeping_reflexes\": 84,\n        \"goalkeeping_speed\": 49,\n        \"player_traits\": \"Puncher, GK Long Throw, One Club Player, Team Player\"\n    },\n    {\n        \"id\": 34,\n        \"fifa_version\": \"15\",\n        \"fifa_update\": \"2\",\n        \"player_face_url\": \"https://cdn.sofifa.net/players/143/001/15_120.png\",\n        \"long_name\": \"Carlos Alberto Tevez\",\n        \"player_positions\": \"ST, CF\",\n        \"club_name\": \"Juventus\",\n        \"nationality_name\": \"Argentina\",\n        \"overall\": 85,\n        \"potential\": 85,\n        \"value_eur\": 21000000,\n        \"wage_eur\": 160000,\n        \"age\": 30,\n        \"height_cm\": 173,\n        \"weight_kg\": 75,\n        \"preferred_foot\": \"Right\",\n        \"weak_foot\": 3,\n        \"skill_moves\": 3,\n        \"international_reputation\": 3,\n        \"work_rate\": \"High/High\",\n        \"body_type\": \"Stocky (170-)\",\n        \"pace\": 86,\n        \"shooting\": 86,\n        \"passing\": 78,\n        \"dribbling\": 87,\n        \"defending\": 46,\n        \"physic\": 84,\n        \"attacking_crossing\": 73,\n        \"attacking_finishing\": 87,\n        \"attacking_heading_accuracy\": 61,\n        \"attacking_short_passing\": 82,\n        \"attacking_volleys\": 86,\n        \"skill_dribbling\": 86,\n        \"skill_curve\": 84,\n        \"skill_fk_accuracy\": 78,\n        \"skill_long_passing\": 64,\n        \"skill_ball_control\": 88,\n        \"movement_acceleration\": 87,\n        \"movement_sprint_speed\": 85,\n        \"movement_agility\": 83,\n        \"movement_reactions\": 88,\n        \"movement_balance\": 90,\n        \"power_shot_power\": 85,\n        \"power_jumping\": 73,\n        \"power_stamina\": 89,\n        \"power_strength\": 81,\n        \"power_long_shots\": 84,\n        \"mentality_aggression\": 87,\n        \"mentality_interceptions\": 39,\n        \"mentality_positioning\": 87,\n        \"mentality_vision\": 83,\n        \"mentality_penalties\": 83,\n        \"mentality_composure\": 0,\n        \"defending_marking\": null,\n        \"defending_standing_tackle\": 55,\n        \"defending_sliding_tackle\": 55,\n        \"goalkeeping_diving\": 4,\n        \"goalkeeping_handling\": 2,\n        \"goalkeeping_kicking\": 3,\n        \"goalkeeping_positioning\": 2,\n        \"goalkeeping_reflexes\": 4,\n        \"goalkeeping_speed\": 0,\n        \"player_traits\": \"Leadership, Finesse Shot, Long Shot Taker (AI), Outside Foot Shot, Technical Dribbler (AI)\"\n    },\n    {\n        \"id\": 35,\n        \"fifa_version\": \"15\",\n        \"fifa_update\": \"2\",\n        \"player_face_url\": \"https://cdn.sofifa.net/players/165/153/15_120.png\",\n        \"long_name\": \"Karim Benzema\",\n        \"player_positions\": \"ST\",\n        \"club_name\": \"Real Madrid CF\",\n        \"nationality_name\": \"France\",\n        \"overall\": 85,\n        \"potential\": 87,\n        \"value_eur\": 27000000,\n        \"wage_eur\": 200000,\n        \"age\": 26,\n        \"height_cm\": 184,\n        \"weight_kg\": 79,\n        \"preferred_foot\": \"Right\",\n        \"weak_foot\": 4,\n        \"skill_moves\": 4,\n        \"international_reputation\": 4,\n        \"work_rate\": \"Medium/Low\",\n        \"body_type\": \"Normal (170-185)\",\n        \"pace\": 84,\n        \"shooting\": 84,\n        \"passing\": 75,\n        \"dribbling\": 82,\n        \"defending\": 30,\n        \"physic\": 74,\n        \"attacking_crossing\": 75,\n        \"attacking_finishing\": 88,\n        \"attacking_heading_accuracy\": 78,\n        \"attacking_short_passing\": 84,\n        \"attacking_volleys\": 77,\n        \"skill_dribbling\": 82,\n        \"skill_curve\": 80,\n        \"skill_fk_accuracy\": 73,\n        \"skill_long_passing\": 47,\n        \"skill_ball_control\": 85,\n        \"movement_acceleration\": 83,\n        \"movement_sprint_speed\": 84,\n        \"movement_agility\": 79,\n        \"movement_reactions\": 83,\n        \"movement_balance\": 71,\n        \"power_shot_power\": 83,\n        \"power_jumping\": 71,\n        \"power_stamina\": 74,\n        \"power_strength\": 78,\n        \"power_long_shots\": 78,\n        \"mentality_aggression\": 65,\n        \"mentality_interceptions\": 22,\n        \"mentality_positioning\": 87,\n        \"mentality_vision\": 81,\n        \"mentality_penalties\": 82,\n        \"mentality_composure\": 0,\n        \"defending_marking\": null,\n        \"defending_standing_tackle\": 25,\n        \"defending_sliding_tackle\": 25,\n        \"goalkeeping_diving\": 13,\n        \"goalkeeping_handling\": 11,\n        \"goalkeeping_kicking\": 5,\n        \"goalkeeping_positioning\": 5,\n        \"goalkeeping_reflexes\": 7,\n        \"goalkeeping_speed\": 0,\n        \"player_traits\": \"Beat Offside Trap, Finesse Shot\"\n    },\n    {\n        \"id\": 36,\n        \"fifa_version\": \"15\",\n        \"fifa_update\": \"2\",\n        \"player_face_url\": \"https://cdn.sofifa.net/players/167/948/15_120.png\",\n        \"long_name\": \"Hugo Lloris\",\n        \"player_positions\": \"GK\",\n        \"club_name\": \"Tottenham Hotspur\",\n        \"nationality_name\": \"France\",\n        \"overall\": 85,\n        \"potential\": 86,\n        \"value_eur\": 21000000,\n        \"wage_eur\": 160000,\n        \"age\": 27,\n        \"height_cm\": 188,\n        \"weight_kg\": 78,\n        \"preferred_foot\": \"Left\",\n        \"weak_foot\": 1,\n        \"skill_moves\": 1,\n        \"international_reputation\": 3,\n        \"work_rate\": \"Medium/Medium\",\n        \"body_type\": \"Lean (185+)\",\n        \"pace\": 0,\n        \"shooting\": 0,\n        \"passing\": 0,\n        \"dribbling\": 0,\n        \"defending\": 0,\n        \"physic\": 0,\n        \"attacking_crossing\": 25,\n        \"attacking_finishing\": 25,\n        \"attacking_heading_accuracy\": 25,\n        \"attacking_short_passing\": 27,\n        \"attacking_volleys\": 25,\n        \"skill_dribbling\": 25,\n        \"skill_curve\": 25,\n        \"skill_fk_accuracy\": 25,\n        \"skill_long_passing\": 31,\n        \"skill_ball_control\": 34,\n        \"movement_acceleration\": 65,\n        \"movement_sprint_speed\": 63,\n        \"movement_agility\": 55,\n        \"movement_reactions\": 84,\n        \"movement_balance\": 54,\n        \"power_shot_power\": 23,\n        \"power_jumping\": 74,\n        \"power_stamina\": 41,\n        \"power_strength\": 43,\n        \"power_long_shots\": 25,\n        \"mentality_aggression\": 31,\n        \"mentality_interceptions\": 27,\n        \"mentality_positioning\": 25,\n        \"mentality_vision\": 25,\n        \"mentality_penalties\": 40,\n        \"mentality_composure\": 0,\n        \"defending_marking\": null,\n        \"defending_standing_tackle\": 25,\n        \"defending_sliding_tackle\": 25,\n        \"goalkeeping_diving\": 86,\n        \"goalkeeping_handling\": 81,\n        \"goalkeeping_kicking\": 71,\n        \"goalkeeping_positioning\": 81,\n        \"goalkeeping_reflexes\": 88,\n        \"goalkeeping_speed\": 64,\n        \"player_traits\": \"Puncher\"\n    },\n    {\n        \"id\": 37,\n        \"fifa_version\": \"15\",\n        \"fifa_update\": \"2\",\n        \"player_face_url\": \"https://cdn.sofifa.net/players/177/610/15_120.png\",\n        \"long_name\": \"Javier Martínez Aginaga\",\n        \"player_positions\": \"CB, CDM, CM\",\n        \"club_name\": \"FC Bayern München\",\n        \"nationality_name\": \"Spain\",\n        \"overall\": 85,\n        \"potential\": 86,\n        \"value_eur\": 21000000,\n        \"wage_eur\": 160000,\n        \"age\": 25,\n        \"height_cm\": 190,\n        \"weight_kg\": 81,\n        \"preferred_foot\": \"Right\",\n        \"weak_foot\": 3,\n        \"skill_moves\": 2,\n        \"international_reputation\": 3,\n        \"work_rate\": \"Medium/Medium\",\n        \"body_type\": \"Normal (185+)\",\n        \"pace\": 53,\n        \"shooting\": 61,\n        \"passing\": 72,\n        \"dribbling\": 68,\n        \"defending\": 84,\n        \"physic\": 85,\n        \"attacking_crossing\": 60,\n        \"attacking_finishing\": 55,\n        \"attacking_heading_accuracy\": 86,\n        \"attacking_short_passing\": 79,\n        \"attacking_volleys\": 64,\n        \"skill_dribbling\": 65,\n        \"skill_curve\": 61,\n        \"skill_fk_accuracy\": 54,\n        \"skill_long_passing\": 77,\n        \"skill_ball_control\": 74,\n        \"movement_acceleration\": 51,\n        \"movement_sprint_speed\": 55,\n        \"movement_agility\": 59,\n        \"movement_reactions\": 85,\n        \"movement_balance\": 57,\n        \"power_shot_power\": 75,\n        \"power_jumping\": 70,\n        \"power_stamina\": 82,\n        \"power_strength\": 87,\n        \"power_long_shots\": 63,\n        \"mentality_aggression\": 88,\n        \"mentality_interceptions\": 86,\n        \"mentality_positioning\": 57,\n        \"mentality_vision\": 77,\n        \"mentality_penalties\": 58,\n        \"mentality_composure\": 0,\n        \"defending_marking\": null,\n        \"defending_standing_tackle\": 87,\n        \"defending_sliding_tackle\": 88,\n        \"goalkeeping_diving\": 5,\n        \"goalkeeping_handling\": 12,\n        \"goalkeeping_kicking\": 9,\n        \"goalkeeping_positioning\": 11,\n        \"goalkeeping_reflexes\": 8,\n        \"goalkeeping_speed\": 0,\n        \"player_traits\": \"Power Header\"\n    },\n    {\n        \"id\": 38,\n        \"fifa_version\": \"15\",\n        \"fifa_update\": \"2\",\n        \"player_face_url\": \"https://cdn.sofifa.net/players/178/088/15_120.png\",\n        \"long_name\": \"Juan Manuel Mata García\",\n        \"player_positions\": \"CAM, RM\",\n        \"club_name\": \"Manchester United\",\n        \"nationality_name\": \"Spain\",\n        \"overall\": 85,\n        \"potential\": 86,\n        \"value_eur\": 27000000,\n        \"wage_eur\": 190000,\n        \"age\": 26,\n        \"height_cm\": 174,\n        \"weight_kg\": 63,\n        \"preferred_foot\": \"Left\",\n        \"weak_foot\": 3,\n        \"skill_moves\": 4,\n        \"international_reputation\": 3,\n        \"work_rate\": \"Medium/Medium\",\n        \"body_type\": \"Lean (170-185)\",\n        \"pace\": 74,\n        \"shooting\": 75,\n        \"passing\": 84,\n        \"dribbling\": 87,\n        \"defending\": 31,\n        \"physic\": 60,\n        \"attacking_crossing\": 83,\n        \"attacking_finishing\": 77,\n        \"attacking_heading_accuracy\": 66,\n        \"attacking_short_passing\": 86,\n        \"attacking_volleys\": 71,\n        \"skill_dribbling\": 85,\n        \"skill_curve\": 82,\n        \"skill_fk_accuracy\": 81,\n        \"skill_long_passing\": 78,\n        \"skill_ball_control\": 88,\n        \"movement_acceleration\": 83,\n        \"movement_sprint_speed\": 66,\n        \"movement_agility\": 90,\n        \"movement_reactions\": 87,\n        \"movement_balance\": 89,\n        \"power_shot_power\": 74,\n        \"power_jumping\": 72,\n        \"power_stamina\": 79,\n        \"power_strength\": 52,\n        \"power_long_shots\": 72,\n        \"mentality_aggression\": 52,\n        \"mentality_interceptions\": 39,\n        \"mentality_positioning\": 84,\n        \"mentality_vision\": 88,\n        \"mentality_penalties\": 71,\n        \"mentality_composure\": 0,\n        \"defending_marking\": null,\n        \"defending_standing_tackle\": 22,\n        \"defending_sliding_tackle\": 25,\n        \"goalkeeping_diving\": 9,\n        \"goalkeeping_handling\": 10,\n        \"goalkeeping_kicking\": 14,\n        \"goalkeeping_positioning\": 5,\n        \"goalkeeping_reflexes\": 8,\n        \"goalkeeping_speed\": 0,\n        \"player_traits\": \"Finesse Shot, Flair, Playmaker (AI), Technical Dribbler (AI)\"\n    },\n    {\n        \"id\": 39,\n        \"fifa_version\": \"15\",\n        \"fifa_update\": \"2\",\n        \"player_face_url\": \"https://cdn.sofifa.net/players/179/813/15_120.png\",\n        \"long_name\": \"Edinson Roberto Cavani Gómez\",\n        \"player_positions\": \"ST, RW\",\n        \"club_name\": \"Paris Saint-Germain\",\n        \"nationality_name\": \"Uruguay\",\n        \"overall\": 85,\n        \"potential\": 87,\n        \"value_eur\": 25500000,\n        \"wage_eur\": 200000,\n        \"age\": 27,\n        \"height_cm\": 184,\n        \"weight_kg\": 71,\n        \"preferred_foot\": \"Right\",\n        \"weak_foot\": 3,\n        \"skill_moves\": 3,\n        \"international_reputation\": 4,\n        \"work_rate\": \"Medium/Medium\",\n        \"body_type\": \"Lean (170-185)\",\n        \"pace\": 79,\n        \"shooting\": 83,\n        \"passing\": 70,\n        \"dribbling\": 80,\n        \"defending\": 41,\n        \"physic\": 81,\n        \"attacking_crossing\": 70,\n        \"attacking_finishing\": 83,\n        \"attacking_heading_accuracy\": 84,\n        \"attacking_short_passing\": 74,\n        \"attacking_volleys\": 82,\n        \"skill_dribbling\": 80,\n        \"skill_curve\": 75,\n        \"skill_fk_accuracy\": 77,\n        \"skill_long_passing\": 50,\n        \"skill_ball_control\": 83,\n        \"movement_acceleration\": 76,\n        \"movement_sprint_speed\": 82,\n        \"movement_agility\": 83,\n        \"movement_reactions\": 85,\n        \"movement_balance\": 59,\n        \"power_shot_power\": 85,\n        \"power_jumping\": 83,\n        \"power_stamina\": 90,\n        \"power_strength\": 76,\n        \"power_long_shots\": 82,\n        \"mentality_aggression\": 82,\n        \"mentality_interceptions\": 48,\n        \"mentality_positioning\": 85,\n        \"mentality_vision\": 75,\n        \"mentality_penalties\": 82,\n        \"mentality_composure\": 0,\n        \"defending_marking\": null,\n        \"defending_standing_tackle\": 45,\n        \"defending_sliding_tackle\": 27,\n        \"goalkeeping_diving\": 12,\n        \"goalkeeping_handling\": 5,\n        \"goalkeeping_kicking\": 13,\n        \"goalkeeping_positioning\": 13,\n        \"goalkeeping_reflexes\": 10,\n        \"goalkeeping_speed\": 0,\n        \"player_traits\": \"Beat Offside Trap\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Find by Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/players/1",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"players",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Find by Id Error when id > count",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:5000/players/10000000000000000",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"players",
+										"10000000000000000"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "JSON",
+							"header": [
+								{
+									"key": "Content-Security-Policy",
+									"value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests",
+									"type": "text"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin",
+									"type": "text"
+								},
+								{
+									"key": "Cross-Origin-Resource-Policy",
+									"value": "same-origin",
+									"type": "text"
+								},
+								{
+									"key": "Origin-Agent-Cluster",
+									"value": "?1",
+									"type": "text"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "origin,unsafe-url",
+									"type": "text"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains",
+									"type": "text"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff",
+									"type": "text"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off",
+									"type": "text"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen",
+									"type": "text"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN",
+									"type": "text"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none",
+									"type": "text"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0",
+									"type": "text"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*",
+									"type": "text"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express",
+									"type": "text"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8",
+									"type": "text"
+								},
+								{
+									"key": "Content-Length",
+									"value": "4",
+									"type": "text"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"4-K+iMpCQsduglOsYkdIUQZQMtaDM\"",
+									"type": "text"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 18 Sep 2024 20:36:52 GMT",
+									"type": "text"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive",
+									"type": "text"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "null"
+						},
+						{
+							"name": "Find by Id Ok",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:5000/players/1",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"players",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "JSON",
+							"header": [
+								{
+									"key": "Content-Security-Policy",
+									"value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests",
+									"type": "text"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin",
+									"type": "text"
+								},
+								{
+									"key": "Cross-Origin-Resource-Policy",
+									"value": "same-origin",
+									"type": "text"
+								},
+								{
+									"key": "Origin-Agent-Cluster",
+									"value": "?1",
+									"type": "text"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "origin,unsafe-url",
+									"type": "text"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains",
+									"type": "text"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff",
+									"type": "text"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off",
+									"type": "text"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen",
+									"type": "text"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN",
+									"type": "text"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none",
+									"type": "text"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0",
+									"type": "text"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*",
+									"type": "text"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express",
+									"type": "text"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8",
+									"type": "text"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1504",
+									"type": "text"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"5e0-6ggtTmy9ilxFLxirO9H9H5FS+5U\"",
+									"type": "text"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 18 Sep 2024 20:37:53 GMT",
+									"type": "text"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive",
+									"type": "text"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 1,\n    \"fifa_version\": \"15\",\n    \"fifa_update\": \"2\",\n    \"player_face_url\": \"https://cdn.sofifa.net/players/158/023/15_120.png\",\n    \"long_name\": \"Lionel Andrés Messi Cuccittini\",\n    \"player_positions\": \"CF\",\n    \"club_name\": \"FC Barcelona\",\n    \"nationality_name\": \"Argentina\",\n    \"overall\": 93,\n    \"potential\": 95,\n    \"value_eur\": 100500000,\n    \"wage_eur\": 550000,\n    \"age\": 27,\n    \"height_cm\": 169,\n    \"weight_kg\": 67,\n    \"preferred_foot\": \"Left\",\n    \"weak_foot\": 3,\n    \"skill_moves\": 4,\n    \"international_reputation\": 5,\n    \"work_rate\": \"Medium/Low\",\n    \"body_type\": \"Normal (170-)\",\n    \"pace\": 93,\n    \"shooting\": 89,\n    \"passing\": 86,\n    \"dribbling\": 96,\n    \"defending\": 27,\n    \"physic\": 63,\n    \"attacking_crossing\": 84,\n    \"attacking_finishing\": 94,\n    \"attacking_heading_accuracy\": 71,\n    \"attacking_short_passing\": 89,\n    \"attacking_volleys\": 85,\n    \"skill_dribbling\": 96,\n    \"skill_curve\": 89,\n    \"skill_fk_accuracy\": 90,\n    \"skill_long_passing\": 76,\n    \"skill_ball_control\": 96,\n    \"movement_acceleration\": 96,\n    \"movement_sprint_speed\": 90,\n    \"movement_agility\": 94,\n    \"movement_reactions\": 94,\n    \"movement_balance\": 95,\n    \"power_shot_power\": 80,\n    \"power_jumping\": 73,\n    \"power_stamina\": 77,\n    \"power_strength\": 60,\n    \"power_long_shots\": 88,\n    \"mentality_aggression\": 48,\n    \"mentality_interceptions\": 22,\n    \"mentality_positioning\": 92,\n    \"mentality_vision\": 90,\n    \"mentality_penalties\": 76,\n    \"mentality_composure\": 0,\n    \"defending_marking\": null,\n    \"defending_standing_tackle\": 21,\n    \"defending_sliding_tackle\": 20,\n    \"goalkeeping_diving\": 6,\n    \"goalkeeping_handling\": 11,\n    \"goalkeeping_kicking\": 15,\n    \"goalkeeping_positioning\": 14,\n    \"goalkeeping_reflexes\": 8,\n    \"goalkeeping_speed\": 0,\n    \"player_traits\": \"Finesse Shot, Speed Dribbler (AI), One Club Player, Team Player\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete player Ok",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/players/161593",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"players",
+								"161593"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Delete player Ok",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "localhost:5000/players/161593",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"players",
+										"161593"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "JSON",
+							"header": [
+								{
+									"key": "Content-Security-Policy",
+									"value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests",
+									"type": "text"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin",
+									"type": "text"
+								},
+								{
+									"key": "Cross-Origin-Resource-Policy",
+									"value": "same-origin",
+									"type": "text"
+								},
+								{
+									"key": "Origin-Agent-Cluster",
+									"value": "?1",
+									"type": "text"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "origin,unsafe-url",
+									"type": "text"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains",
+									"type": "text"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff",
+									"type": "text"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off",
+									"type": "text"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen",
+									"type": "text"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN",
+									"type": "text"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none",
+									"type": "text"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0",
+									"type": "text"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*",
+									"type": "text"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express",
+									"type": "text"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8",
+									"type": "text"
+								},
+								{
+									"key": "Content-Length",
+									"value": "42",
+									"type": "text"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2a-yEf6Q8E83g/KgRutMaC6lARJuTI\"",
+									"type": "text"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 18 Sep 2024 23:02:57 GMT",
+									"type": "text"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive",
+									"type": "text"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"Ok\",\n    \"message\": \"Player deleted\"\n}"
+						},
+						{
+							"name": "Delete player Error wrong params",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "localhost:5000/players/ab",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"players",
+										"ab"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "JSON",
+							"header": [
+								{
+									"key": "Content-Security-Policy",
+									"value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests",
+									"type": "text"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin",
+									"type": "text"
+								},
+								{
+									"key": "Cross-Origin-Resource-Policy",
+									"value": "same-origin",
+									"type": "text"
+								},
+								{
+									"key": "Origin-Agent-Cluster",
+									"value": "?1",
+									"type": "text"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "origin,unsafe-url",
+									"type": "text"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains",
+									"type": "text"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff",
+									"type": "text"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off",
+									"type": "text"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen",
+									"type": "text"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN",
+									"type": "text"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none",
+									"type": "text"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0",
+									"type": "text"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*",
+									"type": "text"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express",
+									"type": "text"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8",
+									"type": "text"
+								},
+								{
+									"key": "Content-Length",
+									"value": "59",
+									"type": "text"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"3b-T2G/qzh5dnTp5kjDMkq/G3+rh8M\"",
+									"type": "text"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 18 Sep 2024 23:04:10 GMT",
+									"type": "text"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive",
+									"type": "text"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"errors\": [\n        \"Unable to process the request, invalid input\"\n    ]\n}"
+						},
+						{
+							"name": "Delete player Error  401",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "localhost:5000/players/161592",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"players",
+										"161592"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "JSON",
+							"header": [
+								{
+									"key": "Content-Security-Policy",
+									"value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests",
+									"type": "text"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin",
+									"type": "text"
+								},
+								{
+									"key": "Cross-Origin-Resource-Policy",
+									"value": "same-origin",
+									"type": "text"
+								},
+								{
+									"key": "Origin-Agent-Cluster",
+									"value": "?1",
+									"type": "text"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "origin,unsafe-url",
+									"type": "text"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains",
+									"type": "text"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff",
+									"type": "text"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off",
+									"type": "text"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen",
+									"type": "text"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN",
+									"type": "text"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none",
+									"type": "text"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0",
+									"type": "text"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*",
+									"type": "text"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express",
+									"type": "text"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8",
+									"type": "text"
+								},
+								{
+									"key": "Content-Length",
+									"value": "41",
+									"type": "text"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"29-lxtSQOYUc2mp7cggol1kv+Ldyr0\"",
+									"type": "text"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 18 Sep 2024 23:04:48 GMT",
+									"type": "text"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive",
+									"type": "text"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": \"You are not allowed to access\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"user1@randommail.com\",\n    \"password\": \"StrongPassw-123456\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/auth/login",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Login OK",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"user1@randommail.com\",\n    \"password\": \"StrongPassw-123456\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:5000/auth/login",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"auth",
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "JSON",
+							"header": [
+								{
+									"key": "Content-Security-Policy",
+									"value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests",
+									"type": "text"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin",
+									"type": "text"
+								},
+								{
+									"key": "Cross-Origin-Resource-Policy",
+									"value": "same-origin",
+									"type": "text"
+								},
+								{
+									"key": "Origin-Agent-Cluster",
+									"value": "?1",
+									"type": "text"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "origin,unsafe-url",
+									"type": "text"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains",
+									"type": "text"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff",
+									"type": "text"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off",
+									"type": "text"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen",
+									"type": "text"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN",
+									"type": "text"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none",
+									"type": "text"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0",
+									"type": "text"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*",
+									"type": "text"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express",
+									"type": "text"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8",
+									"type": "text"
+								},
+								{
+									"key": "Content-Length",
+									"value": "225",
+									"type": "text"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"e1-DtUz5FNgFg9JZNUZ2ibSrkTadZ8\"",
+									"type": "text"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 18 Sep 2024 13:07:04 GMT",
+									"type": "text"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive",
+									"type": "text"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"OK\",\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJ1c2VyMUByYW5kb21tYWlsLmNvbSIsImlzVmFsaWQiOnRydWUsImlhdCI6MTcyNjY2NDgyNCwiZXhwIjoxNzI2NzUxMjI0fQ.bx7q4WqkEzvp1Jldh6c3WVTAiFuk6iDr0FNnC1Jni2Q\"\n}"
+						},
+						{
+							"name": "Login wrong user (email or password)",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"user88@randommail.com\",\n    \"password\": \"StrongPassw-123456\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:5000/auth/login",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"auth",
+										"login"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "JSON",
+							"header": [
+								{
+									"key": "Content-Security-Policy",
+									"value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests",
+									"type": "text"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin",
+									"type": "text"
+								},
+								{
+									"key": "Cross-Origin-Resource-Policy",
+									"value": "same-origin",
+									"type": "text"
+								},
+								{
+									"key": "Origin-Agent-Cluster",
+									"value": "?1",
+									"type": "text"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "origin,unsafe-url",
+									"type": "text"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains",
+									"type": "text"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff",
+									"type": "text"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off",
+									"type": "text"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen",
+									"type": "text"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN",
+									"type": "text"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none",
+									"type": "text"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0",
+									"type": "text"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*",
+									"type": "text"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express",
+									"type": "text"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8",
+									"type": "text"
+								},
+								{
+									"key": "Content-Length",
+									"value": "51",
+									"type": "text"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"33-DKuUaV9y/7Kw7vCDJL2Tn2WR5aE\"",
+									"type": "text"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 18 Sep 2024 13:37:51 GMT",
+									"type": "text"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive",
+									"type": "text"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"Bad Request\",\n    \"message\": \"User not found\"\n}"
+						}
+					]
+				}
+			],
+			"description": "Se testea la ruta /auth/login para el ingreso de usuarios.\n\nSe espera que haya 3 respuestas posibles:\n\n`{status: 'ok', token:''}`"
+		},
+		{
+			"name": "CsvOpts",
+			"item": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJ1c2VyMUByYW5kb21tYWlsLmNvbSIsImlzVmFsaWQiOnRydWUsImlhdCI6MTcyNjY3OTkyNiwiZXhwIjoxNzI2NzY2MzI2fQ.NyzFwN_K-lPxgl07NLmeLlgaJheBqJ33QV2cUuTVHwc",
+				"type": "string"
+			}
+		]
+	}
+}

@@ -3,22 +3,15 @@ const { playerProvider } = require('../providers');
 const { writeFile } = require('fs').promises;
 let dirSave = require('../public');
 let converter = require('json-2-csv');
+const csv = require('csv-parser'); // Librería para leer CSV
+const { sequelize } = require('../config/db');
+const { DataTypes } = require('sequelize');
+const fs = require('fs');
 
-const downloadWithFS = async (req, res) => {
+const downloadWithFS = async () => {
   //OPCION CON FS Y JSON-2-CSV
-  /**
-   * @description
-   * toma los datos de la query findAll, con el paquete json-2-csv ajusta los
-   * datos al formato requerido (la función JSON.stringify() no).
-   * @todo-1
-   * mejorar la localización del archivo creado, recurrir a mejores prácticas
-   * para identificar la ruta absoluta de la ubicación del archivo.
-   * @todo-2
-   * separar como corresponde la funcionalidad (controladores, servicios, providers)
-   */
-  let raw_data = await playerProvider.raw_data();
-  let data0 = JSON.stringify(raw_data, null, 2);
-  let data = JSON.parse(data0);
+
+  let data = await playerProvider.raw_data();
 
   const csv = await converter.json2csv(data);
 
@@ -32,42 +25,57 @@ const downloadWithFS = async (req, res) => {
     }
   });
 
-  return res.sendFile(`${dirSave}/${fileName}`);
+  let completePathToExportFile = `${dirSave}/${fileName}`;
+
+  return completePathToExportFile;
 };
 
-/**
- * OPCION CON xlsx
- * //1. Gather the raw data
- */
-const downloadWithXsls = async (req, res) => {
+const downloadWithXsls = async () => {
+  // Getting and formatting data
+  let data = await playerProvider.raw_data();
+
+  let headersXlsx = Object.keys(data);
+  let rows = Object.values(data);
+  const worksheet = XLSX.utils.json_to_sheet(rows, {
+    headers: headersXlsx,
+  });
+  const workbook = XLSX.utils.book_new();
+  XLSX.utils.book_append_sheet(workbook, worksheet, 'fifa_players');
+
+  const buf = XLSX.write(workbook, { type: 'buffer', bookType: 'csv' });
+
+  return buf;
+};
+
+const uploadCSV = async (file, tableName) => {
+  const sampleData = file[0];
+
+  // Crear el modelo dinámico de la tabla
+  const fields = {};
+  Object.keys(sampleData).forEach((key) => {
+    fields[key] = { type: DataTypes.STRING }; // Asumimos que todos los campos son strings, puedes ajustar según sea necesario
+  });
+
+  const DynamicModel = await sequelize.define(tableName, fields, {
+    timestamps: false,
+  });
+
   try {
-    // Getting and formatting data
-    let raw_data = await playerProvider.raw_data();
-    let data0 = JSON.stringify(raw_data, null, 2);
-    let data = JSON.parse(data0);
-
-    let headersXlsx = Object.keys(data);
-    let rows = Object.values(data);
-    const worksheet = XLSX.utils.json_to_sheet(rows, {
-      headers: headersXlsx,
-    });
-    const workbook = XLSX.utils.book_new();
-    XLSX.utils.book_append_sheet(workbook, worksheet, 'fifa_players');
-
-    const buf = XLSX.write(workbook, { type: 'buffer', bookType: 'csv' });
-    res.statusCode = 200;
-    res.setHeader('Content-Disposition', 'attachment; filename="fifa_players2024.csv"');
-    res.setHeader('Content-Type', 'application/csv');
-    res.end(buf);
+    // console.log(fields);
+    // return true;
+    // // Crear la tabla si no existe
+    await DynamicModel.sync({ force: true }).then(
+      async () => await DynamicModel.bulkCreate(fields)
+    );
+    return true;
   } catch (error) {
-    res.status(404).json({
-      error: error.status,
-      message: error.message,
-    });
+    // throw new Error('Error al crear la tabla o insertar los datos', error);
+    console.error(error);
   }
 };
 
 module.exports = {
   downloadWithFS,
   downloadWithXsls,
+  uploadCSV,
 };

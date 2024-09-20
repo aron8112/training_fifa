@@ -41,6 +41,15 @@ app.use(express.json());
 app.use(router);
 // app.use(errorHandler);
 
-app.listen(process.env.PORT, () => console.log(`listening on ${process.env.PORT}`));
-
-connect();
+app.listen(process.env.NODE_DOCKER_PORT, () =>
+  console.log(`listening on ${process.env.NODE_DOCKER_PORT}`)
+);
+try {
+  connect();
+} catch (error) {
+  express.response.status(500).json({
+    status: error.status,
+    error: error,
+  });
+  return;
+}

@@ -1,28 +1,23 @@
-
 services:
-  
   mysql:
-    container_name: fifa_database
-    image: mysql:latest
+    image: 'mysql:latest'
     environment:
-     MYSQL_ROOT_PASSWORD: root 
-     MYSQL_ROOT_USER: root 
-     MYSQL_DATABASE: fifa
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_ROOT_USER: root
+      MYSQL_DATABASE: fifa
     volumes:
-      - ./db:/data
+      - ./db/fifa_male_players.sql:/docker-entrypoint-initdb.d/fifa_male_players.sql
     ports:
-      - "3306:3306"
-  backend:
-    container_name: fifa_backend
-    build:
-      context: ./back
-      dockerfile: Dockerfile
-    ports:
-      - "5000:5000"
-    volumes:
-      - .:/src
-    depends_on:
-      - mysql
+      - '3306:3306'
+
+  # backend:
+  #   build:
+  #     context: ./back
+  #     dockerfile: Dockerfile
+  #   ports:
+  #     - "5001:5001"
+  #   depends_on:
+  #     - mysql
   # frontend:
   #   build:
   #     context: ./front

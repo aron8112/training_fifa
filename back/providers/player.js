@@ -101,7 +101,10 @@ const updatePlayer = async (key, value, id) => {
 };
 
 const raw_data = async () => {
-  let listAll = await PlayerModel.findAll({ limit: 10 });
+  let listAll = await PlayerModel.findAll({
+    limit: 19,
+    raw: true,
+  });
   return listAll;
 };
 
