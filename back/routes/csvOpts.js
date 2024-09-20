@@ -1,16 +1,17 @@
 const express = require('express');
 const app = express();
 const { csvOptController } = require('../controllers');
+const { authenticateUser, authorizeUser } = require('../middlewares/authentication');
 
 /**
  * @returns: csv file from Fifa players using xlsx package
  */
-app.get('/download', csvOptController.exportCSVwithXLSX);
+app.get('/download', authenticateUser, csvOptController.exportCSVwithXLSX);
 
 /**
  * @returns: csv file from Fifa players using fs and json-2-csv package
  */
-app.get('/download2', csvOptController.exportCSVwithFS);
+app.get('/download2', authenticateUser, csvOptController.exportCSVwithFS);
 
 /**
  * @requires: file
@@ -29,6 +30,6 @@ app.get('/download2', csvOptController.exportCSVwithFS);
  *
  * Also @todo: validate and sanitize fields values.
  */
-app.post('/upload', csvOptController.uploadCSV);
+app.post('/upload', authenticateUser, authorizeUser(['admin']), csvOptController.uploadCSV);
 
 module.exports = app;

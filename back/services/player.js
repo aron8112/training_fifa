@@ -59,18 +59,22 @@ const updateOne = async (newData, id) => {
   // console.log('New Data: ', newData, ' type is: ', typeof newData);
   // console.log(Object.entries(newData));
   console.log('Updating more than 1 field: ', Object.keys(newData).length > 1);
-  if (Object.keys(newData).length > 1) {
-    let updated = [];
-    if (lookForThePlayer) {
-      Object.entries(newData).forEach(async ([key, value]) => {
-        console.log({ [key]: value });
-        updated.push(await playerProvider.updatePlayer(key, value, idInt));
-      });
-      return updated;
+  if (lookForThePlayer) {
+    if (Object.keys(newData).length > 1) {
+      let updated = [];
+      if (lookForThePlayer) {
+        Object.entries(newData).forEach(async ([key, value]) => {
+          console.log({ [key]: value });
+          updated.push(await playerProvider.updatePlayer(key, value, idInt));
+        });
+        return updated;
+      }
+    } else {
+      let updatedPlayer = await playerProvider.updatePlayer(newData, idInt);
+      return updatedPlayer;
     }
   } else {
-    let updatedPlayer = await playerProvider.updatePlayer(newData, idInt);
-    return updatedPlayer;
+    throw new Error('Player not found!');
   }
 };
 

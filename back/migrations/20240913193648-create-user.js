@@ -9,6 +9,10 @@ module.exports = {
         allowNull: false,
         autoincrement: true,
       },
+      name: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
       email: {
         type: Sequelize.STRING,
         allowNull: false,
@@ -16,6 +20,10 @@ module.exports = {
       password: {
         type: Sequelize.STRING,
         allowNull: false,
+      },
+      role: {
+        type: Sequelize.ENUM('admin', 'editor', 'user'),
+        defaultValue: 'user',
       },
     });
   },

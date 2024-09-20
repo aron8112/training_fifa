@@ -18,22 +18,18 @@ passport.use(
   )
 );
 
-const isLoggedIn = (req, res, next) =>
-  passport.authenticate('jwt', { session: false }, (err, user, info) => {
-    if (err) {
-      res.status(403).json({
-        error: 'You are not allowed to access',
-      });
-      return;
+const authenticateUser = passport.authenticate('jwt', { session: false });
+
+const authorizeUser = (roles) => {
+  return (req, res, next) => {
+    const user = req.user;
+
+    if (!roles.includes(user.role)) {
+      return res.status(403).json({ message: 'Access forbidden: insufficient rights' });
     }
 
-    if (user.isValid === true) {
-      return next();
-    }
+    next();
+  };
+};
 
-    res.status(401).json({
-      error: 'You are not allowed to access',
-    });
-  })(req, res, next);
-
-module.exports = isLoggedIn;
+module.exports = { authenticateUser, authorizeUser };

@@ -8,7 +8,7 @@ const tokenSign = (user) =>
     {
       id: user.id,
       email: user.email,
-      isValid: true,
+      role: user.role,
     },
     SECRET,
     {

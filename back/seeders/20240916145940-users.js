@@ -10,17 +10,23 @@ module.exports = {
       [
         {
           id: 1,
-          email: 'user1@randommail.com',
+          name: 'Admin User',
+          email: 'admin@randommail.com',
+          role: 'admin',
           password: await encryptPassword('StrongPassw-123456'),
         },
         {
           id: 2,
-          email: 'user2@randommail.com',
+          name: 'Editor User',
+          email: 'editor@randommail.com',
+          role: 'editor',
           password: await encryptPassword('StrongPassw-123456'),
         },
         {
           id: 3,
-          email: 'user3@randommail.com',
+          name: 'User User',
+          email: 'user@randommail.com',
+          role: 'user',
           password: await encryptPassword('StrongPassw-123456'),
         },
       ],

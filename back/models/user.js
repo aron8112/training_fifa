@@ -10,6 +10,10 @@ const UserModel = sequelize.define(
       allowNull: false,
       autoincrement: true,
     },
+    name: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
     email: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -17,6 +21,10 @@ const UserModel = sequelize.define(
     password: {
       type: DataTypes.STRING,
       allowNull: false,
+    },
+    role: {
+      type: DataTypes.ENUM('admin', 'editor', 'user'),
+      defaultValue: 'user',
     },
   },
   {
