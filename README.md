@@ -33,30 +33,34 @@ Desarrollar una aplicación web para gestionar un listado de jugadores de FIFA u
         - helmet
         - dotenv
         - xss-clean
+        - express-validator
 
-    2.Validaciones
-
-         - express-validator
-
-    3.  Subida/Bajda de archivos
+    2.  Subida/Bajda de archivos
 
         - csv-parser
         - multer
         - json-2-csv
         - xlsx
 
-    4.  Autenticación y Autorización
+    3.  Autenticación y Autorización
 
         - jsonwebtoken
         - passport
         - passport-jwt
 
-1.  Frontend: Angular
+2.  Frontend: Angular
 
-1.  Base de datos
+3.  Base de datos
     Creada con Docker compose, además se modificó el archivo original sql. Se agregaron 2 líneas:
 
+          ```
+          CREATE DATABASE IF NOT EXISTS `fifa`;
+          USE `fifa`;
+          ```
+
+    Y además se agregó la línea:
+
          ```
-         CREATE DATABASE IF NOT EXISTS `fifa`;
-         USE `fifa`;
+         volumes:
+            - ./db/fifa_male_players.sql:/docker-entrypoint-initdb.d/fifa_male_players.sql
          ```
