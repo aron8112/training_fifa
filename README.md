@@ -22,5 +22,41 @@ Desarrollar una aplicación web para gestionar un listado de jugadores de FIFA u
 
 ## Detalles técnicos
 
-1. Backend: Node.Js con Express, Sequelize como ORM (BB.DD con MySQL)
-2. Frontend: Angular
+1.  Backend: Node.Js con Express, Sequelize como ORM (BB.DD con MySQL)
+
+    ### Librerías utilizadas
+
+    1.  Funcionamiento
+
+        - bcrypt: encriptación de contraseñas
+        - cors
+        - helmet
+        - dotenv
+        - xss-clean
+
+    2.Validaciones
+
+         - express-validator
+
+    3.  Subida/Bajda de archivos
+
+        - csv-parser
+        - multer
+        - json-2-csv
+        - xlsx
+
+    4.  Autenticación y Autorización
+
+        - jsonwebtoken
+        - passport
+        - passport-jwt
+
+1.  Frontend: Angular
+
+1.  Base de datos
+    Creada con Docker compose, además se modificó el archivo original sql. Se agregaron 2 líneas:
+
+         ```
+         CREATE DATABASE IF NOT EXISTS `fifa`;
+         USE `fifa`;
+         ```

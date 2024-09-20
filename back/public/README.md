@@ -23,6 +23,8 @@ Se usaron los comandos:
 data0 =JSON.stringify(raw_data, null, 2); => para mostrar los valores como un string
 data = JSON.parse(data0); => para poder ser trabajados como objetos
 
+-- Modificado con el comando raw:true al ejecutar la query
+
 Se eligió la librería json-2-csv para simplificar el paso de json a csv, la opción de hacerlo manualmente
 con Object.keys (headers) y Object.values (rows) se demostró que producía errores en la compaginación del
 resultado.
