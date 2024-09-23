@@ -20,7 +20,8 @@ const get3Players = async () => {
 
 const pagination = async (queryparams) => {
   limit = 10;
-  offset = parseInt(limit * parseInt(queryparams) - 1);
+  offset = parseInt(limit) * (parseInt(queryparams) - 1);
+  console.log(offset);
 
   const showPlayers = await playerProvider.pagination(limit, offset);
   return showPlayers;

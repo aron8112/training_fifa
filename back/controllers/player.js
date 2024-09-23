@@ -32,8 +32,10 @@ const askFor3Players = async (req, res) => {
 };
 
 const pagination = async (req, res) => {
+  let { page } = req.query;
+  if (!page) page = 1;
   try {
-    const players = await playerServices.pagination(req.query.page);
+    const players = await playerServices.pagination(page);
     res.status(200).json(players);
   } catch (error) {
     res.status(400).json(error);

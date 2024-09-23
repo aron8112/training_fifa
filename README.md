@@ -31,14 +31,14 @@ Desarrollar una aplicación web para gestionar un listado de jugadores de FIFA u
         - bcrypt: encriptación de contraseñas
         - cors
         - helmet
-        - dotenv
+        - dotenv: ocultar variables de entorno
         - xss-clean
-        - express-validator
+        - express-validator: validación de inputs
 
     2.  Subida/Bajda de archivos
 
         - csv-parser
-        - multer
+        - multer: se usa el paquete busboy
         - json-2-csv
         - xlsx
 
@@ -61,6 +61,27 @@ Desarrollar una aplicación web para gestionar un listado de jugadores de FIFA u
     Y además se agregó la línea:
 
          ```
+         command: '--init-file /data/fifa_male_players.sql'
          volumes:
             - ./db/fifa_male_players.sql:/docker-entrypoint-initdb.d/fifa_male_players.sql
          ```
+
+## Ejecución
+
+1. Para comenzar con la base de datos, ejecutar en la línea de comandos:
+
+   ```
+      docker compose up -d
+   ```
+
+2. Para comenzar con la API, ejecutar en la línea de comandos:
+
+   ```
+      npn run dev
+   ```
+
+3. Para comenzar con la APP, ejecutar en la línea de comandos:
+
+   ```
+      ng serve
+   ```
