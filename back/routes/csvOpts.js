@@ -6,12 +6,12 @@ const { authenticateUser, authorizeUser } = require('../middlewares/authenticati
 /**
  * @returns: csv file from Fifa players using xlsx package
  */
-app.get('/download', authenticateUser, csvOptController.exportCSVwithXLSX);
+app.get('/download', csvOptController.exportCSVwithXLSX);
 
 /**
  * @returns: csv file from Fifa players using fs and json-2-csv package
  */
-app.get('/download2', authenticateUser, csvOptController.exportCSVwithFS);
+app.get('/download2', csvOptController.exportCSVwithFS);
 
 /**
  * @requires: file

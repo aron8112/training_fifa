@@ -1,0 +1,87 @@
+<h1 class="text-center">Panel de Jugadores</h1>
+<br>
+<hr>
+<br>
+<div class="container" style="align-content: center;">
+    <div class="row row-cols-1 row-cols-md-2 g-4">
+        <div class="col">
+            <div class="card text-center mb-3">
+                <div class="card-header">
+                    Ver Jugadores Disponibles
+                </div>
+                <div class="card-body">
+                    <p class="card-text">Consulte todos los jugadores disponibles</p>
+                    <a class="btn btn-primary" [routerLink]="['/players/listcards']"
+                        routerLinkActive="router-link-active" ariaCurrentWhenActive="page">Ir</a>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card text-center mb-3">
+                <div class="card-header">
+                    Buscar Jugadores
+                </div>
+                <div class="card-body">
+                    <p class="card-text">Búsqueda de jugadores disponibles</p>
+                    <a class="btn btn-primary" [routerLink]="['/players/search']" routerLinkActive="router-link-active"
+                        ariaCurrentWhenActive="page">Ir</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row row-cols-1 row-cols-md-2 g-4">
+        <div class="col">
+            <div class="card text-center mb-3">
+                <div class="card-header">
+                    Crear Jugador
+                </div>
+                <div class="card-body">
+                    <p class="card-text">Crea a tus jugadores</p>
+                    <a class="btn btn-primary" [routerLink]="['/players/create']" routerLinkActive="router-link-active"
+                        ariaCurrentWhenActive="page">Ir</a>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card text-center mb-3">
+                <div class="card-header">
+                    Personalizar Jugador
+                </div>
+                <div class="card-body">
+                    <p class="card-text">Modificar a los jugadores</p>
+                    <a class="btn btn-primary" [routerLink]="['/players/update']" routerLinkActive="router-link-active"
+                        ariaCurrentWhenActive="page">Ir</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row row-cols-1 row-cols-md-2 g-4">
+        <div class="col">
+            <div class="card text-center mb-3">
+                <div class="card-header">
+                    Descargar Tabla
+                </div>
+                <div class="card-body">
+                    <p class="card-text">Descargar la tabla con todos los jugadores en formato csv</p>
+                    <a class="btn btn-primary" (click)="downloadcsv()">Descarga del archivo con XLSX</a>
+                    <br>
+                    <br>
+                    <a class="btn btn-primary" (click)="downloadcsvWithFS()">Descarga del archivo con FS</a>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card text-center mb-3">
+                <div class="card-header">
+                    Cargar tabla
+                </div>
+                <div class="card-body">
+                    <p class="card-text">Carga tu tabla en formato csv</p>
+                    <a class="btn btn-primary" [routerLink]="['/players/update']" routerLinkActive="router-link-active"
+                        ariaCurrentWhenActive="page">Ir</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<hr>

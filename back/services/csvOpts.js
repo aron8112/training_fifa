@@ -13,7 +13,7 @@ const downloadWithFS = async () => {
 
   const csv = await converter.json2csv(data);
 
-  let fileName = `fifaPlayers_${Date.now()}.csv`;
+  let fileName = `fifaPlayers_fs2024.csv`;
 
   await writeFile(`${dirSave}/${fileName}`, csv, 'utf8', function (err) {
     if (err) {

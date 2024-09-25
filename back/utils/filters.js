@@ -10,7 +10,7 @@ const WHERE_SHORT_QUERY = [
   'overall',
   'potential',
   'age',
-  'player traits',
+  'player_traits',
 ];
 
 //CHECK SEARCH COLUMN IS ALLOWED

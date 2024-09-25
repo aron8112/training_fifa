@@ -9,7 +9,7 @@ const exportCSVwithFS = async (req, res) => {
   try {
     let sendCSV = await csvOptServices.downloadWithFS();
     res.status(200).sendFile(sendCSV);
-    fs.unlinkSync(sendCSV);
+    // fs.unlinkSync(sendCSV);
   } catch (error) {
     res.status(400).json({
       status: error.status,

@@ -1,0 +1,15 @@
+<p>Player profile</p>
+@if(errorBool === false){
+
+@defer (on viewport) {
+<app-player-chart [labels]="labels" [values]="values" />
+}@placeholder {
+<div class="placeholder">
+    <h1>Loading</h1>
+    <h4>Please wait</h4>
+</div>
+}
+}
+@if(errorBool === true){
+<app-internal-server-error [error]="errorMessage" />
+}

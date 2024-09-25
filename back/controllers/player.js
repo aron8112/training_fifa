@@ -43,6 +43,7 @@ const pagination = async (req, res) => {
 };
 
 const findOneOrMore = async (req, res) => {
+  console.log(req.query);
   let { filter, search, exact, page } = req.query;
   // If not declared search will be similar by default
   if (!exact) exact = false;

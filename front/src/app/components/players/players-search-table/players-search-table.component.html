@@ -1,0 +1,66 @@
+<div class="container">
+    <h1> Búsqueda de Jugadores</h1>
+    <hr>
+    <br>
+    <form [formGroup]="searchForm" (ngSubmit)="onSubmit()">
+        <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Buscar según</label>
+            <select name="filter" id="filter" class="form-select" formControlName="searchFilter">
+                <option selected disabled>Selecciona una opción</option>
+                <option value="long_name">Nombre</option>
+                <option value="club_name">Club</option>
+                <option value="player_positions">Posición</option>
+                <option value="nationality_name">Nacionalidad</option>
+                <option value="fifa_version">Versión de FIFA</option>
+                <option value="overall">Overall</option>
+                <option value="potential">Potencial</option>
+                <option value="age">Edad</option>
+                <option value="player_traits">Caracteristícas del jugador</option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Especifica la búsqueda</label>
+            <input class="form-control" type="text" placeholder="Indica qué estás buscando"
+                aria-label="buscar según ..." formControlName="searchBy">
+        </div>
+        <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">¿Es exacto?</label>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="yes" id="flexCheckDefault"
+                    formControlName="searchExact">
+                <label class="form-check-label" for="flexCheckDefault">
+                    Si
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="no" id="flexCheckDefault"
+                    formControlName="searchExact">
+                <label class="form-check-label" for="flexCheckDefault">
+                    No
+                </label>
+            </div>
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                <button class="btn btn-primary me-md-2" type="submit">Buscar</button>
+            </div>
+        </div>
+    </form>
+    <br>
+    <table class="table table-hover" [hidden]="isTableSet">
+        <thead>
+            <th>Nombre</th>
+            <th>Club</th>
+        </thead>
+        <tbody>
+            <pre>{{searchPlayers}}</pre>
+            <tr>
+
+            </tr>
+        </tbody>
+        <tfoot>
+            <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+                <button class="btn btn-primary" type="button">Atrás</button>
+                <button class="btn btn-primary" type="button">Siguiente</button>
+            </div>
+        </tfoot>
+    </table>
+</div>

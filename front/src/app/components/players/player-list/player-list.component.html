@@ -1,0 +1,18 @@
+<div class="title-header">
+    <h1>Jugadores disponibles</h1>
+</div>
+<section class="list-players">
+    @if (players$ | async; as players) {
+    @for (player of players; track player.id) {
+    @defer (on viewport) {
+    <app-players-card [players]="player" [playerInfo]="playerInfo[player.id]" />
+    } @placeholder {
+    <div class="placeholder">
+        <h1>Loading</h1>
+        <h4>Please wait</h4>
+    </div>
+    }
+    }
+    }
+</section>
+<!-- (loaded)="makeApiCall($event)" -->

@@ -1,0 +1,13 @@
+player-list {
+    flex: 1 1 250px;
+    /* Las tarjetas ocupan al menos 250px */
+    width: 300px;
+    /* Limita el tamaño máximo de cada tarjeta */
+    background-color: #fff;
+    border: 1px solid #e43030;
+    border-radius: 10px;
+    /* overflow: hidden; */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+    align-content: center;
+}

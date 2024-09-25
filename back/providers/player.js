@@ -50,8 +50,8 @@ const findOneOrMorePlayers = async (param1, param2, param3, param4) => {
   whereCond[param1] = param2;
 
   // If search is similar
-  if (!param3) {
-    whereCond[param1] = { [Op.like]: `%${param2.toLowerCase()}%` };
+  if (param3 === false) {
+    whereCond[param1] = { ['Op.like']: `%${param2.toLowerCase()}%` };
   } else {
     // If we need an exact search
     whereCond[param1] = {
@@ -65,11 +65,13 @@ const findOneOrMorePlayers = async (param1, param2, param3, param4) => {
 
   //Query
   const playersFounded = await PlayerModel.findAll({
-    attributes: WHERE_SHORT_QUERY,
+    // attributes: WHERE_SHORT_QUERY,
     where: whereCond,
-    limit: parseInt(limit),
     offset: offset,
+    limit: parseInt(limit),
+    raw: true,
   });
+  console.log(whereCond);
 
   return playersFounded;
 };

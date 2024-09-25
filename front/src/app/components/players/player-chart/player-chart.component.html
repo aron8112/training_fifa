@@ -1,0 +1,8 @@
+@defer (on viewport) {
+<canvas baseChart [data]="radarChartData" [options]="radarChartOptions" [type]="'bar'"> </canvas>
+<p>player-chart works!</p>
+<pre>{{ labels | json }}</pre>
+<pre>{{ values | json }}</pre>
+} @placeholder {
+<h1>loading</h1>
+}
