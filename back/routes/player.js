@@ -6,6 +6,7 @@ const { authenticateUser, authorizeUser } = require('../middlewares/authenticati
 
 //Show all players with pagination
 app.get('/', playerController.pagination);
+app.get('/all', playerController.getAll);
 
 /**
  * @query_search

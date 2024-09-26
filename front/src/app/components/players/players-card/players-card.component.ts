@@ -30,7 +30,7 @@ export class PlayersCardComponent {
 
   goToProfile(id: any) {
     console.log(typeof id);
-    this.router.navigate(['/profile'], {
+    this.router.navigate(['/players/profile'], {
       queryParams: { id: id },
       queryParamsHandling: 'merge',
     });

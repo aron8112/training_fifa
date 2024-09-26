@@ -1,23 +1,24 @@
 @let playerLocal = players();
 <!-- @let playerInfoLocal = playerInfo(); -->
 
-<div>
+<div class="container" style="margin: 10px">
     @if (playerLocal) {
-    <div class="card mb-3 player-list text-center" style="max-width: 540px;">
+    <div class="card h-100 text-center" style="border-radius: 30px;">
         <div class="row g-0">
-            <div class="col-md-4">
+            <div class="col-md-4" style="border-radius: 60px; border: 1px solid gray; width: 100;">
                 <img class="img-fluid rounded-start" [ngSrc]="playerLocal.player_face_url" [alt]="playerLocal.long_name"
-                    width="200" height="200" />
+                    width="150" height="150" style="border-radius: 30px;" />
             </div>
             <div class="col-md-8">
                 <div class="card-body player-list ">
                     <h2 class="card-title">{{ playerLocal.long_name }}</h2>
                     <h4 class="card-text">{{ playerLocal.club_name}}</h4>
                     <ul class="list-group list-group-flush">
-                        <a (click)="goToProfile(playerLocal.id)" class="btn btn-primary">Ver
-                            más</a>
-                        <p>{{playerLocal.id}}</p>
                     </ul>
+                </div>
+                <div class="card-footer" style="border-radius: 26px;">
+                    <a (click)="goToProfile(playerLocal.id)" class="btn btn-primary">Ver
+                        más</a>
                 </div>
             </div>
         </div>

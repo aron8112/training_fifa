@@ -17,15 +17,19 @@ export class PlayerListComponent {
   private playerApiCall = inject(PlayerService);
   players$: Observable<Players[]> = this.playerApiCall.getPlayers();
   playerInfo: Record<string, Players> = {};
+  page: number = 1;
 
   getPlayers(): Observable<Players[]> {
     return this.playerApiCall.getPlayers();
   }
-  // async makeApiCall(url: string) {
-  //   let player = await firstValueFrom(
-  //     this.playerApiCall.getPlayerInformation(url)
-  //   );
 
-  //   this.playerInfo[player.id] = player;
-  // }
+  previousPage(): Observable<Players[]> {
+    this.page -= 1;
+    return (this.players$ = this.playerApiCall.getPlayersPages(this.page));
+  }
+
+  nextPage(): Observable<Players[]> {
+    this.page += 1;
+    return (this.players$ = this.playerApiCall.getPlayersPages(this.page));
+  }
 }

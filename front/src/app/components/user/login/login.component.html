@@ -1,14 +1,22 @@
-<p>login works!</p>
-<br>
-<br>
-<br>
-<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-    <label for="email">Email: </label>
-    <input id="email" type="text" formControlName="email">
-    <label for="Password">Password: </label>
-    <input id="Password" type="text" formControlName="password">
-    <button type="submit" [disabled]="!loginForm.valid">Log in</button>
-</form>
+<div class="cont" style="align-items: center;">
+    <h2 class="text-center">Iniciar sesión</h2>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <hr>
+        <div class="mb-3">
+            <label class="form-label" for="email">Email: </label>
+            <input class="form-control" id="email" type="text" formControlName="email">
+        </div>
+        <div class="mb-3">
+            <label for="Password">Password: </label>
+            <input class="form-control" id="Password" type="text" formControlName="password">
+        </div>
+        <hr>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+            <button class="btn btn-primary" type="submit" [disabled]="!loginForm.valid">Log in</button>
+        </div>
+    </form>
+
+</div>
 @if(errorBool){
 <p> {{errorMessage}}</p>
 }

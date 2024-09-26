@@ -48,8 +48,15 @@ const findOneOrMore = async (req, res) => {
   // If not declared search will be similar by default
   if (!exact) exact = false;
   if (!page) page = 1;
-  if (!checkAllowedFields(filter)) throw new CustomError('Forbidden', 403);
+  if (!checkAllowedFields(filter)) {
+    res.status(403).json({
+      status: 'Forbidden',
+      error: 'Unable to process the request',
+    });
+    return;
+  }
   try {
+    console.log('filter: ', filter);
     const onePlayer = await playerServices.findOneOrMorePlayers(filter, search, exact, page);
     res.status(200).json(onePlayer);
   } catch (error) {
@@ -103,11 +110,24 @@ const deleteById = async (req, res) => {
 };
 
 const newPlayer = async (req, res) => {
+  console.log(req.body);
   try {
     const createNewPlayer = await playerServices.createOne(req.body.newPlayer);
     res
       .status(201)
       .json({ status: 'Created', message: `New player ${createNewPlayer.long_name} was created` });
+  } catch (error) {
+    res.status(400).json({
+      status: error.statusCode,
+      error: error.message,
+    });
+  }
+};
+
+const getAll = async (req, res) => {
+  try {
+    const allPlayers = await playerServices.allData();
+    res.status(200).json(allPlayers);
   } catch (error) {
     res.status(400).json({
       status: error.statusCode,
@@ -126,4 +146,5 @@ module.exports = {
   updateById,
   deleteById,
   newPlayer,
+  getAll,
 };

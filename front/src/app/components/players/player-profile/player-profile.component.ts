@@ -7,7 +7,7 @@ import {
 import { ActivatedRoute } from '@angular/router';
 import { Players } from '../../../core/interfaces/Iplayers';
 import { PlayerService } from '../../../core/services/player-service.service';
-import { Observable, pipe } from 'rxjs';
+import { Observable, pipe, tap } from 'rxjs';
 import { AsyncPipe } from '@angular/common';
 import { PlayerChartComponent } from '../player-chart/player-chart.component';
 import { InternalServerErrorComponent } from '../../utils/internal-server-error/internal-server-error.component';
@@ -22,12 +22,12 @@ import { InternalServerErrorComponent } from '../../utils/internal-server-error/
 })
 export class PlayerProfileComponent implements OnInit {
   private playerApiCall = inject(PlayerService);
-  private id: number = 0;
-  // player$: Observable<Players> | null = null;
+  private id = 1;
+  player$: Observable<any> = this.getPlayerById(this.id);
 
   //valores a pasar para el gráfico
   labels: string[] = [];
-  values: any[] = [];
+  data: any[] = [];
 
   //Errores
   errorBool: Boolean = false;
@@ -41,19 +41,34 @@ export class PlayerProfileComponent implements OnInit {
         // console.log(`params in player profile: ${params.id}`);
         // debugger;
         this.id = params.id;
+        console.log(this.id);
       },
       error: (error) => {
         this.errorBool = true;
         this.errorMessage = error;
       },
-      // , complete: () => (this.player$ = this.getPlayerById(this.id)),
+      // complete: () =>
+      // this.getPlayerById(this.id).pipe(tap((data) => console.log(data))),
     });
-    // this.player$ = this.playerApiCall.getPlayerById(this.id);
-    // this.setPlayerInfo();
-    // console.log(this.player$);
   }
 
-  getPlayerById(id: number) {
-    return this.playerApiCall.getPlayerById(id).pipe();
+  getPlayerById(id: number): Observable<any> {
+    return this.playerApiCall.getPlayerById(id);
   }
 }
+
+//   subscribe({
+//   next: (response: Players) => {
+//     Object.entries(response).forEach(([key, values]) => {
+//       this.data.push(values);
+//       this.labels.push(key);
+//     });
+//     console.log();
+//   },
+//   error: (error) => console.log(error),
+//   complete: () => console.log('Complete'),
+// });
+// console.log(this.player$);
+// this.player$ = this.playerApiCall.getPlayerById(this.id);
+// this.setPlayerInfo();
+// console.log(this.player$);

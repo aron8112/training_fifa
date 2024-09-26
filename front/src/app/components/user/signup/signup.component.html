@@ -1,1 +1,31 @@
-<p>signup works!</p>
+<div class="cont" style="align-items: center;">
+    <h2 class="text-center">Nuevo usuario</h2>
+    <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
+        <hr>
+        <div class="mb-3">
+            <label class="form-label" for="email">Nombre: </label>
+            <input class="form-control" id="text" type="text" formControlName="name">
+        </div>
+        <div class="mb-3">
+            <label class="form-label" for="email">Email: </label>
+            <input class="form-control" id="email" type="text" formControlName="email">
+        </div>
+        <div class="mb-3">
+            <label for="Password">Password: </label>
+            <input class="form-control" id="Password" type="password" formControlName="password">
+            <small>Más de 8 caracteres, que incluyan: mayúsculas, minúsculas, números y un caracter especial</small>
+        </div>
+        <div class="mb-3">
+            <label for="Password">Confirme su Password: </label>
+            <input class="form-control" id="Password2" type="password" formControlName="password2">
+            <div class="error-message" *ngIf="signUpForm.errors?.['PasswordNoMatch']">
+                Password does'nt match.
+            </div>
+        </div>
+        <hr>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+            <button class="btn btn-primary" type="submit" [disabled]="!signUpForm.valid">Crear nuevo usuario</button>
+        </div>
+    </form>
+
+</div>

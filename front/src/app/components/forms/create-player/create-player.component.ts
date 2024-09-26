@@ -1,13 +1,70 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  inject,
+  output,
+} from '@angular/core';
+import {
+  FormGroup,
+  FormControl,
+  FormBuilder,
+  Validators,
+  ReactiveFormsModule,
+} from '@angular/forms';
+import { PlayerService } from '../../../core/services/player-service.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-create-player',
   standalone: true,
-  imports: [],
+  imports: [ReactiveFormsModule],
   templateUrl: './create-player.component.html',
   styleUrl: './create-player.component.css',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CreatePlayerComponent {
+  playerApiService: PlayerService = inject(PlayerService);
+  newPlayerForm: FormGroup = new FormGroup({
+    long_name: new FormControl('', [Validators.required]),
+    fifa_version: new FormControl('', [Validators.required]),
+    fifa_update: new FormControl('', [Validators.required]),
+    player_positions: new FormControl('', [Validators.required]),
+    player_face_url: new FormControl('', [Validators.required]),
+    overall: new FormControl('', [Validators.required]),
+    potential: new FormControl('', [Validators.required]),
+    age: new FormControl('', [Validators.required]),
+    // club_name: new FormControl(null),
+    // nationality_name: new FormControl(null),
+    // value_eur: new FormControl(null),
+    // wage_eur: new FormControl(null),
+  });
 
+  //Errores?
+  errorBool: Boolean = false;
+  errorMessage: string = '';
+
+  constructor(private fb: FormBuilder) {}
+
+  ngOnInit(): void {}
+
+  onSubmit() {
+    let body = {
+      user: 'pepe',
+      newPlayer: {
+        ...this.newPlayerForm.value,
+      },
+      isNew: true,
+    };
+    console.log(body);
+    // this.playerApiService.createNewPlayer(body);
+    this.playerApiService.createNewPlayer(body).subscribe({
+      next: (data) => {
+        console.log(data);
+      },
+      error: (error) => console.log(error),
+      complete: () => {
+        console.log('Query completed');
+      },
+    });
+  }
 }

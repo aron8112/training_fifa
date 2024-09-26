@@ -24,6 +24,10 @@ export class ApiService {
     return this.http.post(`${this.authUrl}/${login}`, data);
   }
 
+  signUpCall(url: string, data: any) {
+    return this.http.post(`${this.authUrl}/${url}`, data);
+  }
+
   getCSV(url: string) {
     // let token = localStorage.getItem('token');
     return this.http.get(`${this.url}/${url}`, {

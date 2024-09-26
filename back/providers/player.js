@@ -48,10 +48,10 @@ const pagination = async (limit, offset) => {
 const findOneOrMorePlayers = async (param1, param2, param3, param4) => {
   const whereCond = {};
   whereCond[param1] = param2;
-
+  console.log('columnas que busca', whereCond[param1]);
   // If search is similar
-  if (param3 === false) {
-    whereCond[param1] = { ['Op.like']: `%${param2.toLowerCase()}%` };
+  if ((param3 === 'false') | (param3 === false)) {
+    whereCond[param1] = { [Op.like]: `%${param2.toLowerCase()}%` };
   } else {
     // If we need an exact search
     whereCond[param1] = {
@@ -65,8 +65,8 @@ const findOneOrMorePlayers = async (param1, param2, param3, param4) => {
 
   //Query
   const playersFounded = await PlayerModel.findAll({
-    // attributes: WHERE_SHORT_QUERY,
-    where: whereCond,
+    attributes: WHERE_SHORT_QUERY,
+    where: [whereCond],
     offset: offset,
     limit: parseInt(limit),
     raw: true,
@@ -104,8 +104,8 @@ const updatePlayer = async (key, value, id) => {
 
 const raw_data = async () => {
   let listAll = await PlayerModel.findAll({
-    limit: 19,
     raw: true,
+    limit: 10,
   });
   return listAll;
 };

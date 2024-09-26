@@ -19,7 +19,7 @@ export class HeaderComponent implements OnInit {
     if (getToken) {
       let payload = JSON.parse(atob(getToken.split('.')[1]));
       this.user = payload.name;
-      console.log(payload);
+      // console.log(payload);
       this.isLoggedIn = true;
     }
   }

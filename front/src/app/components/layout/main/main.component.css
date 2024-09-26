@@ -1,0 +1,20 @@
+.container {
+    /* background: rgb(13, 81, 216);
+    background: linear-gradient(16deg, rgba(13, 81, 216, 1) 0%, rgba(9, 9, 121, 1) 35%, rgba(0, 179, 255, 1) 100%); */
+    margin-bottom: 20px;
+}
+
+section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    /* background-color: hsla(243, 58%, 87%, 0.55); */
+    border-radius: 30px;
+}
+
+#img-grande {
+    height: 400px;
+    width: auto;
+    justify-content: center;
+}

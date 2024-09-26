@@ -26,6 +26,15 @@ export class PlayerService {
     return this.http.get(this.playerUrl);
   }
 
+  getAll(): Observable<any> {
+    return this.http.get(`${this.playerUrl}/all`);
+  }
+
+  getPlayersPages(page: number): Observable<any> {
+    console.log('cambiar a pagina', page);
+    return this.http.get(`${this.playerUrl}?page=${page}`);
+  }
+
   getPlayerInformation(url: string): Observable<any> {
     return this.http.get(url);
   }
@@ -47,14 +56,22 @@ export class PlayerService {
       `${this.playerUrl}/search?filter=${column}&search=${search}&exact=${exact}&page=${page}`
     );
     return this.http.get(
-      `${
-        this.playerUrl
-      }/search?filter=${column}&search=${search}&exact=${exact}&page=${1}`,
+      `${this.playerUrl}/search?filter=${column}&search=${search}&exact=${exact}&page=${page}`,
       {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       }
     );
+  }
+
+  createNewPlayer(body: any) {
+    let token = localStorage.getItem('token');
+    console.log('body from service: ', body);
+    return this.http.post(`http://localhost:5000/players/create`, body, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
   }
 }

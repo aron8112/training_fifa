@@ -19,7 +19,7 @@ const get3Players = async () => {
 };
 
 const pagination = async (queryparams) => {
-  limit = 10;
+  limit = 12;
   offset = parseInt(limit) * (parseInt(queryparams) - 1);
   console.log(offset);
 
@@ -84,6 +84,10 @@ const deleteOne = async (id) => {
   if (deleted) return true;
 };
 
+const allData = async () => {
+  return await playerProvider.raw_data();
+};
+
 module.exports = {
   player,
   getMetadataFromTable,
@@ -94,4 +98,5 @@ module.exports = {
   createOne,
   updateOne,
   deleteOne,
+  allData,
 };

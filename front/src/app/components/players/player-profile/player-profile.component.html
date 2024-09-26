@@ -1,8 +1,8 @@
 <p>Player profile</p>
-@if(errorBool === false){
 
+@if(player$ | async; as player) {
 @defer (on viewport) {
-<app-player-chart [labels]="labels" [values]="values" />
+<app-player-chart />
 }@placeholder {
 <div class="placeholder">
     <h1>Loading</h1>
@@ -10,6 +10,5 @@
 </div>
 }
 }
-@if(errorBool === true){
-<app-internal-server-error [error]="errorMessage" />
-}
+<!-- [playerData]="player" -->
+<!-- [data]="data" [labels]="labels" -->

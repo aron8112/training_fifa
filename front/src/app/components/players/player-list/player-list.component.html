@@ -1,11 +1,15 @@
-<div class="title-header">
-    <h1>Jugadores disponibles</h1>
-</div>
-<section class="list-players">
+<div class="container">
+    <div class="title-header text-center">
+        <h1>Jugadores disponibles</h1>
+    </div>
+    <!-- <section class="list-players"> -->
+    <hr>
+
     @if (players$ | async; as players) {
     @for (player of players; track player.id) {
     @defer (on viewport) {
     <app-players-card [players]="player" [playerInfo]="playerInfo[player.id]" />
+    <br>
     } @placeholder {
     <div class="placeholder">
         <h1>Loading</h1>
@@ -13,6 +17,13 @@
     </div>
     }
     }
+    <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+        <button class="btn btn-primary" type="button" [disabled]="page<=1" (click)="previousPage()">Anterior</button>
+        <button class="btn btn-primary" type="button" (click)="nextPage()">Siguiente</button>
+    </div>
     }
-</section>
+    <hr>
+</div>
+
+<!-- </section> -->
 <!-- (loaded)="makeApiCall($event)" -->
