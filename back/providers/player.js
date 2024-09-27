@@ -102,6 +102,11 @@ const updatePlayer = async (key, value, id) => {
   return updatedPlayer;
 };
 
+const updateOneFieldPlayer = async (newData, id) => {
+  let updatedPlayer = await PlayerModel.update(newData, { where: { id: id } });
+  return updatedPlayer;
+};
+
 const raw_data = async () => {
   let listAll = await PlayerModel.findAll({
     raw: true,
@@ -132,4 +137,5 @@ module.exports = {
   raw_data,
   countPlayers,
   deletePlayer,
+  updateOneFieldPlayer,
 };

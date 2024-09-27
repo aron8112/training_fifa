@@ -23,8 +23,8 @@ import { InternalServerErrorComponent } from '../../utils/internal-server-error/
 export class PlayerProfileComponent implements OnInit {
   private playerApiCall = inject(PlayerService);
   private id = 1;
-  player$: Observable<any> = this.getPlayerById(this.id);
-
+  player$: Observable<Players> = this.getPlayerById(this.id);
+  toShow: any;
   //valores a pasar para el gráfico
   labels: string[] = [];
   data: any[] = [];
@@ -47,27 +47,38 @@ export class PlayerProfileComponent implements OnInit {
         this.errorBool = true;
         this.errorMessage = error;
       },
-      // complete: () =>
-      // this.getPlayerById(this.id).pipe(tap((data) => console.log(data))),
+      complete: () => console.log('complete'),
     });
   }
 
-  getPlayerById(id: number): Observable<any> {
-    return this.playerApiCall.getPlayerById(id);
+  getPlayerById(id: number): any {
+    this.playerApiCall.getPlayerById(id).subscribe({
+      next: (response: Players) => {
+        const selectedKeys = [
+          'pace',
+          'shooting',
+          'passing',
+          'dribbling',
+          'defending',
+          'physics',
+        ];
+        this.toShow = response;
+        Object.entries(response).forEach(([key, values]) => {
+          if (selectedKeys.includes(key)) {
+            this.data.push(values);
+            this.labels.push(key);
+          }
+        });
+        // console.log(this.data);
+        // console.log(this.labels);
+      },
+      error: (error) => console.log(error),
+      complete: () => console.log('Complete'),
+    });
   }
 }
 
-//   subscribe({
-//   next: (response: Players) => {
-//     Object.entries(response).forEach(([key, values]) => {
-//       this.data.push(values);
-//       this.labels.push(key);
-//     });
-//     console.log();
-//   },
-//   error: (error) => console.log(error),
-//   complete: () => console.log('Complete'),
-// });
+//
 // console.log(this.player$);
 // this.player$ = this.playerApiCall.getPlayerById(this.id);
 // this.setPlayerInfo();

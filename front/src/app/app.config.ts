@@ -6,7 +6,10 @@ import { provideRouter, withComponentInputBinding } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { provideCharts, withDefaultRegisterables } from 'ng2-charts';
 import { routes } from './app.routes';
-import { provideClientHydration } from '@angular/platform-browser';
+import {
+  provideClientHydration,
+  withEventReplay,
+} from '@angular/platform-browser';
 import {
   HTTP_INTERCEPTORS,
   provideHttpClient,
@@ -18,9 +21,8 @@ export const appConfig: ApplicationConfig = {
   providers: [
     ReactiveFormsModule,
     provideRouter(routes, withComponentInputBinding()),
-    provideClientHydration(),
+    provideClientHydration(withEventReplay()),
     provideHttpClient(withFetch()),
-    // { provide: HTTP_INTERCEPTORS, useClass: reqInterceptor, multi: true },
     provideExperimentalZonelessChangeDetection(),
     provideCharts(withDefaultRegisterables()),
   ],

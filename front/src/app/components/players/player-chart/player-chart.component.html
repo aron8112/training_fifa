@@ -1,7 +1,11 @@
-@defer (on viewport) {
-<!-- <canvas baseChart [data]="radarChartData" [options]="radarChartOptions" [type]="'bar'"> </canvas> -->
-<canvas id="myRadar">{{ chart }}</canvas>
-
-} @placeholder {
-<h1>loading</h1>
-}
+@let labelsChart = chartLabels();
+@let dataChart = chartData();
+@let player = playerData();
+<div class="container">
+    @if(labelsChart && dataChart){
+    <pre>{{labelsChart}}</pre>
+    <pre>{{dataChart}}</pre>
+    <canvas id="playerRadar" width="120" height="120">{{ chart }}</canvas>
+    }
+    <p>{{player}}</p>
+</div>

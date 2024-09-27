@@ -63,10 +63,11 @@ export class SignupComponent {
     // de desarrollo
     localStorage.removeItem('auth_token');
     const body = {
+      name: this.signUpForm.value.name,
       email: this.signUpForm.value.email,
-      password: this.signUpForm.value.password,
+      password: this.signUpForm.value.password.toString(),
     };
-
+    console.log(typeof body.password);
     this.apiService.signUpCall('signup', body).subscribe({
       next: (response: any) => {
         let token = response.token;

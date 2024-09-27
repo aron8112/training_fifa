@@ -5,8 +5,9 @@
     <form [formGroup]="searchForm" (ngSubmit)="onSubmit()">
         <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">Buscar según</label>
-            <select name="filter" id="filter" class="form-select" formControlName="searchFilter">
-                <option selected disabled>Selecciona una opción</option>
+            <select name="filter" id="filter" class="form-select" formControlName="searchFilter"
+                aria-placeholder="Selecciona una opción">
+                <option value="" disabled>Selecciona una opción</option>
                 <option value="long_name">Nombre</option>
                 <option value="club_name">Club</option>
                 <option value="player_positions">Posición</option>
@@ -24,10 +25,11 @@
                 aria-label="buscar según ..." formControlName="searchBy">
         </div>
         <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">¿Es exacto?</label>
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="true" id="flexCheckDefault"
-                    formControlName="searchExact">
+            <div class="input-group mb-3">
+                <span class="input-group-text">Es exacto
+                    <input class="form-check-input" type="checkbox" value="true" id="flexCheckDefault"
+                        formControlName="searchExact" style="margin: 6px;">
+                </span>
             </div>
             <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                 <button class="btn btn-primary me-md-2" type="submit" [disabled]="!searchForm.valid">Buscar</button>
@@ -35,32 +37,37 @@
         </div>
     </form>
     <br>
-    <table class="table table-hover">
-        <thead>
-            <th>Nombre</th>
-            <th>Versión FIFA</th>
-            <th>Club</th>
-            <td>Pie hábil</td>
-            <th>Posición/es</th>
-            <th></th>
-        </thead>
-        <tbody>
-            <tr *ngFor="let item of searchPlayers;">
-                <td>{{item.long_name}}</td>
-                <td>{{item.fifa_version}}</td>
-                <td>{{item.club_name}}</td>
-                <td>{{item.player_positions}}</td>
-                <td>{{item.preferred_foot}}</td>
-                <td><button>Ir</button></td>
-                <td><button type="button">Editar</button></td>
-            </tr>
-        </tbody>
-        <tfoot>
-            <div class="d-grid gap-2 d-md-flex justify-content-md-center">
-                <button class="btn btn-primary" type="button" [disabled]="page<=1"
-                    (click)="previousPage()">Anterior</button>
-                <button class="btn btn-primary" type="button" (click)="nextPage()">Siguiente</button>
-            </div>
-        </tfoot>
-    </table>
+    <section class="container" *ngIf="searchPlayers">
+        <table class="table table-hover">
+            <thead>
+                <th>Nombre</th>
+                <th>Versión FIFA</th>
+                <th>Club</th>
+                <th>Posición/es</th>
+                <th>Pie hábil</th>
+                <th></th>
+            </thead>
+            <tbody>
+                <tr *ngFor="let player of searchPlayers; trackBy: trackByPlayerId">
+                    <td>{{player.long_name}}</td>
+                    <td>{{player.fifa_version}}</td>
+                    <td>{{player.club_name}}</td>
+                    <td>{{player.player_positions}}</td>
+                    <td>{{player.preferred_foot}}</td>
+                    <td><button class="btn btn-info" (click)="goToProfile(player.id, 'profile')">Ver stats</button></td>
+                    <td><button class="btn btn-warning" (click)="goToProfile(player.id, 'update')">Edit stats</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <hr>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+            <button class="btn btn-primary" type="button" [disabled]="page<=1"
+                (click)="movePage(false)">Anterior</button>
+            <button class="btn btn-primary" type="button" (click)="movePage(true)">Siguiente</button>
+        </div>
+        <hr>
+        <br>
+    </section>
+
 </div>

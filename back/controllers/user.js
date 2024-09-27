@@ -16,6 +16,7 @@ const login = async (req, res) => {
 };
 
 const signup = async (req, res) => {
+  console.log(req.body);
   try {
     let createUser = await userServices.signIn(req.body);
     res.status(201).json({

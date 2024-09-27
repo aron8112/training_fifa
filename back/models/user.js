@@ -7,8 +7,8 @@ const UserModel = sequelize.define(
     id: {
       primaryKey: true,
       type: DataTypes.INTEGER,
-      allowNull: false,
-      autoincrement: true,
+      unique: true,
+      autoIncrement: true,
     },
     name: {
       type: DataTypes.STRING,

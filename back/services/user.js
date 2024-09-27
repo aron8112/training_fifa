@@ -22,14 +22,8 @@ const login = async (data) => {
 };
 
 const signIn = async (data) => {
-  let newUserData = {
-    name: data.name,
-    email: data.email,
-    password: async () => await encryptPassword(data.password),
-  };
-
-  let newUser = await userProvider.createNew(newUserData);
-  // console.log(newUser);
+  // console.log(newUserData);
+  let newUser = await userProvider.createNew(data);
 
   if (newUser) {
     const token = tokenSign(newUser);

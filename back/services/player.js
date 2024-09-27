@@ -59,9 +59,13 @@ const updateOne = async (newData, id) => {
   //Update many fields?
   // console.log('New Data: ', newData, ' type is: ', typeof newData);
   // console.log(Object.entries(newData));
-  console.log('Updating more than 1 field: ', Object.keys(newData).length > 1);
+  console.log('Updating more than 1 field: ', Object.entries(newData));
   if (lookForThePlayer) {
-    if (Object.keys(newData).length > 1) {
+    if ((Object.keys(newData).length = 1)) {
+      console.log(`controller update: ${typeof newData}`);
+      let updatedPlayer = await playerProvider.updateOneFieldPlayer(newData, idInt);
+      return updatedPlayer;
+    } else {
       let updated = [];
       if (lookForThePlayer) {
         Object.entries(newData).forEach(async ([key, value]) => {
@@ -70,9 +74,6 @@ const updateOne = async (newData, id) => {
         });
         return updated;
       }
-    } else {
-      let updatedPlayer = await playerProvider.updatePlayer(newData, idInt);
-      return updatedPlayer;
     }
   } else {
     throw new Error('Player not found!');

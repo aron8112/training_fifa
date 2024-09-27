@@ -18,6 +18,7 @@ import {
 import { PlayerService } from '../../../core/services/player-service.service';
 import { Observable } from 'rxjs';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-players-search-table',
   standalone: true,
@@ -60,10 +61,12 @@ export class PlayersSearchTableComponent implements OnChanges {
   constructor(
     private fb: FormBuilder,
     private cd: ChangeDetectorRef,
-    private zone: NgZone
+    private zone: NgZone,
+    private router: Router
   ) {}
   ngOnChanges(changes: SimpleChanges): void {
     this.onSubmit();
+    // this.movePage(order: boolean)
   }
 
   ngOnInit(): void {
@@ -80,15 +83,19 @@ export class PlayersSearchTableComponent implements OnChanges {
     return this.playerApiCall.getPlayers();
   }
 
-  previousPage() {
-    this.page -= 1;
+  movePage(command: boolean) {
+    //Cambio de paǵina
+    command ? (this.page += 1) : (this.page -= 1);
     this.queryParams.page = this.page;
+    //Volver jugadores un array vacío --> resultado = sin cambios
+    this.players = [];
     this.playerApiCall.searchFilteredPlayers(this.queryParams).subscribe({
       next: (data) => {
         this.zone.run(() => {
-          // Asegura que la actualización ocurra dentro del ciclo de cambio de Angular
           this.players = data;
-          this.cd.detectChanges(); // Asegúrate de que los cambios se reflejen
+          //detecta los cambios
+          this.cd.markForCheck();
+          // this.cd.detectChanges();
         });
         console.log(data);
       },
@@ -100,56 +107,34 @@ export class PlayersSearchTableComponent implements OnChanges {
     });
   }
 
-  nextPage() {
-    this.page += 1;
-    this.queryParams.page = this.page;
-    this.players = [];
-    this.cd.detectChanges();
-    this.playerApiCall.searchFilteredPlayers(this.queryParams).subscribe({
-      next: (data) => {
-        this.zone.run(() => {
-          // Asegura que la actualización ocurra dentro del ciclo de cambio de Angular
-          this.players = data;
-          // Asegúrate de que los cambios se reflejen
-        });
-        console.log(data);
-      },
-      error: (error) => console.log(error),
-      complete: () => {
-        this.isTableSet = true;
-        this.cd.detectChanges();
-        console.log('Query completed');
-      },
-    });
+  trackByPlayerId(index: number, player: any): number {
+    return player.id;
   }
 
   onSubmit() {
     this.queryParams.column = this.searchForm.value.searchFilter;
     this.queryParams.search = this.searchForm.value.searchBy;
     this.queryParams.exact = this.searchForm.value.searchExact;
-    this.queryParams.page;
+    this.queryParams.page = 1;
     let params = this.queryParams;
     this.playerApiCall.searchFilteredPlayers(params).subscribe({
       next: (data) => {
         console.log(data);
         this.searchPlayers = data;
+        this.cd.markForCheck();
+        // this.cd.detectChanges();
       },
       error: (error) => console.log(error),
       complete: () => {
-        this.cd.detectChanges();
         console.log('Query completed');
       },
     });
   }
+
+  goToProfile(id: any, url: string) {
+    this.router.navigate([`/players/${url}`], {
+      queryParams: { id: id },
+      queryParamsHandling: 'merge',
+    });
+  }
 }
-// this.getPlayers().subscribe({
-//   next: (data) => {
-//     console.log(data);
-//     this.players = data;
-//   },
-//   error: (error) => console.log(error),
-//   complete: () => {
-//     this.isTableSet = true;
-//     console.log('Query completed');
-//   },
-// });

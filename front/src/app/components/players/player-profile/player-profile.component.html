@@ -1,14 +1,10 @@
+@if(!errorBool){
 <p>Player profile</p>
 
 @if(player$ | async; as player) {
-@defer (on viewport) {
-<app-player-chart />
-}@placeholder {
-<div class="placeholder">
-    <h1>Loading</h1>
-    <h4>Please wait</h4>
-</div>
+<!-- <p>{{toShow.club_name}}</p> -->
+<app-player-chart [chartData]="data" [chartLabels]="labels" [playerData]="player" />
 }
+} @else {
+<app-internal-server-error [error]="errorMessage" />
 }
-<!-- [playerData]="player" -->
-<!-- [data]="data" [labels]="labels" -->

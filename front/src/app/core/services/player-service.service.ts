@@ -74,4 +74,14 @@ export class PlayerService {
       },
     });
   }
+
+  updatePlayer(body: any, id: number) {
+    let token = localStorage.getItem('token');
+    console.log('body from service: ', body);
+    return this.http.put(`http://localhost:5000/players/${id}`, body, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+  }
 }
