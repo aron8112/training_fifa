@@ -62,7 +62,9 @@ export class LoginComponent {
       next: (response: any) => {
         let token = response.token;
         console.log(token);
-        localStorage.setItem('token', token);
+        // localStorage.setItem('token', token);
+        this.jwtService.setUser(token);
+        // window.location.reload();
       },
       error: (error) => {
         this.errorBool = true;

@@ -1,10 +1,4 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  input,
-  OnInit,
-  output,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 import { RouterLink, Router, ActivatedRoute } from '@angular/router';
 import { NgOptimizedImage } from '@angular/common';
 import { Players } from '../../../core/interfaces/Iplayers';
@@ -20,16 +14,13 @@ import { Players } from '../../../core/interfaces/Iplayers';
 export class PlayersCardComponent {
   players = input.required<Players>();
   playerInfo = input<Players>();
-  // loaded = output<string>();
 
   constructor(private route: ActivatedRoute, private router: Router) {}
 
-  ngOnInit() {
-    // this.loaded.emit(this.players().player_face_url);
-  }
+  ngOnInit() {}
 
   goToProfile(id: any) {
-    console.log(typeof id);
+    // console.log(typeof id);
     this.router.navigate(['/players/profile'], {
       queryParams: { id: id },
       queryParamsHandling: 'merge',

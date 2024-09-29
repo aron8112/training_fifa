@@ -1,11 +1,69 @@
-@let labelsChart = chartLabels();
-@let dataChart = chartData();
-@let player = playerData();
 <div class="container">
-    @if(labelsChart && dataChart){
-    <pre>{{labelsChart}}</pre>
-    <pre>{{dataChart}}</pre>
-    <canvas id="playerRadar" width="120" height="120">{{ chart }}</canvas>
+    <div *ngIf="isLoading">
+        <app-loading></app-loading>
+    </div>
+    <hr>
+    <div class="row text-center">
+        @if(!!!isLoading){
+        <div class="col-4">
+            <div class="row">
+                <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+                    <button class="btn btn-outline-danger" id="previous" (click)="goToProfile(false)">
+                        < </button>
+                            <button class="btn btn-outline-danger" (click)="goToProfile(true)"> > </button>
+                </div>
+            </div>
+            <hr>
+            <img src="{{player.player_face_url}}"
+                class="img-thumbnail rounded-circle border border-top-0  mx-auto d-block" alt="Foto jugador">
+            <h2>{{player.long_name}}</h2>
+            <h3>{{player.player_positions}}</h3>
+            <h4>{{player.club_name}}</h4>
+            <h5>{{player.nationality_name}}</h5>
+            <hr>
+            <h5>Traits</h5>
+            <p>{{player.player_traits}}</p>
+            <hr>
+            <table class="table table-sm table-borderless table-hover">
+                <thead>
+                    <th>Edad</th>
+                    <th>Altura (cm)</th>
+                    <th>Peso (kg)</th>
+                    <th>Pie hábil</th>
+                </thead>
+                <tbody>
+                    <td>{{player.age}}</td>
+                    <td>{{player.height_cm}}</td>
+                    <td>{{player.weight_kg}}</td>
+                    <td>{{player.preferred_foot}}</td>
+                </tbody>
+            </table>
+            <br>
+            <table class="table table-sm table-borderless table-hover">
+                <thead>
+                    <th>Sueldo (€)</th>
+                    <th>Valor (€)</th>
+                </thead>
+                <tbody>
+                    <td>{{player.wage_eur}}</td>
+                    <td>{{player.value_eur}}</td>
+                </tbody>
+            </table>
+            <br>
+            <div class="d-grid gap-2 mx-auto">
+                <!-- <button class="btn btn-outline-danger" (click)="compareData()">Comparar con otras versiones de
+                    FIFA</button> -->
+            </div>
+        </div>
+        }
+        <div class="col-8">
+            <canvas id="playerRadar" style="margin-left:25px;">{{ chart }}</canvas>
+            <!-- <canvas id="playerRadar2" *ngIf="chart2">{{ chart2 }}</canvas> -->
+        </div>
+    </div>
+    @if(!!!isLoading){
+    <hr>
+
     }
-    <p>{{player}}</p>
 </div>
+<br>

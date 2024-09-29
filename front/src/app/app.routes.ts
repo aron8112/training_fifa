@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
 import { MainComponent } from './components/layout/main/main.component';
 import { PageNotFoundComponent } from './components/utils/page-not-found/page-not-found.component';
-import { authGuard } from './core/guards/auth-guard.guard';
+import { authGuard } from './core/guards/auth.guard';
 
 export const routes: Routes = [
   {
@@ -19,7 +19,7 @@ export const routes: Routes = [
       import('./components/players/player-main/player-main.component').then(
         (mod) => mod.PlayerMainComponent
       ),
-    // canActivate: [authGuard],
+    canActivate: [authGuard],
     data: { title: 'List of players' },
   },
   {
@@ -28,7 +28,7 @@ export const routes: Routes = [
       import('./components/players/player-list/player-list.component').then(
         (mod) => mod.PlayerListComponent
       ),
-    // canActivate: [authGuard],
+    canActivate: [authGuard],
     data: { title: 'List of players' },
   },
   {
@@ -37,6 +37,7 @@ export const routes: Routes = [
       import(
         './components/players/player-profile/player-profile.component'
       ).then((mod) => mod.PlayerProfileComponent),
+    canActivate: [authGuard],
     data: { title: 'Player Profile' },
   },
   {
@@ -45,6 +46,7 @@ export const routes: Routes = [
       import(
         './components/players/players-search-table/players-search-table.component'
       ).then((mod) => mod.PlayersSearchTableComponent),
+    canActivate: [authGuard],
     data: { title: 'Player Profile' },
   },
   {
@@ -53,6 +55,7 @@ export const routes: Routes = [
       import('./components/forms/create-player/create-player.component').then(
         (mod) => mod.CreatePlayerComponent
       ),
+    canActivate: [authGuard],
     data: { title: 'Player Profile' },
   },
   {
@@ -85,6 +88,7 @@ export const routes: Routes = [
       import('./components/user/profile/profile.component').then(
         (mod) => mod.ProfileComponent
       ),
+    canActivate: [authGuard],
     data: { title: 'User Profile' },
   },
   { path: '**', component: PageNotFoundComponent },

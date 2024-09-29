@@ -61,7 +61,7 @@ const findOneOrMorePlayers = async (param1, param2, param3, param4) => {
 
   //Offset
   let limit = 10;
-  let offset = parseInt(param4);
+  let offset = parseInt(limit) * (parseInt(param4) - 1);
 
   //Query
   const playersFounded = await PlayerModel.findAll({

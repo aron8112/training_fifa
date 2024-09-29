@@ -28,7 +28,7 @@ import { Router } from '@angular/router';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PlayersSearchTableComponent implements OnChanges {
-  searchPlayers: null = null;
+  searchPlayers: any = [];
   playerApiCall: PlayerService = inject(PlayerService);
   // optionSelect = FieldToFilterSearch;
   players: Players[] = [];
@@ -88,16 +88,13 @@ export class PlayersSearchTableComponent implements OnChanges {
     command ? (this.page += 1) : (this.page -= 1);
     this.queryParams.page = this.page;
     //Volver jugadores un array vacío --> resultado = sin cambios
-    this.players = [];
     this.playerApiCall.searchFilteredPlayers(this.queryParams).subscribe({
       next: (data) => {
+        this.searchPlayers = [];
         this.zone.run(() => {
-          this.players = data;
-          //detecta los cambios
-          this.cd.markForCheck();
-          // this.cd.detectChanges();
+          this.searchPlayers = data;
+          console.log(data);
         });
-        console.log(data);
       },
       error: (error) => console.log(error),
       complete: () => {
@@ -121,7 +118,7 @@ export class PlayersSearchTableComponent implements OnChanges {
       next: (data) => {
         console.log(data);
         this.searchPlayers = data;
-        this.cd.markForCheck();
+        // this.cd.markForCheck();
         // this.cd.detectChanges();
       },
       error: (error) => console.log(error),

@@ -1,10 +1,3 @@
-@if(!errorBool){
-<p>Player profile</p>
-
-@if(player$ | async; as player) {
-<!-- <p>{{toShow.club_name}}</p> -->
-<app-player-chart [chartData]="data" [chartLabels]="labels" [playerData]="player" />
-}
-} @else {
-<app-internal-server-error [error]="errorMessage" />
-}
+<div class="container">
+    <app-player-chart [id]="id" />
+</div>

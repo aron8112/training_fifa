@@ -25,18 +25,18 @@ import { Observable } from 'rxjs';
 export class CreatePlayerComponent {
   playerApiService: PlayerService = inject(PlayerService);
   newPlayerForm: FormGroup = new FormGroup({
-    long_name: new FormControl('', [Validators.required]),
-    fifa_version: new FormControl('', [Validators.required]),
-    fifa_update: new FormControl('', [Validators.required]),
-    player_positions: new FormControl('', [Validators.required]),
-    player_face_url: new FormControl('', [Validators.required]),
-    overall: new FormControl('', [Validators.required]),
-    potential: new FormControl('', [Validators.required]),
-    age: new FormControl('', [Validators.required]),
-    // club_name: new FormControl(null),
-    // nationality_name: new FormControl(null),
-    // value_eur: new FormControl(null),
-    // wage_eur: new FormControl(null),
+    long_name: new FormControl(null, [Validators.required]),
+    fifa_version: new FormControl(null, [Validators.required]),
+    fifa_update: new FormControl(null, [Validators.required]),
+    player_positions: new FormControl(null, [Validators.required]),
+    player_face_url: new FormControl(null, [Validators.required]),
+    overall: new FormControl(null, [Validators.required]),
+    potential: new FormControl(null, [Validators.required]),
+    age: new FormControl(null, [Validators.required]),
+    club_name: new FormControl(null),
+    nationality_name: new FormControl(null),
+    value_eur: new FormControl(null),
+    wage_eur: new FormControl(null),
   });
 
   //Errores?
@@ -50,9 +50,7 @@ export class CreatePlayerComponent {
   onSubmit() {
     let body = {
       user: 'pepe',
-      newPlayer: {
-        ...this.newPlayerForm.value,
-      },
+      newPlayer: this.removeNullValues(this.newPlayerForm.value),
       isNew: true,
     };
     console.log(body);
@@ -66,5 +64,15 @@ export class CreatePlayerComponent {
         console.log('Query completed');
       },
     });
+  }
+
+  removeNullValues(obj: any) {
+    console.log('obj', obj);
+    Object.entries(obj).forEach(([key, value]) => {
+      if (value === null) {
+        delete obj[key];
+      }
+    });
+    return obj;
   }
 }
