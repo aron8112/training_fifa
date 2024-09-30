@@ -1,0 +1,58 @@
+<div class="container" *ngIf="!response">
+    <h3>Cargue su archivo aquí para visualizar la tabla</h3>
+    <hr>
+    <br>
+    <br>
+    <div class="row">
+        <div class="col-3">
+            <img src="logoForm.png" alt="">
+        </div>
+        <div class="col-6">
+            <br>
+            <div class="container2">
+                <div class="folder">
+                    <div class="front-side">
+                        <div class="tip"></div>
+                        <div class="cover"></div>
+                    </div>
+                    <div class="back-side cover"></div>
+                </div>
+                <label class="custom-file-upload">
+                    <input class="title" type="file" (change)="selectFile($event)" />
+                    Choose a file
+                </label>
+                <hr>
+                <div class="col">
+                    <button class="btn btn-success btn-sm" [hidden]="!currentFile" (click)="upload()">
+                        Upload
+                    </button>
+                </div>
+                @if (message) {
+                <div class="alert alert-secondary" role="alert">{{ message }}</div>
+                }
+            </div>
+        </div>
+        <div class="col-3">
+            <img src="logoForm.png" alt="">
+        </div>
+    </div>
+</div>
+<div class="container" *ngIf="response">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th *ngFor="let head of headers; let i = index">
+                    {{ head }}
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let playerData of dataValues; let j = index">
+                <td *ngFor="let data of playerData">
+                    {{ data }}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<!-- *ngFor="let head of headers" -->

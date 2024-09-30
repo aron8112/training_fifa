@@ -1,0 +1,35 @@
+.bttn {
+    padding: 17px 40px;
+    border-radius: 50px;
+    cursor: pointer;
+    border: 0;
+    background-color: rgb(224, 224, 224);
+    box-shadow: rgb(0 0 0 / 5%) 0 0 8px;
+    letter-spacing: 1.5px;
+    text-transform: capitalize;
+    font-size: 15px;
+    transition: all 0.5s ease;
+    margin: 10px;
+}
+
+.bttn:hover {
+    letter-spacing: 3px;
+    background-color: hwb(54 26% 13%);
+    color: hsl(0, 0%, 100%);
+    box-shadow: hsl(54, 71%, 57%) 0px 7px 29px 0px;
+}
+
+.bttn:active {
+    letter-spacing: 3px;
+    background-color: hsl(54, 71%, 57%);
+    color: hsl(0, 0%, 11%);
+    box-shadow: hsl(54, 71%, 57%) 0px 0px 0px 0px;
+    transform: translateY(10px);
+    transition: 100ms;
+}
+
+
+a {
+    text-decoration: none;
+    color: hsl(0, 0%, 100%);
+}

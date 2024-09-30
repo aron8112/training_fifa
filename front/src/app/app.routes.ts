@@ -91,5 +91,14 @@ export const routes: Routes = [
     canActivate: [authGuard],
     data: { title: 'User Profile' },
   },
+  {
+    path: 'user/upload',
+    loadComponent: () =>
+      import('./components/user/upload/upload.component').then(
+        (mod) => mod.UploadComponent
+      ),
+    canActivate: [authGuard],
+    data: { title: 'Upload File' },
+  },
   { path: '**', component: PageNotFoundComponent },
 ];

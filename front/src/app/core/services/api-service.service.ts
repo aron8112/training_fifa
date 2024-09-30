@@ -37,4 +37,14 @@ export class ApiService {
       responseType: 'blob',
     });
   }
+
+  uploadCSV(file: File): Observable<any> {
+    let token = localStorage.getItem('token');
+    const formData: FormData = new FormData();
+    formData.append('file', file);
+
+    return this.http.post(`${this.url}/docs/upload`, formData, {
+      headers: { Autorization: `Bearer ${token}` },
+    });
+  }
 }

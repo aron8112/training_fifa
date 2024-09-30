@@ -30,6 +30,10 @@ app.get('/download2', csvOptController.exportCSVwithFS);
  *
  * Also @todo: validate and sanitize fields values.
  */
-app.post('/upload', authenticateUser, authorizeUser(['admin']), csvOptController.uploadCSV);
+app.post(
+  '/upload',
+  // , authenticateUser, authorizeUser(['admin'])
+  csvOptController.uploadCSV
+);
 
 module.exports = app;

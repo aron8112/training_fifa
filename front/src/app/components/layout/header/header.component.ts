@@ -29,7 +29,7 @@ export class HeaderComponent implements OnInit {
       // console.log(payload);
       this.isLoggedIn = true;
     }
-    console.log(this.authService.getToken());
+    // console.log(this.authService.getToken());
   }
 
   getUserData(userData: Event) {

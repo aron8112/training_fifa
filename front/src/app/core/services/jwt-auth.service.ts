@@ -41,11 +41,8 @@ export class JWTTokenService {
     this.name = payload.role;
   }
 
-  public isAuthenticated(): Observable<boolean> {
-    if (this.token === '') {
-      return of(false);
-    }
-    return of(true);
+  public isAuthenticated() {
+    localStorage.getItem('token') ? true : false;
   }
 
   logout() {
