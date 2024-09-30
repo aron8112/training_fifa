@@ -1,11 +1,12 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
-        <a class="navbar-brand" [routerLink]="['/']" routerLinkActive="router-link-active"
-            ariaCurrentWhenActive="page">Fifa training Challenge</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        <a class="navbar-brand" [routerLink]="['/']" routerLinkActive="router-link-active" ariaCurrentWhenActive="page">
+            <img src="logofifaEA.png" alt="logo EA - fifa">
+        </a>
+        <!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
-        </button>
+        </button> -->
         <!-- <form class="d-flex" role="search">
             <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
             <button class="btn btn-outline-success" type="submit">Buscar</button>
@@ -13,29 +14,29 @@
         <div class="d-flex flex-row-reverse">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0 " (userLoggedIn)="getUserData($event)">
                 <li class="nav-item">
-                    <a class="nav-link active" [routerLink]="['/players']" routerLinkActive="router-link-active"
-                        ariaCurrentWhenActive="page">Jugadores</a>
+                    <button class="nav-link active" [routerLink]="['/players']" routerLinkActive="router-link-active"
+                        ariaCurrentWhenActive="page">Jugadores</button>
                 </li>
                 @if(isLoggedIn === false){
                 <li class="nav-item">
-                    <a class="nav-link active" [routerLink]=" ['auth/login']" routerLinkActive="router-link-active"
+                    <button class="nav-link active" [routerLink]=" ['auth/login']" routerLinkActive="router-link-active"
                         ariaCurrentWhenActive="page">
                         Iniciar sesión
-                    </a>
+                    </button>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" [routerLink]=" ['auth/signup']" routerLinkActive="router-link-active"
-                        ariaCurrentWhenActive="page">
+                    <button class="nav-link active" [routerLink]=" ['auth/signup']"
+                        routerLinkActive="router-link-active" ariaCurrentWhenActive="page">
                         Registrarse
-                    </a>
+                    </button>
                 </li>
                 }@else {
                 <li class="nav-item">
-                    <a class="nav-link active" [routerLink]="['user/profile']" routerLinkActive="router-link-active"
-                        ariaCurrentWhenActive="page">{{user}}</a>
+                    <button class="nav-link active" [routerLink]="['user/profile']"
+                        routerLinkActive="router-link-active" ariaCurrentWhenActive="page">{{user}}</button>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" (click)="logout()">Log out</a>
+                    <button class="nav-link active" (click)="logout()">Log out</button>
                 </li>
                 }
             </ul>

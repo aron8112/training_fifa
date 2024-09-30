@@ -1,0 +1,15 @@
+button:hover {
+    /* letter-spacing: 3px; */
+    background-color: hsl(54, 71%, 57%);
+    color: hsl(0, 0%, 100%);
+    box-shadow: hsl(54, 71%, 57%) 0px 7px 29px 0px;
+}
+
+button:active {
+    /* letter-spacing: 3px; */
+    background-color: hsl(54, 71%, 57%);
+    color: hsl(0, 0%, 11%);
+    box-shadow: hsl(54, 71%, 57%) 0px 0px 0px 0px;
+    /* transform: translateY(10px); */
+    transition: 100ms;
+}

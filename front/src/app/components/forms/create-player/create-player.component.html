@@ -1,92 +1,159 @@
 <div class="container">
-    <h1> Búsqueda de Jugadores</h1>
+    <h1>Crear nuevos Jugadores</h1>
     <hr>
     <br>
+    <div class="alert alert-info" role="alert">
+        Los campos marcados (*) son requeridos
+    </div>
+
     <form [formGroup]="newPlayerForm" (ngSubmit)="onSubmit()">
-        <h3><u>Campos Obligatorios</u></h3>
         <br>
-        <div class="input-group">
-            <div class="mb-4">
-                <label for="exampleFormControlInput1" class="form-label">Nombre</label>
-                <input class="form-control" type="text" placeholder="Nombre completo" aria-label="Nombre completo"
-                    formControlName="long_name">
+        <div class="row">
+            <div class="col-6">
+                <div class="input-group mb-3">
+                    <span class="input-group-text">*</span>
+                    <div class="form-floating">
+                        <input class="form-control" type="text" placeholder="Nombre completo"
+                            aria-label="Nombre completo" formControlName="long_name" id="floatingInputGrid">
+                        <label for="floatingInputGrid" class="form-label">Nombre</label>
+                    </div>
+                </div>
+                <br>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">*</span>
+                    <div class="form-floating">
+                        <input class="form-control" type="url" placeholder="htttp://profilepicture.com"
+                            aria-label="Foto de perfil" formControlName="player_face_url" id="floatingInputGrid2">
+                        <label for="floatingInputGrid2" class="form-label">Foto Perfil (url)</label>
+                    </div>
+                </div>
+                <br>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">*</span>
+                    <div class="form-floating">
+                        <input class="form-control" type="number" placeholder="25" aria-label="Edad"
+                            formControlName="age" id="floatingInputGrid3">
+                        <label for="floatingInputGrid3" class="form-label">Edad</label>
+                    </div>
+                </div>
+                <br>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">*</span>
+                    <div class="form-floating">
+                        <input class="form-control" type="text" placeholder="ST, CF, RW" aria-label="player_positions"
+                            formControlName="player_positions" id="floatingInputGrid4">
+                        <label for="floatingInputGrid4" class="form-label">Posición del Jugador</label>
+                    </div>
+                </div>
+                <br>
             </div>
-            <div class="mb-4">
-                <label for="exampleFormControlInput1" class="form-label">Versión de FIFA</label>
-                <select name="filter" id="filter" class="form-select" formControlName="fifa_version">
-                    <option selected disabled>Selecciona una opción</option>
-                    <option value="15">15</option>
-                    <option value="16">16</option>
-                    <option value="17">17</option>
-                    <option value="18">18</option>
-                    <option value="19">19</option>
-                    <option value="20">20</option>
-                    <option value="21">21</option>
-                    <option value="22">22</option>
-                    <option value="23">23</option>
-                </select>
-            </div>
-            <div class="mb-4">
-                <label for="exampleFormControlInput1" class="form-label">Actualización de FIFA</label>
-                <select name="filter" id="filter" class="form-select" formControlName="fifa_update">
-                    <option selected disabled>Selecciona una opción</option>
-                    <option value="2">2</option>
-                </select>
-            </div>
-            <div class="mb-3">
-                <label for="exampleFormControlInput1" class="form-label">Posición del Jugador</label>
-                <input class="form-control" type="text" placeholder="ST, CF, RW" aria-label="player_positions"
-                    formControlName="player_positions">
+            <div class="col-6">
+                <div class="input-group mb-3">
+                    <span class="input-group-text">*</span>
+                    <div class="form-floating">
+                        <select name="filter" id="filter" class="form-select" formControlName="fifa_version">
+                            <option selected disabled>Selecciona una opción</option>
+                            <option value="15">15</option>
+                            <option value="16">16</option>
+                            <option value="17">17</option>
+                            <option value="18">18</option>
+                            <option value="19">19</option>
+                            <option value="20">20</option>
+                            <option value="21">21</option>
+                            <option value="22">22</option>
+                            <option value="23">23</option>
+                        </select>
+                        <label for="filter" class="form-label">Versión de FIFA</label>
+                    </div>
+                </div>
+                <br>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">*</span>
+                    <div class="form-floating">
+                        <select name="filter2" id="filter2" class="form-select" formControlName="fifa_update">
+                            <option selected disabled>Selecciona una opción</option>
+                            <option value="2">2</option>
+                        </select>
+                        <label for="filter2" class="form-label">Actualización de FIFA</label>
+                    </div>
+                </div>
+                <br>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">*</span>
+                    <div class="form-floating">
+                        <input class="form-control" type="number" placeholder="78" aria-label="overall"
+                            formControlName="overall" id="floatingInputGrid5">
+                        <label for="floatingInputGrid5" class="form-label">Overall</label>
+                    </div>
+                </div>
+                <br>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">*</span>
+                    <div class="form-floating">
+                        <input class="form-control" type="number" placeholder="95" aria-label="Potencial"
+                            formControlName="potential" id="floatingInputGrid6">
+                        <label for="floatingInputGrid6" class="form-label">Potential</label>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="input-group mb-3">
-            <div class="mb-3">
-                <label for="exampleFormControlInput1" class="form-label">Foto Perfil (url)</label>
-                <input class="form-control" type="url" placeholder="htttp://profilepicture.com"
-                    aria-label="Foto de perfil" formControlName="player_face_url">
+        <div class="row">
+            <div class="col-6">
+                <div class="form-floating">
+                    <input class="form-control" type="url" placeholder="Nombre del club" aria-label="club_name"
+                        formControlName="club_name" id="floatingInputGrid7">
+                    <label for="floatingInputGrid7" class="form-label">Club</label>
+                    <br>
+                    <figcaption class="blockquote-footer">
+                        Los nombres deben ser completos, ejemplo: <b>NO</b> Barcelona, <b>SÍ</b> FC Barcelona
+                    </figcaption>
+                </div>
+                <div class="form-floating">
+                    <input class="form-control" type="text" placeholder="Rep. Checa" aria-label="nationality_name"
+                        formControlName="nationality_name" id="floatingInputGrid8">
+                    <label for="floatingInputGrid8" class="form-label">Nacionalidad</label>
+                </div>
             </div>
-            <div class="mb-3">
-                <label for="exampleFormControlInput1" class="form-label">Overall</label>
-                <input class="form-control" type="number" placeholder="78" aria-label="overall"
-                    formControlName="overall">
-            </div>
-            <div class="mb-3">
-                <label for="exampleFormControlInput1" class="form-label">Potential</label>
-                <input class="form-control" type="number" placeholder="95" aria-label="Potencial"
-                    formControlName="potential">
-            </div>
-            <div class="mb-3">
-                <label for="exampleFormControlInput1" class="form-label">Edad</label>
-                <input class="form-control" type="number" placeholder="25" aria-label="Edad" formControlName="age">
-            </div>
-        </div>
-        <h3><u>Campos Accesorios</u></h3>
-        <p>Los podes modificar una vez creado el nuevo jugador</p>
-        <br>
-        <div class="input-group mb-3">
-            <div class="mb-3">
-                <label for="exampleFormControlInput1" class="form-label">Club</label>
-                <input class="form-control" type="url" placeholder="htttp://profilepicture.com" aria-label="club_name"
-                    formControlName="club_name">
-            </div>
-            <div class="mb-3">
-                <label for="exampleFormControlInput1" class="form-label">Nacionalidad</label>
-                <input class="form-control" type="number" placeholder="Rep. Checa" aria-label="nationality_name"
-                    formControlName="potential">
-            </div>
-            <div class="mb-3">
-                <label for="exampleFormControlInput1" class="form-label">Valor </label>
-                <input class="form-control" type="number" placeholder="En Euros" aria-label="value_eur"
-                    formControlName="value_eur">
-            </div>
-            <div class="mb-3">
-                <label for="exampleFormControlInput1" class="form-label">Salario</label>
-                <input class="form-control" type="number" placeholder="En Euros" aria-label="wage_eur"
-                    formControlName="wage_eur">
+            <br>
+            <div class="col-6">
+                <div class="form-floating">
+                    <input class="form-control" type="number" placeholder="En Euros" aria-label="value_eur"
+                        formControlName="value_eur" id="floatingInputGrid9">
+                    <label for="floatingInputGrid9" class="form-label">Valor </label>
+                </div>
+                <br>
+                <figcaption class="blockquote-footer">
+                    Ambos campos en <b>€</b>
+                </figcaption>
+                <div class="form-floating">
+                    <input class="form-control" type="number" placeholder="En Euros" aria-label="wage_eur"
+                        formControlName="wage_eur" id="floatingInputGrid10">
+                    <label for="floatingInputGrid10" class="form-label">Salario</label>
+                </div>
             </div>
         </div>
-        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+        <hr>
+        <div class="d-grid gap-2">
             <button class="btn btn-primary me-md-2" type="submit" [disabled]="!newPlayerForm.valid">Crear</button>
         </div>
+        <hr>
     </form>
+    <div *ngIf="alertMessage.isActivated">
+        <!-- <app-alerts [alertMessage]="alertMessage.message" [alertType]="alertMessage.type"></app-alerts> -->
+        <div class="alert alert-success" role="alert">
+            <div class="row">
+                <div class="col-8">
+                    Jugador creado exitosamente
+                </div>
+                <div class="col-4 d-grid gap-2 d-md-flex justify-content-md-end">
+                    <button class="btn btn-success" (click)="reload()">Crear nuevo jugador</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="isLoading">
+        <app-loading></app-loading>
+    </div>
+    <br>
+    <br>
 </div>

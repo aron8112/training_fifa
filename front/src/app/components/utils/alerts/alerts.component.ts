@@ -1,6 +1,11 @@
-import { ChangeDetectionStrategy, Component, input } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  effect,
+  input,
+} from '@angular/core';
 import { NgbAlertModule } from '@ng-bootstrap/ng-bootstrap';
-import { Alert } from '../../../core/interfaces/Ialerts';
+import { Alert, typeEnum } from '../../../core/interfaces/Ialerts';
 @Component({
   selector: 'app-alerts',
   standalone: true,
@@ -10,7 +15,33 @@ import { Alert } from '../../../core/interfaces/Ialerts';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AlertsComponent {
-  alert: Alert | {} = input();
+  alertType = input.required<typeEnum>();
+  alertMessage = input();
+  success: string = 'success';
 
-  constructor() {}
+  constructor() {
+    effect(() => {
+      console.log(typeof this.alertType());
+      // .toString();
+    });
+  }
+
+  reset() {
+    window.location.reload();
+  }
+
+  setTypeAlert() {
+    const ALERTS = [
+      'success',
+      'info',
+      'warning',
+      'danger',
+      'primary',
+      'secondary',
+      'light',
+      'dark',
+    ];
+    // if (ALERTS.includes(this.alertType())) {
+    // }
+  }
 }

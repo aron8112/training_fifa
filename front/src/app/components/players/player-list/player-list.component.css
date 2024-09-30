@@ -1,6 +1,7 @@
 .list-players {
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
+    flex-direction: row;
     gap: 20px;
     padding: 20px;
     justify-content: center;

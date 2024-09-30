@@ -31,7 +31,7 @@ export class PlayerService {
   }
 
   getPlayersPages(page: number): Observable<any> {
-    console.log('cambiar a pagina', page);
+    // console.log('cambiar a pagina', page);
     return this.http.get(`${this.playerUrl}?page=${page}`);
   }
 
@@ -52,9 +52,9 @@ export class PlayerService {
   searchFilteredPlayers(params: any): Observable<any> {
     let token = localStorage.getItem('token');
     let { column, search, exact, page } = params;
-    console.log(
-      `${this.playerUrl}/search?filter=${column}&search=${search}&exact=${exact}&page=${page}`
-    );
+    // console.log(
+    //   `${this.playerUrl}/search?filter=${column}&search=${search}&exact=${exact}&page=${page}`
+    // );
     return this.http.get(
       `${this.playerUrl}/search?filter=${column}&search=${search}&exact=${exact}&page=${page}`,
       {
@@ -67,7 +67,7 @@ export class PlayerService {
 
   createNewPlayer(body: any) {
     let token = localStorage.getItem('token');
-    console.log('body from service: ', body);
+    // console.log('body from service: ', body);
     return this.http.post(`http://localhost:5000/players/create`, body, {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -77,7 +77,7 @@ export class PlayerService {
 
   updatePlayer(body: any, id: number) {
     let token = localStorage.getItem('token');
-    console.log('body from service: ', body);
+    // console.log('body from service: ', body);
     return this.http.put(`http://localhost:5000/players/${id}`, body, {
       headers: {
         Authorization: `Bearer ${token}`,

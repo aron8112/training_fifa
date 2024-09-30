@@ -83,7 +83,9 @@ export class SignupComponent {
         let token: any = localStorage.getItem('token');
         let user = JSON.stringify(atob(token.split('.')[1]));
         this.userLoggedIn.emit(user);
-        this.router.navigate(['home']);
+        this.router.navigate(['home']).then(() => {
+          window.location.reload();
+        });
       },
     });
   }

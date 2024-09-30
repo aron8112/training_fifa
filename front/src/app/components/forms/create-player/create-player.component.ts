@@ -1,5 +1,6 @@
 import {
   ChangeDetectionStrategy,
+  ChangeDetectorRef,
   Component,
   inject,
   output,
@@ -13,11 +14,20 @@ import {
 } from '@angular/forms';
 import { PlayerService } from '../../../core/services/player-service.service';
 import { Observable } from 'rxjs';
+import { CommonModule } from '@angular/common';
+import { LoadingComponent } from '../../utils/loading/loading.component';
+import { AlertsComponent } from '../../utils/alerts/alerts.component';
+import { Alert, typeEnum } from '../../../core/interfaces/Ialerts';
 
 @Component({
   selector: 'app-create-player',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [
+    ReactiveFormsModule,
+    LoadingComponent,
+    CommonModule,
+    AlertsComponent,
+  ],
   templateUrl: './create-player.component.html',
   styleUrl: './create-player.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -43,7 +53,15 @@ export class CreatePlayerComponent {
   errorBool: Boolean = false;
   errorMessage: string = '';
 
-  constructor(private fb: FormBuilder) {}
+  //Loading
+  isLoading: Boolean = false;
+  alertMessage: Alert = {
+    type: typeEnum.success,
+    message: '',
+    isActivated: false,
+  };
+
+  constructor(private fb: FormBuilder, private cd: ChangeDetectorRef) {}
 
   ngOnInit(): void {}
 
@@ -56,23 +74,35 @@ export class CreatePlayerComponent {
     console.log(body);
     // this.playerApiService.createNewPlayer(body);
     this.playerApiService.createNewPlayer(body).subscribe({
-      next: (data) => {
-        console.log(data);
+      next: (data: any) => {
+        if (data.status === 'Created') {
+          this.isLoading = true;
+        }
       },
       error: (error) => console.log(error),
       complete: () => {
-        console.log('Query completed');
+        setTimeout(() => {
+          console.log('Query completed');
+          this.alertMessage.isActivated = true;
+          this.alertMessage.message = 'Nuevo jugador creado exitosamente!';
+          this.isLoading = false;
+          this.cd.detectChanges();
+        }, 1500);
       },
     });
   }
 
   removeNullValues(obj: any) {
-    console.log('obj', obj);
+    // console.log('obj', obj);
     Object.entries(obj).forEach(([key, value]) => {
       if (value === null) {
         delete obj[key];
       }
     });
     return obj;
+  }
+
+  reload() {
+    window.location.reload();
   }
 }

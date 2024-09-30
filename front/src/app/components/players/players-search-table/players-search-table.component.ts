@@ -119,7 +119,7 @@ export class PlayersSearchTableComponent implements OnChanges {
         console.log(data);
         this.searchPlayers = data;
         // this.cd.markForCheck();
-        // this.cd.detectChanges();
+        this.cd.detectChanges();
       },
       error: (error) => console.log(error),
       complete: () => {

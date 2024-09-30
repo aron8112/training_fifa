@@ -83,15 +83,15 @@ export class PlayerChartComponent implements OnInit {
       return this.setStats();
     }, 800);
     setTimeout(() => {
+      const elementChart = document.getElementById(
+        'playerRadar'
+      ) as HTMLCanvasElement;
       this.isLoading = false;
       if (elementChart) {
         this.chart = new Chart(elementChart, this.config).render();
         this.cd.markForCheck();
       }
     }, 1500);
-    const elementChart = document.getElementById(
-      'playerRadar'
-    ) as HTMLCanvasElement;
   }
 
   setStats() {
