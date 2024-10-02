@@ -136,6 +136,32 @@ const getAll = async (req, res) => {
   }
 };
 
+const findAllVersions = async (req, res) => {
+  let { name } = req.params;
+  try {
+    const onePlayer = await playerServices.lookForVersions(name);
+    res.status(200).json(onePlayer);
+  } catch (error) {
+    res.status(400).json({
+      status: error.status,
+      error: error.message,
+    });
+  }
+};
+
+const detailedSkills = async (req, res) => {
+  let { name } = req.params;
+  try {
+    const onePlayer = await playerServices.getDetailedSkills(name);
+    res.status(200).json(onePlayer);
+  } catch (error) {
+    res.status(400).json({
+      status: error.status,
+      error: error.message,
+    });
+  }
+};
+
 module.exports = {
   getPlayers,
   getMetaData,
@@ -147,4 +173,6 @@ module.exports = {
   deleteById,
   newPlayer,
   getAll,
+  findAllVersions,
+  detailedSkills,
 };

@@ -22,14 +22,11 @@ export class HeaderComponent implements OnInit {
   authService = inject(JWTTokenService);
 
   ngOnInit(): void {
-    let getToken = localStorage.getItem('token');
+    let getToken = this.authService.getName();
     if (getToken) {
-      let payload = JSON.parse(atob(getToken.split('.')[1]));
-      this.user = payload.name;
-      // console.log(payload);
+      this.user = getToken;
       this.isLoggedIn = true;
     }
-    // console.log(this.authService.getToken());
   }
 
   getUserData(userData: Event) {
@@ -39,7 +36,6 @@ export class HeaderComponent implements OnInit {
 
   logout() {
     this.authService.logout();
-    localStorage.removeItem('token');
     this.isLoggedIn = false;
     window.location.reload();
   }

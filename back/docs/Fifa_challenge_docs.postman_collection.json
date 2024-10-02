@@ -1,7 +1,8 @@
 {
 	"info": {
 		"_postman_id": "f22dd35f-17ef-4bdc-a6dd-f2051d82e65a",
-		"name": "Fifa_challenge_doc",
+		"name": "Panaacea-Santex",
+		"description": "Registro de las peticiones HTTP de la API fifa_training.\n\nSe dividen en tres módulos principales:\n\n1. Players:\n    1. GET findAll: devuelve un resultado paginado\n    2. GET Search by filter: se busca por medio de un parametro y este puede ser con búsqueda exacta o similar.\n    3. GET findById: se busca un resultado especifico.\n    4. GET Versions: se buscan los resultados que correspondan a un nombre particular para devolver caracteristicas básicas de un jugador para las distantas versiones de FIFA EA.\n    5. GET Detailed skills: se buscan los resultados que correspondan a un nombre particular para devolver caracteristicas especificas de un jugador para las distantas versiones de FIFA EA.\n    6. POST Create Player: para crear un jugador.\n    7. PUT Update Player: modificar jugador por id.\n    8. DELETE Delete Player: eliminar jugador.\n2. Users:\n    1. POST Login: registrarse para recibir el token para realizar peticiones en otras direcciones.\n3. CsvOpts:\n    1. Descarga de CSV.\n    2. Carga de CSV.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "26950735"
 	},
@@ -447,7 +448,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    // \"user\": \"pepe\",\n    // \"newPlayer\": {\n    //     \"long_name\": \"some new player\",\n    //     \"age\": 38,\n    //     \"fifa_version\": \"18\",\n    //     \"fifa_update\": \"2\",\n    //     \"player_face_url\": \"https://imgs.search.brave.com/p5CxRjUfmcn92zFoDMRDQYI2vAwCsqzsjEjXXXPAdMk/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pLnBp/bmltZy5jb20vb3Jp/Z2luYWxzL2MyL2Jh/LzQzL2MyYmE0M2Zk/YjI4NjRhNmZkZjY0/YWVhMjEyZWRhNWNj/LmpwZw\",\n    //     \"player_positions\": \"ST\",\n    //     \"overall\": 55,\n    //     \"potential\": 90\n    // },\n    // \"isNew\": true\n}",
+							"raw": "{\n    \"user\": \"pepe\",\n    \"newPlayer\": {\n        \"long_name\": \"some new player\",\n        \"age\": 38,\n        \"fifa_version\": \"18\",\n        \"fifa_update\": \"2\",\n        \"player_face_url\": \"https://imgs.search.brave.com/p5CxRjUfmcn92zFoDMRDQYI2vAwCsqzsjEjXXXPAdMk/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pLnBp/bmltZy5jb20vb3Jp/Z2luYWxzL2MyL2Jh/LzQzL2MyYmE0M2Zk/YjI4NjRhNmZkZjY0/YWVhMjEyZWRhNWNj/LmpwZw\",\n        \"player_positions\": \"ST\",\n        \"overall\": 55,\n        \"potential\": 90\n    },\n    \"isNew\": true\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1165,30 +1166,45 @@
 				{
 					"name": "Search by filter",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtZSI6IkFkbWluIFVzZXIiLCJlbWFpbCI6ImFkbWluQHJhbmRvbW1haWwuY29tIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNzI3Mjg2OTkwLCJleHAiOjE3MjczNzMzOTB9.NybBMNon7RV5S1SoUs-TXrflmxwiO4YbV1fvIN1n3n4",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:5000/players/?filter=club_name&search=celona&page=3",
+							"raw": "http://localhost:5000/players/search?filter=long_name&search=Messi&exact=false&page=1",
+							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "5000",
 							"path": [
 								"players",
-								""
+								"search"
 							],
 							"query": [
 								{
 									"key": "filter",
-									"value": "club_name"
+									"value": "long_name"
 								},
 								{
 									"key": "search",
-									"value": "celona"
+									"value": "Messi"
+								},
+								{
+									"key": "exact",
+									"value": "false"
 								},
 								{
 									"key": "page",
-									"value": "3"
+									"value": "1"
 								}
 							]
 						}
@@ -1338,6 +1354,9 @@
 				{
 					"name": "Find by Id",
 					"request": {
+						"auth": {
+							"type": "noauth"
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
@@ -1999,6 +2018,64 @@
 							"body": "{\n    \"error\": \"You are not allowed to access\"\n}"
 						}
 					]
+				},
+				{
+					"name": "Versions",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/players/versions?name=Lionel Andrés Messi Cuccittini",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"players",
+								"versions"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "Lionel Andrés Messi Cuccittini"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Detailed skills",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/players/skills?name=Lionel Andrés Messi Cuccittini",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"players",
+								"skills"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "Lionel Andrés Messi Cuccittini"
+								}
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -2020,12 +2097,13 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:5000/auth/login",
+							"raw": "localhost:8080/user/auth/login",
 							"host": [
 								"localhost"
 							],
-							"port": "5000",
+							"port": "8080",
 							"path": [
+								"user",
 								"auth",
 								"login"
 							]
@@ -2307,7 +2385,327 @@
 		},
 		{
 			"name": "CsvOpts",
-			"item": []
+			"item": [
+				{
+					"name": "Download CSV",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/docs/download",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"docs",
+								"download"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Upload file",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "",
+									"type": "file",
+									"src": "/home/aron/Descargas/female_players.csv"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:8080/docs/upload",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"docs",
+								"upload"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Upload file",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "",
+											"type": "file",
+											"src": "/home/aron/Descargas/world_cities.csv"
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost:8080/docs/upload",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"docs",
+										"upload"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "JSON",
+							"header": [
+								{
+									"key": "Content-Security-Policy",
+									"value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests",
+									"type": "text"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin",
+									"type": "text"
+								},
+								{
+									"key": "Cross-Origin-Resource-Policy",
+									"value": "same-origin",
+									"type": "text"
+								},
+								{
+									"key": "Origin-Agent-Cluster",
+									"value": "?1",
+									"type": "text"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "origin,unsafe-url",
+									"type": "text"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains",
+									"type": "text"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff",
+									"type": "text"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off",
+									"type": "text"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen",
+									"type": "text"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY",
+									"type": "text"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none",
+									"type": "text"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0",
+									"type": "text"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*",
+									"type": "text"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express",
+									"type": "text"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8",
+									"type": "text"
+								},
+								{
+									"key": "Content-Length",
+									"value": "2316",
+									"type": "text"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"90c-Az7CAvR7hUyog2XJy3JV3/Bs57Q\"",
+									"type": "text"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 20 Sep 2024 00:22:15 GMT",
+									"type": "text"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive",
+									"type": "text"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"Datos creados\",\n    \"parsedInfo\": [\n        {\n            \"city_name\": \"Boston\",\n            \"avg_temp\": \"62\",\n            \"avg_commute\": \"55\",\n            \"happiness_ranking\": \"27\"\n        },\n        {\n            \"city_name\": \"Buenos Aires\",\n            \"avg_temp\": \"70\",\n            \"avg_commute\": \"60\",\n            \"happiness_ranking\": \"7\"\n        },\n        {\n            \"city_name\": \"Sydney\",\n            \"avg_temp\": \"72\",\n            \"avg_commute\": \"69\",\n            \"happiness_ranking\": \"6\"\n        },\n        {\n            \"city_name\": \"Tokyo\",\n            \"avg_temp\": \"60\",\n            \"avg_commute\": \"70\",\n            \"happiness_ranking\": \"26\"\n        },\n        {\n            \"city_name\": \"Los Angeles\",\n            \"avg_temp\": \"70\",\n            \"avg_commute\": \"100\",\n            \"happiness_ranking\": \"20\"\n        },\n        {\n            \"city_name\": \"San Francisco\",\n            \"avg_temp\": \"65\",\n            \"avg_commute\": \"80\",\n            \"happiness_ranking\": \"21\"\n        },\n        {\n            \"city_name\": \"Beijing\",\n            \"avg_temp\": \"64\",\n            \"avg_commute\": \"50\",\n            \"happiness_ranking\": \"22\"\n        },\n        {\n            \"city_name\": \"Zurich\",\n            \"avg_temp\": \"65\",\n            \"avg_commute\": \"45\",\n            \"happiness_ranking\": \"23\"\n        },\n        {\n            \"city_name\": \"Shanghai\",\n            \"avg_temp\": \"70\",\n            \"avg_commute\": \"80\",\n            \"happiness_ranking\": \"3\"\n        },\n        {\n            \"city_name\": \"Dubai\",\n            \"avg_temp\": \"80\",\n            \"avg_commute\": \"55\",\n            \"happiness_ranking\": \"24\"\n        },\n        {\n            \"city_name\": \"London\",\n            \"avg_temp\": \"59\",\n            \"avg_commute\": \"45\",\n            \"happiness_ranking\": \"25\"\n        },\n        {\n            \"city_name\": \"Dublin\",\n            \"avg_temp\": \"60\",\n            \"avg_commute\": \"45\",\n            \"happiness_ranking\": \"8\"\n        },\n        {\n            \"city_name\": \"New Delhi\",\n            \"avg_temp\": \"80\",\n            \"avg_commute\": \"60\",\n            \"happiness_ranking\": \"4\"\n        },\n        {\n            \"city_name\": \"Perth\",\n            \"avg_temp\": \"68\",\n            \"avg_commute\": \"38\",\n            \"happiness_ranking\": \"19\"\n        },\n        {\n            \"city_name\": \"Chicago\",\n            \"avg_temp\": \"58\",\n            \"avg_commute\": \"55\",\n            \"happiness_ranking\": \"18\"\n        },\n        {\n            \"city_name\": \"Seattle\",\n            \"avg_temp\": \"60\",\n            \"avg_commute\": \"48\",\n            \"happiness_ranking\": \"17\"\n        },\n        {\n            \"city_name\": \"Toronto\",\n            \"avg_temp\": \"60\",\n            \"avg_commute\": \"50\",\n            \"happiness_ranking\": \"2\"\n        },\n        {\n            \"city_name\": \"Mexico City\",\n            \"avg_temp\": \"70\",\n            \"avg_commute\": \"30\",\n            \"happiness_ranking\": \"16\"\n        },\n        {\n            \"city_name\": \"Berlin\",\n            \"avg_temp\": \"68\",\n            \"avg_commute\": \"40\",\n            \"happiness_ranking\": \"13\"\n        },\n        {\n            \"city_name\": \"Cape Town\",\n            \"avg_temp\": \"72\",\n            \"avg_commute\": \"48\",\n            \"happiness_ranking\": \"14\"\n        },\n        {\n            \"city_name\": \"Lagos\",\n            \"avg_temp\": \"80\",\n            \"avg_commute\": \"38\",\n            \"happiness_ranking\": \"5\"\n        },\n        {\n            \"city_name\": \"Panama City\",\n            \"avg_temp\": \"80\",\n            \"avg_commute\": \"40\",\n            \"happiness_ranking\": \"15\"\n        },\n        {\n            \"city_name\": \"Singapore\",\n            \"avg_temp\": \"75\",\n            \"avg_commute\": \"40\",\n            \"happiness_ranking\": \"12\"\n        },\n        {\n            \"city_name\": \"Jakata\",\n            \"avg_temp\": \"78\",\n            \"avg_commute\": \"35\",\n            \"happiness_ranking\": \"10\"\n        },\n        {\n            \"city_name\": \"Seoul\",\n            \"avg_temp\": \"60\",\n            \"avg_commute\": \"90\",\n            \"happiness_ranking\": \"9\"\n        },\n        {\n            \"city_name\": \"Phoenix\",\n            \"avg_temp\": \"70\",\n            \"avg_commute\": \"45\",\n            \"happiness_ranking\": \"11\"\n        },\n        {\n            \"city_name\": \"Amsterdam\",\n            \"avg_temp\": \"67\",\n            \"avg_commute\": \"20\",\n            \"happiness_ranking\": \"1\"\n        }\n    ]\n}"
+						},
+						{
+							"name": "Upload file Ok",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "",
+											"type": "file",
+											"src": "/home/aron/Descargas/female_players.csv"
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost:8080/docs/upload",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"docs",
+										"upload"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "JSON",
+							"header": [
+								{
+									"key": "Content-Security-Policy",
+									"value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests",
+									"type": "text"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin",
+									"type": "text"
+								},
+								{
+									"key": "Cross-Origin-Resource-Policy",
+									"value": "same-origin",
+									"type": "text"
+								},
+								{
+									"key": "Origin-Agent-Cluster",
+									"value": "?1",
+									"type": "text"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "origin,unsafe-url",
+									"type": "text"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains",
+									"type": "text"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff",
+									"type": "text"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off",
+									"type": "text"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen",
+									"type": "text"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY",
+									"type": "text"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none",
+									"type": "text"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0",
+									"type": "text"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*",
+									"type": "text"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express",
+									"type": "text"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8",
+									"type": "text"
+								},
+								{
+									"key": "Content-Length",
+									"value": "23366",
+									"type": "text"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"5b46-oNWbbw1YDqKAUoOtfeFhTupb/a4\"",
+									"type": "text"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 20 Sep 2024 00:38:58 GMT",
+									"type": "text"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive",
+									"type": "text"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"Datos creados\",\n    \"parsedInfo\": [\n        {\n            \"player_id\": \"227125\",\n            \"player_url\": \"/player/227125/sam-kerr/230009\",\n            \"fifa_version\": \"23\",\n            \"fifa_update\": \"9\",\n            \"fifa_update_date\": \"2023-01-13\",\n            \"short_name\": \"S. Kerr\",\n            \"long_name\": \"Samantha May Kerr\",\n            \"player_positions\": \"ST\",\n            \"overall\": \"91\",\n            \"potential\": \"91\",\n            \"value_eur\": \"134500000\",\n            \"wage_eur\": \"4000\",\n            \"age\": \"28\",\n            \"dob\": \"1993-09-10\",\n            \"height_cm\": \"168\",\n            \"weight_kg\": \"66\",\n            \"league_id\": \"2216\",\n            \"league_name\": \"Women's Super League\",\n            \"league_level\": \"1\",\n            \"club_team_id\": \"116010\",\n            \"club_name\": \"Chelsea W\",\n            \"club_position\": \"ST\",\n            \"club_jersey_number\": \"20\",\n            \"club_loaned_from\": \"\",\n            \"club_joined_date\": \"2020-01-01\",\n            \"club_contract_valid_until_year\": \"2024\",\n            \"nationality_id\": \"195\",\n            \"nationality_name\": \"Australia\",\n            \"nation_team_id\": \"\",\n            \"nation_position\": \"\",\n            \"nation_jersey_number\": \"\",\n            \"preferred_foot\": \"Right\",\n            \"weak_foot\": \"4\",\n            \"skill_moves\": \"4\",\n            \"international_reputation\": \"5\",\n            \"work_rate\": \"High/High\",\n            \"body_type\": \"Normal (170-)\",\n            \"real_face\": \"Yes\",\n            \"release_clause_eur\": \"275700000\",\n            \"player_tags\": \"#Aerial Threat, #Dribbler, #Engine, #Distance Shooter, #Acrobat, #Clinical Finisher, #Complete Forward\",\n            \"player_traits\": \"Solid Player, Leadership, Finesse Shot, Speed Dribbler (AI), Power Header, Chip Shot (AI)\",\n            \"pace\": \"87\",\n            \"shooting\": \"91\",\n            \"passing\": \"74\",\n            \"dribbling\": \"90\",\n            \"defending\": \"42\",\n            \"physic\": \"83\",\n            \"player_face_url\": \"https://cdn.sofifa.net/players/227/125/23_120.png\"\n        },\n        {\n            \"player_id\": \"227316\",\n            \"player_url\": \"/player/227316/wendie-renard/230009\",\n            \"fifa_version\": \"23\",\n            \"fifa_update\": \"9\",\n            \"fifa_update_date\": \"2023-01-13\",\n            \"short_name\": \"W. Renard\",\n            \"long_name\": \"Wéndèleine Thérèse Renard\",\n            \"player_positions\": \"CB\",\n            \"overall\": \"91\",\n            \"potential\": \"91\",\n            \"value_eur\": \"89500000\",\n            \"wage_eur\": \"3000\",\n            \"age\": \"31\",\n            \"dob\": \"1990-07-20\",\n            \"height_cm\": \"187\",\n            \"weight_kg\": \"70\",\n            \"league_id\": \"2218\",\n            \"league_name\": \"Feminine Division 1\",\n            \"league_level\": \"1\",\n            \"club_team_id\": \"116033\",\n            \"club_name\": \"Lyon W\",\n            \"club_position\": \"LCB\",\n            \"club_jersey_number\": \"3\",\n            \"club_loaned_from\": \"\",\n            \"club_joined_date\": \"2006-07-01\",\n            \"club_contract_valid_until_year\": \"2026\",\n            \"nationality_id\": \"18\",\n            \"nationality_name\": \"France\",\n            \"nation_team_id\": \"113003\",\n            \"nation_position\": \"LCB\",\n            \"nation_jersey_number\": \"3\",\n            \"preferred_foot\": \"Right\",\n            \"weak_foot\": \"3\",\n            \"skill_moves\": \"2\",\n            \"international_reputation\": \"5\",\n            \"work_rate\": \"High/Medium\",\n            \"body_type\": \"Lean (185+)\",\n            \"real_face\": \"Yes\",\n            \"release_clause_eur\": \"183500000\",\n            \"player_tags\": \"#Aerial Threat, #Tackling, #Tactician, #Strength, #Complete Defender\",\n            \"player_traits\": \"Leadership, Long Passer (AI), Power Header, Team Player\",\n            \"pace\": \"63\",\n            \"shooting\": \"72\",\n            \"passing\": \"71\",\n            \"dribbling\": \"72\",\n            \"defending\": \"93\",\n            \"physic\": \"87\",\n            \"player_face_url\": \"https://cdn.sofifa.net/players/227/316/23_120.png\"\n        },\n        {\n            \"player_id\": \"226301\",\n            \"player_url\": \"/player/226301/alex-morgan/230009\",\n            \"fifa_version\": \"23\",\n            \"fifa_update\": \"9\",\n            \"fifa_update_date\": \"2023-01-13\",\n            \"short_name\": \"A. Morgan\",\n            \"long_name\": \"Alexandra Morgan Carrasco\",\n            \"player_positions\": \"ST\",\n            \"overall\": \"90\",\n            \"potential\": \"90\",\n            \"value_eur\": \"\",\n            \"wage_eur\": \"\",\n            \"age\": \"32\",\n            \"dob\": \"1989-07-02\",\n            \"height_cm\": \"168\",\n            \"weight_kg\": \"62\",\n            \"league_id\": \"\",\n            \"league_name\": \"\",\n            \"league_level\": \"\",\n            \"club_team_id\": \"\",\n            \"club_name\": \"\",\n            \"club_position\": \"\",\n            \"club_jersey_number\": \"\",\n            \"club_loaned_from\": \"\",\n            \"club_joined_date\": \"\",\n            \"club_contract_valid_until_year\": \"\",\n            \"nationality_id\": \"95\",\n            \"nationality_name\": \"United States\",\n            \"nation_team_id\": \"113009\",\n            \"nation_position\": \"ST\",\n            \"nation_jersey_number\": \"13\",\n            \"preferred_foot\": \"Left\",\n            \"weak_foot\": \"4\",\n            \"skill_moves\": \"4\",\n            \"international_reputation\": \"5\",\n            \"work_rate\": \"High/Low\",\n            \"body_type\": \"Unique\",\n            \"real_face\": \"Yes\",\n            \"release_clause_eur\": \"\",\n            \"player_tags\": \"#Clinical Finisher\",\n            \"player_traits\": \"Leadership, Finesse Shot, Flair, Speed Dribbler (AI), Outside Foot Shot, Team Player\",\n            \"pace\": \"89\",\n            \"shooting\": \"91\",\n            \"passing\": \"80\",\n            \"dribbling\": \"88\",\n            \"defending\": \"47\",\n            \"physic\": \"77\",\n            \"player_face_url\": \"https://cdn.sofifa.net/players/226/301/23_120.png\"\n        },\n        {\n            \"player_id\": \"227310\",\n            \"player_url\": \"/player/227310/ada-hegerberg/230009\",\n            \"fifa_version\": \"23\",\n            \"fifa_update\": \"9\",\n            \"fifa_update_date\": \"2023-01-13\",\n            \"short_name\": \"A. Hegerberg\",\n            \"long_name\": \"Ada Martine Stolsmo Hegerberg\",\n            \"player_positions\": \"ST\",\n            \"overall\": \"90\",\n            \"potential\": \"91\",\n            \"value_eur\": \"143000000\",\n            \"wage_eur\": \"3000\",\n            \"age\": \"26\",\n            \"dob\": \"1995-07-10\",\n            \"height_cm\": \"176\",\n            \"weight_kg\": \"68\",\n            \"league_id\": \"2218\",\n            \"league_name\": \"Feminine Division 1\",\n            \"league_level\": \"1\",\n            \"club_team_id\": \"116033\",\n            \"club_name\": \"Lyon W\",\n            \"club_position\": \"RES\",\n            \"club_jersey_number\": \"14\",\n            \"club_loaned_from\": \"\",\n            \"club_joined_date\": \"2014-07-01\",\n            \"club_contract_valid_until_year\": \"2024\",\n            \"nationality_id\": \"36\",\n            \"nationality_name\": \"Norway\",\n            \"nation_team_id\": \"113007\",\n            \"nation_position\": \"ST\",\n            \"nation_jersey_number\": \"14\",\n            \"preferred_foot\": \"Right\",\n            \"weak_foot\": \"4\",\n            \"skill_moves\": \"4\",\n            \"international_reputation\": \"5\",\n            \"work_rate\": \"High/Medium\",\n            \"body_type\": \"Normal (170-185)\",\n            \"real_face\": \"Yes\",\n            \"release_clause_eur\": \"303900000\",\n            \"player_tags\": \"#Aerial Threat, #Distance Shooter, #Clinical Finisher, #Complete Forward\",\n            \"player_traits\": \"Leadership, Outside Foot Shot, Technical Dribbler (AI)\",\n            \"pace\": \"83\",\n            \"shooting\": \"91\",\n            \"passing\": \"77\",\n            \"dribbling\": \"87\",\n            \"defending\": \"39\",\n            \"physic\": \"77\",\n            \"player_face_url\": \"https://cdn.sofifa.net/players/227/310/23_120.png\"\n        },\n        {\n            \"player_id\": \"227246\",\n            \"player_url\": \"/player/227246/lucy-bronze/230009\",\n            \"fifa_version\": \"23\",\n            \"fifa_update\": \"9\",\n            \"fifa_update_date\": \"2023-01-13\",\n            \"short_name\": \"L. Bronze\",\n            \"long_name\": \"Lucia Roberta Tough Bronze\",\n            \"player_positions\": \"RB\",\n            \"overall\": \"89\",\n            \"potential\": \"89\",\n            \"value_eur\": \"\",\n            \"wage_eur\": \"\",\n            \"age\": \"30\",\n            \"dob\": \"1991-10-28\",\n            \"height_cm\": \"171\",\n            \"weight_kg\": \"65\",\n            \"league_id\": \"\",\n            \"league_name\": \"\",\n            \"league_level\": \"\",\n            \"club_team_id\": \"\",\n            \"club_name\": \"\",\n            \"club_position\": \"\",\n            \"club_jersey_number\": \"\",\n            \"club_loaned_from\": \"\",\n            \"club_joined_date\": \"\",\n            \"club_contract_valid_until_year\": \"\",\n            \"nationality_id\": \"14\",\n            \"nationality_name\": \"England\",\n            \"nation_team_id\": \"113002\",\n            \"nation_position\": \"RB\",\n            \"nation_jersey_number\": \"2\",\n            \"preferred_foot\": \"Right\",\n            \"weak_foot\": \"3\",\n            \"skill_moves\": \"3\",\n            \"international_reputation\": \"5\",\n            \"work_rate\": \"High/High\",\n            \"body_type\": \"Normal (170-185)\",\n            \"real_face\": \"Yes\",\n            \"release_clause_eur\": \"\",\n            \"player_tags\": \"#Engine, #Crosser, #Tackling, #Acrobat, #Strength\",\n            \"player_traits\": \"Leadership, Speed Dribbler (AI), Power Header, Giant Throw-in, Outside Foot Shot\",\n            \"pace\": \"85\",\n            \"shooting\": \"77\",\n            \"passing\": \"82\",\n            \"dribbling\": \"83\",\n            \"defending\": \"88\",\n            \"physic\": \"89\",\n            \"player_face_url\": \"https://cdn.sofifa.net/players/227/246/23_120.png\"\n        },\n        {\n            \"player_id\": \"245802\",\n            \"player_url\": \"/player/245802/beth-mead/230009\",\n            \"fifa_version\": \"23\",\n            \"fifa_update\": \"9\",\n            \"fifa_update_date\": \"2023-01-13\",\n            \"short_name\": \"B. Mead\",\n            \"long_name\": \"Bethany Jane Mead\",\n            \"player_positions\": \"RW, LW, RM\",\n            \"overall\": \"89\",\n            \"potential\": \"89\",\n            \"value_eur\": \"110000000\",\n            \"wage_eur\": \"3000\",\n            \"age\": \"27\",\n            \"dob\": \"1995-05-09\",\n            \"height_cm\": \"163\",\n            \"weight_kg\": \"58\",\n            \"league_id\": \"2216\",\n            \"league_name\": \"Women's Super League\",\n            \"league_level\": \"1\",\n            \"club_team_id\": \"116009\",\n            \"club_name\": \"Arsenal W\",\n            \"club_position\": \"SUB\",\n            \"club_jersey_number\": \"9\",\n            \"club_loaned_from\": \"\",\n            \"club_joined_date\": \"2017-01-01\",\n            \"club_contract_valid_until_year\": \"2025\",\n            \"nationality_id\": \"14\",\n            \"nationality_name\": \"England\",\n            \"nation_team_id\": \"113002\",\n            \"nation_position\": \"RM\",\n            \"nation_jersey_number\": \"7\",\n            \"preferred_foot\": \"Right\",\n            \"weak_foot\": \"4\",\n            \"skill_moves\": \"5\",\n            \"international_reputation\": \"4\",\n            \"work_rate\": \"High/High\",\n            \"body_type\": \"Normal (170-)\",\n            \"real_face\": \"Yes\",\n            \"release_clause_eur\": \"231000000\",\n            \"player_tags\": \"#Dribbler, #Distance Shooter, #Crosser, #FK Specialist, #Clinical Finisher, #Complete Forward\",\n            \"player_traits\": \"Early Crosser, Long Shot Taker (AI), Outside Foot Shot\",\n            \"pace\": \"81\",\n            \"shooting\": \"88\",\n            \"passing\": \"86\",\n            \"dribbling\": \"88\",\n            \"defending\": \"67\",\n            \"physic\": \"73\",\n            \"player_face_url\": \"https://cdn.sofifa.net/players/245/802/23_120.png\"\n        },\n        {\n            \"player_id\": \"246272\",\n            \"player_url\": \"/player/246272/marie-katoto/230009\",\n            \"fifa_version\": \"23\",\n            \"fifa_update\": \"9\",\n            \"fifa_update_date\": \"2023-01-13\",\n            \"short_name\": \"M. Katoto\",\n            \"long_name\": \"Marie-Antoinette Oda Katoto\",\n            \"player_positions\": \"ST\",\n            \"overall\": \"89\",\n            \"potential\": \"93\",\n            \"value_eur\": \"149500000\",\n            \"wage_eur\": \"2000\",\n            \"age\": \"23\",\n            \"dob\": \"1998-11-01\",\n            \"height_cm\": \"177\",\n            \"weight_kg\": \"66\",\n            \"league_id\": \"2218\",\n            \"league_name\": \"Feminine Division 1\",\n            \"league_level\": \"1\",\n            \"club_team_id\": \"116034\",\n            \"club_name\": \"Paris SG W\",\n            \"club_position\": \"RES\",\n            \"club_jersey_number\": \"9\",\n            \"club_loaned_from\": \"\",\n            \"club_joined_date\": \"2015-04-26\",\n            \"club_contract_valid_until_year\": \"2025\",\n            \"nationality_id\": \"18\",\n            \"nationality_name\": \"France\",\n            \"nation_team_id\": \"113003\",\n            \"nation_position\": \"SUB\",\n            \"nation_jersey_number\": \"9\",\n            \"preferred_foot\": \"Right\",\n            \"weak_foot\": \"4\",\n            \"skill_moves\": \"4\",\n            \"international_reputation\": \"4\",\n            \"work_rate\": \"High/Medium\",\n            \"body_type\": \"Lean (170-185)\",\n            \"real_face\": \"Yes\",\n            \"release_clause_eur\": \"317700000\",\n            \"player_tags\": \"#Aerial Threat, #Clinical Finisher, #Complete Forward\",\n            \"player_traits\": \"Finesse Shot, Power Header, Outside Foot Shot\",\n            \"pace\": \"87\",\n            \"shooting\": \"90\",\n            \"passing\": \"78\",\n            \"dribbling\": \"85\",\n            \"defending\": \"39\",\n            \"physic\": \"73\",\n            \"player_face_url\": \"https://cdn.sofifa.net/players/246/272/23_120.png\"\n        },\n        {\n            \"player_id\": \"227361\",\n            \"player_url\": \"/player/227361/kadidiatou-diani/230009\",\n            \"fifa_version\": \"23\",\n            \"fifa_update\": \"9\",\n            \"fifa_update_date\": \"2023-01-13\",\n            \"short_name\": \"K. Diani\",\n            \"long_name\": \"Kadidiatou Diani\",\n            \"player_positions\": \"RW, ST\",\n            \"overall\": \"88\",\n            \"potential\": \"88\",\n            \"value_eur\": \"97500000\",\n            \"wage_eur\": \"3000\",\n            \"age\": \"27\",\n            \"dob\": \"1995-04-01\",\n            \"height_cm\": \"168\",\n            \"weight_kg\": \"64\",\n            \"league_id\": \"2218\",\n            \"league_name\": \"Feminine Division 1\",\n            \"league_level\": \"1\",\n            \"club_team_id\": \"116034\",\n            \"club_name\": \"Paris SG W\",\n            \"club_position\": \"ST\",\n            \"club_jersey_number\": \"11\",\n            \"club_loaned_from\": \"\",\n            \"club_joined_date\": \"2017-07-13\",\n            \"club_contract_valid_until_year\": \"2023\",\n            \"nationality_id\": \"18\",\n            \"nationality_name\": \"France\",\n            \"nation_team_id\": \"113003\",\n            \"nation_position\": \"RW\",\n            \"nation_jersey_number\": \"11\",\n            \"preferred_foot\": \"Right\",\n            \"weak_foot\": \"4\",\n            \"skill_moves\": \"4\",\n            \"international_reputation\": \"3\",\n            \"work_rate\": \"High/High\",\n            \"body_type\": \"Normal (170-)\",\n            \"real_face\": \"Yes\",\n            \"release_clause_eur\": \"199900000\",\n            \"player_tags\": \"#Speedster, #Dribbler, #Acrobat, #Clinical Finisher, #Complete Forward\",\n            \"player_traits\": \"Solid Player, Speed Dribbler (AI), Outside Foot Shot\",\n            \"pace\": \"90\",\n            \"shooting\": \"83\",\n            \"passing\": \"82\",\n            \"dribbling\": \"88\",\n            \"defending\": \"53\",\n            \"physic\": \"74\",\n            \"player_face_url\": \"https://cdn.sofifa.net/players/227/361/23_120.png\"\n        },\n        {\n            \"player_id\": \"233746\",\n            \"player_url\": \"/player/233746/vivianne-miedema/230009\",\n            \"fifa_version\": \"23\",\n            \"fifa_update\": \"9\",\n            \"fifa_update_date\": \"2023-01-13\",\n            \"short_name\": \"V. Miedema\",\n            \"long_name\": \"Vivianne Miedema\",\n            \"player_positions\": \"ST, CAM\",\n            \"overall\": \"88\",\n            \"potential\": \"89\",\n            \"value_eur\": \"111000000\",\n            \"wage_eur\": \"3000\",\n            \"age\": \"25\",\n            \"dob\": \"1996-07-15\",\n            \"height_cm\": \"178\",\n            \"weight_kg\": \"65\",\n            \"league_id\": \"2216\",\n            \"league_name\": \"Women's Super League\",\n            \"league_level\": \"1\",\n            \"club_team_id\": \"116009\",\n            \"club_name\": \"Arsenal W\",\n            \"club_position\": \"CM\",\n            \"club_jersey_number\": \"11\",\n            \"club_loaned_from\": \"\",\n            \"club_joined_date\": \"2017-07-01\",\n            \"club_contract_valid_until_year\": \"2023\",\n            \"nationality_id\": \"34\",\n            \"nationality_name\": \"Netherlands\",\n            \"nation_team_id\": \"113011\",\n            \"nation_position\": \"ST\",\n            \"nation_jersey_number\": \"9\",\n            \"preferred_foot\": \"Right\",\n            \"weak_foot\": \"4\",\n            \"skill_moves\": \"4\",\n            \"international_reputation\": \"5\",\n            \"work_rate\": \"High/High\",\n            \"body_type\": \"Normal (170-185)\",\n            \"real_face\": \"Yes\",\n            \"release_clause_eur\": \"241400000\",\n            \"player_tags\": \"#Distance Shooter, #Clinical Finisher\",\n            \"player_traits\": \"Leadership, Finesse Shot, Outside Foot Shot\",\n            \"pace\": \"83\",\n            \"shooting\": \"88\",\n            \"passing\": \"70\",\n            \"dribbling\": \"88\",\n            \"defending\": \"32\",\n            \"physic\": \"82\",\n            \"player_face_url\": \"https://cdn.sofifa.net/players/233/746/23_120.png\"\n        },\n        {\n            \"player_id\": \"245872\",\n            \"player_url\": \"/player/245872/kim-little/230009\",\n            \"fifa_version\": \"23\",\n            \"fifa_update\": \"9\",\n            \"fifa_update_date\": \"2023-01-13\",\n            \"short_name\": \"K. Little\",\n            \"long_name\": \"Kim Alison Little\",\n            \"player_positions\": \"CM, CAM, CDM\",\n            \"overall\": \"88\",\n            \"potential\": \"88\",\n            \"value_eur\": \"72000000\",\n            \"wage_eur\": \"2000\",\n            \"age\": \"32\",\n            \"dob\": \"1990-06-29\",\n            \"height_cm\": \"162\",\n            \"weight_kg\": \"57\",\n            \"league_id\": \"2216\",\n            \"league_name\": \"Women's Super League\",\n            \"league_level\": \"1\",\n            \"club_team_id\": \"116009\",\n            \"club_name\": \"Arsenal W\",\n            \"club_position\": \"SUB\",\n            \"club_jersey_number\": \"10\",\n            \"club_loaned_from\": \"\",\n            \"club_joined_date\": \"2008-07-01\",\n            \"club_contract_valid_until_year\": \"2023\",\n            \"nationality_id\": \"42\",\n            \"nationality_name\": \"Scotland\",\n            \"nation_team_id\": \"\",\n            \"nation_position\": \"\",\n            \"nation_jersey_number\": \"\",\n            \"preferred_foot\": \"Right\",\n            \"weak_foot\": \"4\",\n            \"skill_moves\": \"4\",\n            \"international_reputation\": \"4\",\n            \"work_rate\": \"High/High\",\n            \"body_type\": \"Normal (170-)\",\n            \"real_face\": \"Yes\",\n            \"release_clause_eur\": \"151200000\",\n            \"player_tags\": \"#Dribbler, #Playmaker, #Engine, #Complete Midfielder\",\n            \"player_traits\": \"Leadership, Flair, Playmaker (AI), Outside Foot Shot, Team Player\",\n            \"pace\": \"79\",\n            \"shooting\": \"81\",\n            \"passing\": \"84\",\n            \"dribbling\": \"90\",\n            \"defending\": \"65\",\n            \"physic\": \"67\",\n            \"player_face_url\": \"https://cdn.sofifa.net/players/245/872/23_120.png\"\n        },\n        {\n            \"player_id\": \"245956\",\n            \"player_url\": \"/player/245956/christiane-endler/230009\",\n            \"fifa_version\": \"23\",\n            \"fifa_update\": \"9\",\n            \"fifa_update_date\": \"2023-01-13\",\n            \"short_name\": \"C. Endler\",\n            \"long_name\": \"Christiane Endler\",\n            \"player_positions\": \"GK\",\n            \"overall\": \"88\",\n            \"potential\": \"88\",\n            \"value_eur\": \"61000000\",\n            \"wage_eur\": \"2000\",\n            \"age\": \"30\",\n            \"dob\": \"1991-07-23\",\n            \"height_cm\": \"183\",\n            \"weight_kg\": \"73\",\n            \"league_id\": \"2218\",\n            \"league_name\": \"Feminine Division 1\",\n            \"league_level\": \"1\",\n            \"club_team_id\": \"116033\",\n            \"club_name\": \"Lyon W\",\n            \"club_position\": \"GK\",\n            \"club_jersey_number\": \"1\",\n            \"club_loaned_from\": \"\",\n            \"club_joined_date\": \"2021-07-01\",\n            \"club_contract_valid_until_year\": \"2024\",\n            \"nationality_id\": \"55\",\n            \"nationality_name\": \"Chile\",\n            \"nation_team_id\": \"\",\n            \"nation_position\": \"\",\n            \"nation_jersey_number\": \"\",\n            \"preferred_foot\": \"Left\",\n            \"weak_foot\": \"3\",\n            \"skill_moves\": \"1\",\n            \"international_reputation\": \"5\",\n            \"work_rate\": \"Medium/Medium\",\n            \"body_type\": \"Lean (170-185)\",\n            \"real_face\": \"Yes\",\n            \"release_clause_eur\": \"125100000\",\n            \"player_tags\": \"\",\n            \"player_traits\": \"Leadership\",\n            \"pace\": \"\",\n            \"shooting\": \"\",\n            \"passing\": \"\",\n            \"dribbling\": \"\",\n            \"defending\": \"\",\n            \"physic\": \"\",\n            \"player_face_url\": \"https://cdn.sofifa.net/players/245/956/23_120.png\"\n        },\n        {\n            \"player_id\": \"226302\",\n            \"player_url\": \"/player/226302/alexandra-popp/230009\",\n            \"fifa_version\": \"23\",\n            \"fifa_update\": \"9\",\n            \"fifa_update_date\": \"2023-01-13\",\n            \"short_name\": \"A. Popp\",\n            \"long_name\": \"Alexandra Popp\",\n            \"player_positions\": \"ST, LM\",\n            \"overall\": \"87\",\n            \"potential\": \"87\",\n            \"value_eur\": \"\",\n            \"wage_eur\": \"\",\n            \"age\": \"31\",\n            \"dob\": \"1991-04-06\",\n            \"height_cm\": \"174\",\n            \"weight_kg\": \"65\",\n            \"league_id\": \"\",\n            \"league_name\": \"\",\n            \"league_level\": \"\",\n            \"club_team_id\": \"\",\n            \"club_name\": \"\",\n            \"club_position\": \"\",\n            \"club_jersey_number\": \"\",\n            \"club_loaned_from\": \"\",\n            \"club_joined_date\": \"\",\n            \"club_contract_valid_until_year\": \"\",\n            \"nationality_id\": \"21\",\n            \"nationality_name\": \"Germany\",\n            \"nation_team_id\": \"113004\",\n            \"nation_position\": \"ST\",\n            \"nation_jersey_number\": \"11\",\n            \"preferred_foot\": \"Left\",\n            \"weak_foot\": \"5\",\n            \"skill_moves\": \"3\",\n            \"international_reputation\": \"4\",\n            \"work_rate\": \"High/High\",\n            \"body_type\": \"Normal (170-185)\",\n            \"real_face\": \"Yes\",\n            \"release_clause_eur\": \"\",\n            \"player_tags\": \"#Aerial Threat, #Distance Shooter, #Clinical Finisher, #Complete Forward\",\n            \"player_traits\": \"Injury Prone, Leadership, Power Header, Outside Foot Shot, Team Player\",\n            \"pace\": \"79\",\n            \"shooting\": \"88\",\n            \"passing\": \"76\",\n            \"dribbling\": \"82\",\n            \"defending\": \"55\",\n            \"physic\": \"82\",\n            \"player_face_url\": \"https://cdn.sofifa.net/players/226/302/23_120.png\"\n        },\n        {\n            \"player_id\": \"227318\",\n            \"player_url\": \"/player/227318/amandine-henry/230009\",\n            \"fifa_version\": \"23\",\n            \"fifa_update\": \"9\",\n            \"fifa_update_date\": \"2023-01-13\",\n            \"short_name\": \"A. Henry\",\n            \"long_name\": \"Amandine Chantal Henry\",\n            \"player_positions\": \"CDM, CM\",\n            \"overall\": \"87\",\n            \"potential\": \"87\",\n            \"value_eur\": \"53000000\",\n            \"wage_eur\": \"2000\",\n            \"age\": \"32\",\n            \"dob\": \"1989-09-28\",\n            \"height_cm\": \"171\",\n            \"weight_kg\": \"64\",\n            \"league_id\": \"2218\",\n            \"league_name\": \"Feminine Division 1\",\n            \"league_level\": \"1\",\n            \"club_team_id\": \"116033\",\n            \"club_name\": \"Lyon W\",\n            \"club_position\": \"LCM\",\n            \"club_jersey_number\": \"6\",\n            \"club_loaned_from\": \"\",\n            \"club_joined_date\": \"2007-07-01\",\n            \"club_contract_valid_until_year\": \"2023\",\n            \"nationality_id\": \"18\",\n            \"nationality_name\": \"France\",\n            \"nation_team_id\": \"\",\n            \"nation_position\": \"\",\n            \"nation_jersey_number\": \"\",\n            \"preferred_foot\": \"Right\",\n            \"weak_foot\": \"3\",\n            \"skill_moves\": \"4\",\n            \"international_reputation\": \"5\",\n            \"work_rate\": \"High/High\",\n            \"body_type\": \"Normal (170-185)\",\n            \"real_face\": \"Yes\",\n            \"release_clause_eur\": \"108700000\",\n            \"player_tags\": \"#Distance Shooter, #Tactician \",\n            \"player_traits\": \"Leadership, Long Shot Taker (AI), Outside Foot Shot\",\n            \"pace\": \"72\",\n            \"shooting\": \"80\",\n            \"passing\": \"78\",\n            \"dribbling\": \"78\",\n            \"defending\": \"86\",\n            \"physic\": \"86\",\n            \"player_face_url\": \"https://cdn.sofifa.net/players/227/318/23_120.png\"\n        },\n        {\n            \"player_id\": \"227323\",\n            \"player_url\": \"/player/227323/guro-reiten/230009\",\n            \"fifa_version\": \"23\",\n            \"fifa_update\": \"9\",\n            \"fifa_update_date\": \"2023-01-13\",\n            \"short_name\": \"G. Reiten\",\n            \"long_name\": \"Guro Reiten\",\n            \"player_positions\": \"LM, CAM, ST\",\n            \"overall\": \"87\",\n            \"potential\": \"87\",\n            \"value_eur\": \"85000000\",\n            \"wage_eur\": \"2000\",\n            \"age\": \"27\",\n            \"dob\": \"1994-07-26\",\n            \"height_cm\": \"167\",\n            \"weight_kg\": \"60\",\n            \"league_id\": \"2216\",\n            \"league_name\": \"Women's Super League\",\n            \"league_level\": \"1\",\n            \"club_team_id\": \"116010\",\n            \"club_name\": \"Chelsea W\",\n            \"club_position\": \"LM\",\n            \"club_jersey_number\": \"11\",\n            \"club_loaned_from\": \"\",\n            \"club_joined_date\": \"2019-07-01\",\n            \"club_contract_valid_until_year\": \"2025\",\n            \"nationality_id\": \"36\",\n            \"nationality_name\": \"Norway\",\n            \"nation_team_id\": \"113007\",\n            \"nation_position\": \"LM\",\n            \"nation_jersey_number\": \"11\",\n            \"preferred_foot\": \"Left\",\n            \"weak_foot\": \"3\",\n            \"skill_moves\": \"4\",\n            \"international_reputation\": \"3\",\n            \"work_rate\": \"High/Medium\",\n            \"body_type\": \"Normal (170-)\",\n            \"real_face\": \"Yes\",\n            \"release_clause_eur\": \"174300000\",\n            \"player_tags\": \"#Acrobat\",\n            \"player_traits\": \"Finesse Shot, Chip Shot (AI)\",\n            \"pace\": \"90\",\n            \"shooting\": \"79\",\n            \"passing\": \"85\",\n            \"dribbling\": \"85\",\n            \"defending\": \"64\",\n            \"physic\": \"63\",\n            \"player_face_url\": \"https://cdn.sofifa.net/players/227/323/23_120.png\"\n        },\n        {\n            \"player_id\": \"227392\",\n            \"player_url\": \"/player/227392/ashley-lawrence/230009\",\n            \"fifa_version\": \"23\",\n            \"fifa_update\": \"9\",\n            \"fifa_update_date\": \"2023-01-13\",\n            \"short_name\": \"A. Lawrence\",\n            \"long_name\": \"Ashley Elizabeth Marie Lawrence\",\n            \"player_positions\": \"RB\",\n            \"overall\": \"87\",\n            \"potential\": \"88\",\n            \"value_eur\": \"83500000\",\n            \"wage_eur\": \"2000\",\n            \"age\": \"27\",\n            \"dob\": \"1995-06-11\",\n            \"height_cm\": \"164\",\n            \"weight_kg\": \"60\",\n            \"league_id\": \"2218\",\n            \"league_name\": \"Feminine Division 1\",\n            \"league_level\": \"1\",\n            \"club_team_id\": \"116034\",\n            \"club_name\": \"Paris SG W\",\n            \"club_position\": \"RB\",\n            \"club_jersey_number\": \"12\",\n            \"club_loaned_from\": \"\",\n            \"club_joined_date\": \"2017-01-31\",\n            \"club_contract_valid_until_year\": \"2023\",\n            \"nationality_id\": \"70\",\n            \"nationality_name\": \"Canada\",\n            \"nation_team_id\": \"113000\",\n            \"nation_position\": \"LB\",\n            \"nation_jersey_number\": \"10\",\n            \"preferred_foot\": \"Right\",\n            \"weak_foot\": \"4\",\n            \"skill_moves\": \"3\",\n            \"international_reputation\": \"3\",\n            \"work_rate\": \"High/Medium\",\n            \"body_type\": \"Normal (170-)\",\n            \"real_face\": \"Yes\",\n            \"release_clause_eur\": \"177400000\",\n            \"player_tags\": \"\",\n            \"player_traits\": \"Speed Dribbler (AI)\",\n            \"pace\": \"88\",\n            \"shooting\": \"70\",\n            \"passing\": \"83\",\n            \"dribbling\": \"83\",\n            \"defending\": \"84\",\n            \"physic\": \"78\",\n            \"player_face_url\": \"https://cdn.sofifa.net/players/227/392/23_120.png\"\n        },\n        {\n            \"player_id\": \"233837\",\n            \"player_url\": \"/player/233837/lina-magull/230009\",\n            \"fifa_version\": \"23\",\n            \"fifa_update\": \"9\",\n            \"fifa_update_date\": \"2023-01-13\",\n            \"short_name\": \"L. Magull\",\n            \"long_name\": \"Lina Maria Magull\",\n            \"player_positions\": \"CM, CAM\",\n            \"overall\": \"87\",\n            \"potential\": \"87\",\n            \"value_eur\": \"\",\n            \"wage_eur\": \"\",\n            \"age\": \"27\",\n            \"dob\": \"1994-08-15\",\n            \"height_cm\": \"166\",\n            \"weight_kg\": \"54\",\n            \"league_id\": \"\",\n            \"league_name\": \"\",\n            \"league_level\": \"\",\n            \"club_team_id\": \"\",\n            \"club_name\": \"\",\n            \"club_position\": \"\",\n            \"club_jersey_number\": \"\",\n            \"club_loaned_from\": \"\",\n            \"club_joined_date\": \"\",\n            \"club_contract_valid_until_year\": \"\",\n            \"nationality_id\": \"21\",\n            \"nationality_name\": \"Germany\",\n            \"nation_team_id\": \"113004\",\n            \"nation_position\": \"LCM\",\n            \"nation_jersey_number\": \"20\",\n            \"preferred_foot\": \"Right\",\n            \"weak_foot\": \"3\",\n            \"skill_moves\": \"5\",\n            \"international_reputation\": \"4\",\n            \"work_rate\": \"High/Medium\",\n            \"body_type\": \"Lean (170-)\",\n            \"real_face\": \"Yes\",\n            \"release_clause_eur\": \"\",\n            \"player_tags\": \"#Dribbler, #Playmaker, #Acrobat, #Complete Midfielder\",\n            \"player_traits\": \"Leadership, Flair, Playmaker (AI), Outside Foot Shot, Team Player, Technical Dribbler (AI)\",\n            \"pace\": \"86\",\n            \"shooting\": \"75\",\n            \"passing\": \"86\",\n            \"dribbling\": \"89\",\n            \"defending\": \"59\",\n            \"physic\": \"67\",\n            \"player_face_url\": \"https://cdn.sofifa.net/players/233/837/23_120.png\"\n        },\n        {\n            \"player_id\": \"237197\",\n            \"player_url\": \"/player/237197/grace-geyoro/230009\",\n            \"fifa_version\": \"23\",\n            \"fifa_update\": \"9\",\n            \"fifa_update_date\": \"2023-01-13\",\n            \"short_name\": \"G. Geyoro\",\n            \"long_name\": \"Onema Grace Geyoro\",\n            \"player_positions\": \"CM, CDM\",\n            \"overall\": \"87\",\n            \"potential\": \"91\",\n            \"value_eur\": \"113500000\",\n            \"wage_eur\": \"2000\",\n            \"age\": \"24\",\n            \"dob\": \"1997-07-02\",\n            \"height_cm\": \"168\",\n            \"weight_kg\": \"61\",\n            \"league_id\": \"2218\",\n            \"league_name\": \"Feminine Division 1\",\n            \"league_level\": \"1\",\n            \"club_team_id\": \"116034\",\n            \"club_name\": \"Paris SG W\",\n            \"club_position\": \"RCM\",\n            \"club_jersey_number\": \"8\",\n            \"club_loaned_from\": \"\",\n            \"club_joined_date\": \"2014-07-01\",\n            \"club_contract_valid_until_year\": \"2024\",\n            \"nationality_id\": \"18\",\n            \"nationality_name\": \"France\",\n            \"nation_team_id\": \"113003\",\n            \"nation_position\": \"LCM\",\n            \"nation_jersey_number\": \"8\",\n            \"preferred_foot\": \"Right\",\n            \"weak_foot\": \"3\",\n            \"skill_moves\": \"3\",\n            \"international_reputation\": \"3\",\n            \"work_rate\": \"High/High\",\n            \"body_type\": \"Normal (170-)\",\n            \"real_face\": \"Yes\",\n            \"release_clause_eur\": \"241200000\",\n            \"player_tags\": \"#Engine, #Tactician \",\n            \"player_traits\": \"Solid Player, Leadership, Playmaker (AI), Team Player\",\n            \"pace\": \"78\",\n            \"shooting\": \"70\",\n            \"passing\": \"81\",\n            \"dribbling\": \"83\",\n            \"defending\": \"83\",\n            \"physic\": \"78\",\n            \"player_face_url\": \"https://cdn.sofifa.net/players/237/197/23_120.png\"\n        },\n        {\n            \"player_id\": \"238257\",\n            \"player_url\": \"/player/238257/millie-bright/230009\",\n            \"fifa_version\": \"23\",\n            \"fifa_update\": \"9\",\n            \"fifa_update_date\": \"2023-01-13\",\n            \"short_name\": \"M. Bright\",\n            \"long_name\": \"Millie Bright\",\n            \"player_positions\": \"CB\",\n            \"overall\": \"87\",\n            \"potential\": \"88\",\n            \"value_eur\": \"75500000\",\n            \"wage_eur\": \"2000\",\n            \"age\": \"28\",\n            \"dob\": \"1993-08-21\",\n            \"height_cm\": \"178\",\n            \"weight_kg\": \"76\",\n            \"league_id\": \"2216\",\n            \"league_name\": \"Women's Super League\",\n            \"league_level\": \"1\",\n            \"club_team_id\": \"116010\",\n            \"club_name\": \"Chelsea W\",\n            \"club_position\": \"RCB\",\n            \"club_jersey_number\": \"4\",\n            \"club_loaned_from\": \"\",\n            \"club_joined_date\": \"2015-01-01\",\n            \"club_contract_valid_until_year\": \"2026\",\n            \"nationality_id\": \"14\",\n            \"nationality_name\": \"England\",\n            \"nation_team_id\": \"113002\",\n            \"nation_position\": \"RCB\",\n            \"nation_jersey_number\": \"6\",\n            \"preferred_foot\": \"Right\",\n            \"weak_foot\": \"4\",\n            \"skill_moves\": \"2\",\n            \"international_reputation\": \"3\",\n            \"work_rate\": \"Low/High\",\n            \"body_type\": \"Stocky (170-185)\",\n            \"real_face\": \"Yes\",\n            \"release_clause_eur\": \"160400000\",\n            \"player_tags\": \"#Tactician, #Strength\",\n            \"player_traits\": \"Solid Player, Dives Into Tackles (AI), Leadership, Long Passer (AI), Team Player\",\n            \"pace\": \"59\",\n            \"shooting\": \"50\",\n            \"passing\": \"70\",\n            \"dribbling\": \"65\",\n            \"defending\": \"87\",\n            \"physic\": \"88\",\n            \"player_face_url\": \"https://cdn.sofifa.net/players/238/257/23_120.png\"\n        },\n        {\n            \"player_id\": \"248717\",\n            \"player_url\": \"/player/248717/lena-oberdorf/230009\",\n            \"fifa_version\": \"23\",\n            \"fifa_update\": \"9\",\n            \"fifa_update_date\": \"2023-01-13\",\n            \"short_name\": \"L. Oberdorf\",\n            \"long_name\": \"Lena Sophie Oberdorf\",\n            \"player_positions\": \"CDM, CB\",\n            \"overall\": \"87\",\n            \"potential\": \"93\",\n            \"value_eur\": \"\",\n            \"wage_eur\": \"\",\n            \"age\": \"20\",\n            \"dob\": \"2001-12-19\",\n            \"height_cm\": \"174\",\n            \"weight_kg\": \"68\",\n            \"league_id\": \"\",\n            \"league_name\": \"\",\n            \"league_level\": \"\",\n            \"club_team_id\": \"\",\n            \"club_name\": \"\",\n            \"club_position\": \"\",\n            \"club_jersey_number\": \"\",\n            \"club_loaned_from\": \"\",\n            \"club_joined_date\": \"\",\n            \"club_contract_valid_until_year\": \"\",\n            \"nationality_id\": \"21\",\n            \"nationality_name\": \"Germany\",\n            \"nation_team_id\": \"113004\",\n            \"nation_position\": \"CDM\",\n            \"nation_jersey_number\": \"6\",\n            \"preferred_foot\": \"Right\",\n            \"weak_foot\": \"3\",\n            \"skill_moves\": \"3\",\n            \"international_reputation\": \"4\",\n            \"work_rate\": \"Medium/Medium\",\n            \"body_type\": \"Stocky (170-185)\",\n            \"real_face\": \"No\",\n            \"release_clause_eur\": \"\",\n            \"player_tags\": \"#Tackling, #Tactician \",\n            \"player_traits\": \"Dives Into Tackles (AI)\",\n            \"pace\": \"70\",\n            \"shooting\": \"60\",\n            \"passing\": \"76\",\n            \"dribbling\": \"77\",\n            \"defending\": \"87\",\n            \"physic\": \"84\",\n            \"player_face_url\": \"https://cdn.sofifa.net/players/248/717/23_120.png\"\n        }\n    ]\n}"
+						}
+					]
+				}
+			]
 		}
 	],
 	"auth": {

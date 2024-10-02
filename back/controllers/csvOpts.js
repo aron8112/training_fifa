@@ -58,9 +58,6 @@ const uploadCSV = async (req, res) => {
         .pipe(csv())
         .on('data', (data) => results.push(data))
         .on('end', async () => {
-          //Eliminar archivo
-          fs.unlinkSync(saveTo);
-
           //Crear tabla
           let createTable = await csvOptServices.uploadCSV(results, tableName);
           if (createTable) {
@@ -69,6 +66,8 @@ const uploadCSV = async (req, res) => {
               parsedInfo: results,
             });
           }
+          //Eliminar archivo
+          fs.unlinkSync(saveTo);
         });
     });
   });
@@ -83,7 +82,8 @@ const uploadCSV = async (req, res) => {
     res.status(500).json({ message: 'Error en la subida del archivo', error: err });
   });
 
-  req.pipe(bb); // Pasar la request a Busboy
+  // Pasar la request a Busboy
+  req.pipe(bb);
 };
 
 module.exports = { uploadCSV, exportCSVwithFS, exportCSVwithXLSX };

@@ -13,27 +13,17 @@ import { response } from 'express';
 })
 export class PlayerMainComponent {
   apiService: ApiService = inject(ApiService);
-  downloadcsv(): void {
-    this.apiService.getCSV('docs/download').subscribe((response) => {
-      let fileName: any = response.headers
-        .get('content-disposition')
-        ?.split(';')[1]
-        .split('=')[1];
-      // let fileName = 'fifa_players2024.csv';
-      let blob: Blob = response.body as Blob;
-      let a = document.createElement('a');
-      a.download = fileName;
-      a.href = window.URL.createObjectURL(blob);
-      a.click();
-    });
-  }
-
-  downloadcsvWithFS(): void {
-    this.apiService.getCSV('docs/download2').subscribe((response) => {
-      let fileName: any = response.headers
-        .get('content-disposition')
-        ?.split(';')[1]
-        .split('=')[1];
+  downloadcsv(lib: string): void {
+    let url;
+    let fileName: string;
+    if (lib === 'xlsx') {
+      url = 'docs/download';
+      fileName = 'fifa_players2024_xlsx.csv';
+    } else if (lib === 'fs') {
+      url = 'docs/download2';
+      fileName = 'fifa_players2024_fs.csv';
+    }
+    this.apiService.getCSV(url as string).subscribe((response) => {
       let blob: Blob = response.body as Blob;
       let a = document.createElement('a');
       a.download = fileName;

@@ -44,4 +44,10 @@ app.delete(
 //Create player
 app.post('/create', authenticateUser, checkPlayerInput, playerController.newPlayer);
 
+//Get versions of one player by 'long_name' field
+app.get('/versions/:name', playerController.findAllVersions);
+
+//Get versions of one player by 'long_name' field
+app.get('/skills/:name', playerController.detailedSkills);
+
 module.exports = app;

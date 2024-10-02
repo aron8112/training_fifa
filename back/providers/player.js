@@ -125,6 +125,24 @@ const deletePlayer = async (id) => {
   if (deleted) return true;
 };
 
+const getDifferentVersions = async (name) => {
+  let playerVersions = await PlayerModel.findAll({
+    attributes: ['pace', 'shooting', 'passing', 'dribbling', 'defending', 'physic', 'fifa_version'],
+    where: { long_name: name },
+    raw: true,
+  });
+  return playerVersions;
+};
+
+const playerDetailedSkills = async (name, labels) => {
+  let playerVersions = await PlayerModel.findAll({
+    attributes: labels,
+    where: { long_name: name },
+    raw: true,
+  });
+  return playerVersions;
+};
+
 module.exports = {
   playerRaw,
   getMetadataFromTable,
@@ -138,4 +156,6 @@ module.exports = {
   countPlayers,
   deletePlayer,
   updateOneFieldPlayer,
+  getDifferentVersions,
+  playerDetailedSkills,
 };

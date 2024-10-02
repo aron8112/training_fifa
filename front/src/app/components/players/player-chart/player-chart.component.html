@@ -1,10 +1,6 @@
 <div class="container">
-    <div *ngIf="isLoading">
-        <app-loading></app-loading>
-    </div>
     <hr>
     <div class="row text-center">
-        @if(!!!isLoading){
         <div class="col-4">
             <div class="row">
                 <div class="d-grid gap-2 d-md-flex justify-content-md-center">
@@ -50,20 +46,39 @@
                 </tbody>
             </table>
             <br>
-            <div class="d-grid gap-2 mx-auto">
-                <!-- <button class="btn btn-outline-danger" (click)="compareData()">Comparar con otras versiones de
-                    FIFA</button> -->
-            </div>
         </div>
-        }
         <div class="col-8">
             <canvas id="playerRadar" style="margin-left:25px;">{{ chart }}</canvas>
-            <!-- <canvas id="playerRadar2" *ngIf="chart2">{{ chart2 }}</canvas> -->
         </div>
     </div>
-    @if(!!!isLoading){
+    <br>
+    <div class="row text-center">
+        <div class="d-grid gap-2 col-6 mx-auto">
+            <button class="btn btn-outline-danger" (click)="compareData()" [hidden]="changeChart">Comparar skills
+                básicas con otras
+                versiones de FIFA</button>
+            <button class="btn btn-outline-info" (click)="hideChart2()" [hidden]="!changeChart"> Ocultar | Volver
+                a
+                skills básicas</button>
+            <button class="btn btn-outline-danger" (click)="createSkillChart()" [hidden]="changeLineChart">Comparar
+                skills detalladas con otras
+                versiones de FIFA</button>
+            <button class="btn btn-outline-info" (click)="hideLineChartBttn()" [hidden]="!changeLineChart">Ocultar |
+                Volver a
+                skills detalladas</button>
+        </div>
+    </div>
+    <br>
+    <div class="container">
+        <div class="col-12">
+            <canvas id="playerRadar2" style="margin-left:25px;" [hidden]="hideChart">{{ chart2 }}</canvas>
+        </div>
+    </div>
     <hr>
-
-    }
+    <div class="container">
+        <div class="col-12">
+            <canvas id="playerLineChart" style="margin-left:25px;" [hidden]="hideLineChart">{{ chart2 }}</canvas>
+        </div>
+    </div>
 </div>
 <br>

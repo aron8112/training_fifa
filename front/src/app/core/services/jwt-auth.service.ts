@@ -1,54 +1,53 @@
-import { Injectable } from '@angular/core';
-import { IUser } from '../interfaces/Iusers';
-import { Observable, of } from 'rxjs';
+import { inject, Injectable, PLATFORM_ID } from '@angular/core';
+import { BehaviorSubject, Observable, of } from 'rxjs';
+import { isPlatformBrowser } from '@angular/common';
 
 @Injectable({
   providedIn: 'root',
 })
 export class JWTTokenService {
-  token: string = '';
-  name!: string;
-  role!: string;
+  private storageSubject = new BehaviorSubject({});
+  plat = inject(PLATFORM_ID);
 
-  getToken() {
-    return this.token;
+  setUser(token: string) {
+    if (isPlatformBrowser(this.plat)) {
+      localStorage.setItem('token', token);
+    }
   }
 
   getName() {
-    return this.name;
+    try {
+      if (isPlatformBrowser(this.plat)) {
+        let token = localStorage.getItem('token') as string;
+        let payload = JSON.parse(atob(token.split('.')[1]));
+        return payload.name;
+      }
+    } catch (error) {
+      console.log('Registrese para ingresar a las funciones de la página');
+    }
   }
 
-  setUser(token: string) {
-    this.token = token;
-    localStorage.setItem('token', token);
-    this.setName();
+  getEmail() {
+    try {
+      if (isPlatformBrowser(this.plat)) {
+        let token = localStorage.getItem('token') as string;
+        let payload = JSON.parse(atob(token.split('.')[1]));
+        return payload.email;
+      }
+    } catch (error) {
+      console.log('Registrese para ingresar a las funciones de la página');
+    }
   }
 
-  getCurrentUser() {
-    if (this.token) {
-      return true;
+  public isAuthenticated() {
+    if (isPlatformBrowser(this.plat)) {
+      let token = localStorage.getItem('token');
+      return token;
     }
     return false;
   }
 
-  setName() {
-    let payload = JSON.parse(atob(this.token.split('.')[1]));
-    this.name = payload.name;
-  }
-
-  setRole() {
-    let payload = JSON.parse(atob(this.token.split('.')[1]));
-    this.name = payload.role;
-  }
-
-  public isAuthenticated() {
-    localStorage.getItem('token') ? true : false;
-  }
-
   logout() {
     localStorage.removeItem('token');
-    this.token = '';
-    this.name = '';
-    this.role = '';
   }
 }

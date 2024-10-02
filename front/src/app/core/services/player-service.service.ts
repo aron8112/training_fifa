@@ -49,6 +49,26 @@ export class PlayerService {
     });
   }
 
+  getPlayerVersions(name: string): Observable<any> {
+    // let token = localStorage.getItem('token');
+    // console.log(id);
+    return this.http.get(`${this.playerUrl}/versions/${name}`, {
+      // headers: {
+      //   Authorization: `Bearer ${token}`,
+      // },
+    });
+  }
+
+  getDetailedSkillsPlayer(name: string): Observable<any> {
+    // let token = localStorage.getItem('token');
+    // console.log(id);
+    return this.http.get(`${this.playerUrl}/skills/${name}`, {
+      // headers: {
+      //   Authorization: `Bearer ${token}`,
+      // },
+    });
+  }
+
   searchFilteredPlayers(params: any): Observable<any> {
     let token = localStorage.getItem('token');
     let { column, search, exact, page } = params;
